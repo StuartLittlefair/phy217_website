@@ -1,0 +1,299 @@
+---
+title: "L07: Telescopes II"
+subtitle: reflecting telescopes
+layout: 'layouts/lecture.html'
+
+sections: [
+{"id":'top', "label":"Principles"},
+{"id":'offaxis', "label": "Off-axis Abberations"},
+{"id":'newtonian', "label": "Newtonian"},
+{"id":'cassegrain', "label": "Cassegrain"},
+{"id":'RC', "label": "Ritchey-Chretien"},
+{"id":'SC', "label": "Schmidt-Cassegrain"}
+]
+---
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: REFLECTORS -->
+    <section id="top" data-magellan-target="top">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Using Mirrors</h5>
+                    <p><a href="../l06/">Chromatic aberration</a> is the most serious aberration that affects any
+                        optical telescope. It is, however, easily avoided. Reflecting telescopes use mirrors to collect
+                        and focus light. Since these rely on reflection, and not refraction, they are free from
+                        chromatic aberration. Mirrors are also simpler than lenses in that they only have a single
+                        optical surface. Mirrors are usually made of a rigid, hard (i.e. polishable) material with a low
+                        thermal expansion coefficient (such as the glass Pyrex), and coated with a thin layer of
+                        aluminium, silver or gold to give high reflectivity. A telescope which uses a mirror to collect
+                        and focus light is known as a reflector.</p>
+                    <p id="spherical">Reflectors, are not aberration free, however. The easiest mirror to make is a
+                        spherical mirror. {%figref "spherical_parabola", true %} shows that the rays from the edge of a
+                        spherical mirror come to a focus nearer the mirror than do rays from the centre of the mirror,
+                        causing a point source to be imaged as a blurred disc. This defect is known as spherical
+                        aberration.</p>
+                </div>
+            </div>
+
+            <!-- two column image stack -->
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    {%showfigstack 'spherical_parabola' %}
+                </div>
+            </div>
+
+            <!-- back to normal layout -->
+            <div class="grid-x">
+                <div class="cell">
+                    <h6><strong>Spherical Aberration and Parabolic Mirrors</strong></h6>
+                    <p>
+                        The effects of spherical aberration in mirrors can be reduced by positioning the focal plane
+                        coincident with the circle of least confusion, as shown in {%figref "spherical_parabola" %}, but
+                        this still leaves an unsatisfactory blurring of the image. However, the Scottish astronomer
+                        James Gregory realised in 1663 that spherical aberration can be eliminated if the curve of the
+                        surface of a mirror is a parabola. This is also shown in {%figref "spherical_parabola" %}, where
+                        all on-axis rays parallel to the axis of a parabolic mirror are reflected to meet at the <a
+                            href="http://www.physicsinsights.org/parabola_focus.html">focus of the parabola</a>.</p>
+                    <p>Creating mirrors with parabolic surfaces is not straightforward, as special grinding and
+                        polishing techniques are required in order to create the deeper central depression of a parabola
+                        compared to a spherical surface. A famous example of spherical aberration is given by the Hubble
+                        Space Telescope (HST), which suffered from spherical aberration due to a mistake during the
+                        manufacture of its (hyperbolic) 2.4m mirror, as shown in {%figref "hst_aberration" %}.
+                        Corrective
+                        optics were later installed by astronauts on a space shuttle servicing mission and the telescope
+                        is now functioning perfectly.</p>
+                </div>
+            </div>
+
+            <!-- image -->
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    {%showfigure "hst_aberration" %}
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="cell">
+                    <p>It should be noted that lenses, and hence <a href="../l06/">refractors</a>, suffer from spherical
+                        aberration in exactly the same way as mirrors, but it is a much smaller effect than chromatic
+                        aberration. Spherical aberration can be eliminated from refractors using aspheric lenses, in
+                        which the curvature of the surfaces is not constant, but these are difficult and expensive to
+                        produce. It is more common to remove spherical aberration from refractors by designing achromats
+                        in such a way that the negative lens cancels out the spherical aberration introduced by the
+                        positive lens, whilst still correcting for chromatic aberration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- NEW SECTION: OFF-AXIS ABERRATIONS -->
+    <section id="offaxis" data-magellan-target="offaxis">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Off-Axis Aberrations</h5>
+                    <p>Parabolic mirrors only bring on-axis light to a single point of focus. In {%figref
+                        "parabola_offaxis_rays" %}, we see what happens when off-axis sources are imaged using a
+                        parabolic mirror. We can see that the light is not brought to a well-defined focus, thus
+                        producing off-axis aberrations. Note that these aberrations are not unique to parabolic mirrors:
+                        refractors and spherical mirrors suffer from them too. Due to their nature, off-axis aberrations
+                        affect objects imaged at the edges of the field of view.</p>
+                </div>
+            </div>
+
+
+            <!-- image-->
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    {% showfigure "parabola_offaxis_rays" %}
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="cell">
+                    <h6><strong>coma, astigmatism, curvature of field and distortion of field</strong></h6>
+                    <p>We will only briefly discuss off-axis aberrations here. If you want to know more about how they
+                        arise, see Vik Dhillon's <a
+                            href="http://www.vikdhillon.staff.shef.ac.uk/teaching/phy217/telescopes/phy217_tel_reflectors.html">detailed
+                            notes</a>. For more info on each off-axis aberration, click on the buttons below.</p>
+                </div>
+            </div>
+
+
+            <div class="grid-x">
+                <div class="cell medium-2">
+                    <ul class="vertical tabs" data-tabs id="off-axis-examples">
+                        <li class="tabs-title is-active"><a href="#coma" aria-selected="true">Coma</a></li>
+                        <li class="tabs-title"><a href="#astigmatism">Astigmatism</a></li>
+                        <li class="tabs-title"><a href="#distortion">Distortion</a></li>
+                        <li class="tabs-title"><a href="#curvature">Curvature</a></li>
+                    </ul>
+                </div>
+                <div class="cell medium-10">
+                    <div class="tabs-content vertical" data-tabs-content="off-axis-examples">
+                        <div class="tabs-panel is-active" id="coma">
+                            {%showfigure "coma" %}
+                        </div>
+                        <div class="tabs-panel" id="astigmatism">
+                            {%showfigure "astigmatism" %}
+                        </div>
+                        <div class="tabs-panel" id="distortion">
+                            {%showfigure "distortion" %}
+                        </div>
+                        <div class="tabs-panel" id="curvature">
+                            {%showfigure "curvature" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NEW SECTION: newtonian -->
+    <section id="newtonian" data-magellan-target="newtonian">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <h5>Reflecting Telescope Designs</h5>
+                    <h6><strong>Newtonian Reflectors</strong></h6>
+                    <p>James Gregory was never able to bring his telescope design, known as the Gregorian, into
+                        practical use, and it is Isaac Newton who is credited with making the first working reflecting
+                        telescope in 1668. His design, known as the Newtonian, is shown in {%figref "newtonian" %}. The
+                        Newtonian is a two-mirror telescope in which the first mirror in the light path, known as the
+                        primary, is a concave parabola. The secondary mirror has no curvature at all and is hence
+                        referred to as a flat. It simply folds the light through 90&deg;, placing the focal plane just
+                        outside the incoming beam. The focal ratio at the Newtonian focus is typically about 5. The
+                        secondary mirror is inclined at an angle of 45&deg; with respect to the primary. The base of the
+                        flat is actually elliptical in shape so as to minimise the size of the circular shadow it casts
+                        on the primary.</p>
+                    <p>Although small amateur telescopes still adopt a Newtonian configuration, visual access to the
+                        focus becomes inconvenient as the telescope becomes larger, and mounting instrumentation there
+                        would unbalance the telescope, as demonstrated in {% figref "newtonian" %}. Hence Newtonians are
+                        rarely found in professional observatories.</p>
+                </div>
+            </div>
+
+            <div class="grid-x align-center">
+                <div class="cell small-11">
+                    {%showfigstack "newtonian" %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: cassegrain -->
+    <section id="cassegrain" data-magellan-target="cassegrain">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <h6><strong>Cassegrain Reflectors</strong></h6>
+                    <p>In 1672, the French priest Laurent Cassegrain developed another reflecting telescope design which
+                        is now named after him - the Cassegrain. This design, shown in {%figref "cassegrain" %}, has
+                        been adopted by the majority of the world's largest telescopes due to the convenience of
+                        mounting instrumentation at the focus.</p>
+                    <p>The Cassegrain telescope has a concave parabolic primary mirror like the Newtonian, but it
+                        employs a convex hyperbolic secondary. This increases the focal length of the telescope and
+                        reflects the beam back towards the primary, where it passes through a hole bored in the centre
+                        of the mirror and comes to a focus just below it. This is a much more easily accessible focus
+                        than the Newtonian, and an ideal place to mount large and heavy instrumentation. Compared to a
+                        Newtonian, nothing is lost by having a hole in the primary, as this region of the mirror lies
+                        under the shadow of the secondary. Moreover, because the beam is folded back on itself, it is
+                        possible to have a much longer focal length telescope without a correspondingly long tube: the
+                        focal ratio of a typical Cassegrain focus is 15.</p>
+                    <p>Another advantage of the Cassegrain design for professional observatories is that removing the
+                        secondary mirror gives access to <strong>prime focus</strong>. This is equivalent to the
+                        Newtonian, and provides a much smaller focal ratio and hence larger field of view than the
+                        Cassegrain focus. The wider field makes prime-focus imaging more susceptible to off-axis
+                        aberrations than Cassegrain-focus imaging, hence lens-based correctors are usually required at
+                        prime focus.</p>
+                </div>
+            </div>
+
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    {%showfigure "cassegrain" %}
+                </div>
+                <div class="cell small-10">
+                    {%showfigstack "hale" %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: RCs -->
+    <section id="RC" data-magellan-target="RC">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <h6><strong>Ritchey-Chretien reflectors</strong></h6>
+                    <p>Both the Newtonian and Cassegrain telescopes suffer from significant off-axis aberrations,
+                        primarily coma. To remedy this, the American and French optical designers George Ritchey and
+                        Henri Chretien jointly developed the Ritchey-Chretien telescope around 1910. The
+                        Ritchey-Chretien is a modified form of the Cassegrain design, with a concave hyperbolic primary
+                        and a convex hyperbolic secondary. The advantage of this design is that both spherical
+                        aberration and coma are removed. Astigmatism and field curvature are also reduced, all at the
+                        expense of a larger secondary mirror. The shadow of the larger secondary covers some of the
+                        primary mirror. Hence the Ritchey-Chretien delivers significantly better imaging performance
+                        over a wider field of view than a Cassegrain, but with a slightly lower light grasp. Due to the
+                        expense of making hyperbolic mirrors, Ritchey-Chretien designs are usually only found in
+                        research telescopes. The best known example of a Ritchey-Chretien telescope is the 2.4m Hubble
+                        Space Telescope.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: SCs -->
+    <section id="SC" data-magellan-target="SC">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <h6><strong>Catadioptric designs</strong></h6>
+                    <p>So far, we have been considering telescopes composed of only mirrors, or only lenses. Of course,
+                        it is possible to combine the two. Telescopes that use both mirrors and lenses are known as
+                        catadioptric. They include the <a
+                            href='http://www.vikdhillon.staff.shef.ac.uk/teaching/phy217/telescopes/phy217_tel_catadioptric.html#schmidt'>Schmidt</a>
+                        telescope, built to image very large fields. The field of view of a reflecting telescopes is
+                        limited by <a href='#offaxis'>coma</a>
+                        to tens of arcseconds. A Schmidt telescope uses lenses and spherical mirrors to image fields up
+                        to tens of degrees. </p>
+                    <p>Schmidt-Cassegrain telescopes are a hybrid of the Schmidt and Cassegrain designs. It is not a
+                        telescope you will find in major research observatories, but it is arguably the most widespread
+                        design used in the amateur telescope market. A schematic of the Schmidt-Cassegrain design is
+                        shown in {%figref "schmidt_cass" %}. The 16-inch telescope on the roof of the Hicks building,
+                        and the 10-inch robotic telescope, are both Schmidt-Cassegrain designs.</p>
+
+                </div>
+            </div>
+
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    {%showfigure "schmidt_cass" %}
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="cell">
+                    <p>The great advantage of the Schmidt-Cassegrain design is that it is cheap to mass produce, thanks
+                        to the use of spherical mirrors. The resulting spherical aberration is dealt with by the
+                        corrector lens, a feature it borrows from the Schmidt telescope. Unlike the Schmidt telescope,
+                        however, the Schmidt-Cassegrain suffers from off-axis aberrations like coma and astigmatism
+                        because the corrector lens is not placed at the centre of curvature. The Schmidt-Cassegrain
+                        retains one of the main advantages of the Cassegrain - a long focal length in a short tube,
+                        giving a telescope which is compact and portable yet able to provide small enough plate scales
+                        for detailed planetary viewing. This versatility makes them ideal for the amateur astronomy
+                        market. The typical focal ratio of a Schmidt-Cassegrain telescope is f/10 and they are available
+                        in apertures ranging from approximately 4-16 inches. Larger apertures become impractical due to
+                        the cost of manufacturing the corrector and mounting it without flexure (especially if the
+                        secondary mirror is attached to it).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

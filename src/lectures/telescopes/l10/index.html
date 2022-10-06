@@ -1,0 +1,331 @@
+---
+title: "L10: Adaptive Optics"
+subtitle: overcoming seeing
+layout: 'layouts/lecture.html'
+
+sections: [
+{"id":'top', "label":"Definitions"},
+{"id":'principles', "label": "Principles"},
+{"id":'wavefrontsensors', "label": "Wavefront Sensors"},
+{"id":'guidestars', "label": "Guide Stars"},
+{"id":'performance', "label": "Performance"}
+]
+---
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: Intro -->
+    <section id="top" data-magellan-target="top">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <p>In the first lecture, we saw how the <a href="../../principles/l01/#seeing">seeing</a> was the
+                        dominant factor controlling image quality for telescopes of moderate size and larger. Whilst <a
+                            href="../l09/#activeoptics">active optics</a> counteracts the effect of gravity and other
+                        deformations on the telescope mirrors, <strong>adaptive optics</strong> is a way of correcting
+                        for seeing, and taking advantage of the potential for improved resolution offered by large
+                        telescopes. Before we discuss how adaptive optics works, I will introduce three terms which
+                        quantify the effects of turbulence in the Earth's atmosphere on a wavefront propagating through
+                        it.</p>
+                    <h6><strong>Fried parameter</strong></h6>
+                    <p>As we showed in {%figref "turbulent_wavefronts" %}, turbulence in the atmosphere randomly
+                        distorts the plane wavefronts from distant stars. Over a short distance, the corrugated
+                        wavefront can be considered approximately planar. The Fried parameter, \(r_0\) - pronounced
+                        free-d - indicates the length over which the wavefront can be considered planar. This is shown
+                        schematically in {%figref "fried" %}. As we can see from this figure, the Fried parameter is
+                        also approximately equal to the size of the turbulent cells themselves.
+                    </p>
+                    <p>The larger the Fried parameter, the better the atmospheric conditions. At a good observing site,
+                        the Fried parameter has a typical value of \(r_0 = 10\) cm, at an optical wavelength of
+                        \(\lambda = 500\) nm. Theoretically, the Fried parameter is predicted to vary with wavelength as
+                        \(r_0 \propto \lambda^{6/5}\). Accordingly, the Fried parameter at near-infrared wavelengths
+                        (\(\lambda = 2.5 \mu\)m) should be \(r_0 \sim 70\) cm. This expectation is borne out by
+                        observations</p>
+                </div>
+
+                <div class="cell small-10">{%showfigure "fried" %}</div>
+
+                <div class="cell">
+
+                    <h6><strong>Coherence Time</strong></h6>
+                    <p>In {%figref "fried" %}, two wavefronts are shown at times \(t_1\) and \(t_2\). The turbulent
+                        cells responsible for distorting the wavefront generally evolve on long timescales. The reason
+                        the wavefront changes between time \(t_1\) and time \(t_2\) is because the wind moves the
+                        turbulent cells across the sky. A measure of the timescale on which the wavefronts change is the
+                        time taken for a turbulent cell to move it's own size; the so-called coherence time. The
+                        coherence time is given by
+                        \[t_0 = t_2 - t_2 = \frac{r_0}{v},\]
+                        where \(v\) is the wind speed. At a good observing site on a typical night, \(v = 10\) m/s and
+                        \(r_0 = 10\) cm at \(\lambda = 500\) nm. Hence \(t_0 \sim 10\) ms. In the near-infrared, the
+                        coherence time is longer (because the Fried parameter is larger). The coherence time in the
+                        near-infrared is nearer 70 ms. Any adaptive optics system which aims to correct for seeing, must
+                        change it's correction at the coherence timescale. Thus, an adaptive optics system in the
+                        near-infrared can operate more slowly than in the optical.</p>
+                    <h6><strong>Isoplanatic angle</strong></h6>
+                    <p>Consider the two stars in {%figref "fried" %}. They are sufficiently close that the light from
+                        them passes through roughly the same turbulent region (shaded in yellow in the figure). The
+                        isoplanatic angle is the angle two stars can be separated, and still have their light pass
+                        through the same turbulent region. The estimate shown in figure 56 is that the two beams are
+                        separated by the size of one cell \(r_0\) at the height of the turbulent layer \(h\). It follows
+                        that the isoplanatic angle is given by
+                        \[\theta_0 = r_0 / h.\]
+                        Once again, at a good observing site on a typical night, \(v = 10\) m/s and \(r_0 = 10\) cm at
+                        \(\lambda = 500\) nm. Hence \(\theta_0 \sim 10^{-5}\) radians, which is 2". Once again, the
+                        isoplanatic angle in the near-infrared is much larger (around 14"). The isoplanatic angle
+                        determines the area on the sky over which adaptive optics correction is effective. This implies
+                        that much wider fields (and hence more extended objects) can be corrected with adaptive optics
+                        in the infrared than in the optical, making the technique much more attractive in the infrared.
+                        The increased isoplanatic angle in the infrared also means that many more natural guide stars
+                        are available, as discussed below.</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: principles -->
+    <section id="principles" data-magellan-target="principles">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Principles of adaptive optics</h5>
+                    <p>The principles of adaptive optics correction are shown in {%figref "ao_principles" %}. A plane
+                        wavefront from a star is corrugated by turbulence in the Earth's atmosphere. The diverging beam
+                        beyond the focal plane of the telescope is then made parallel using a collimator, and the
+                        collimated beam reflects off a <strong>deformable mirror</strong>, which is adjusted in shape to
+                        match that of the wavefront. As a result, the reflected wavefront becomes planar again, and the
+                        corrected beam is then focused and detected by a science camera. The shape of the deformable
+                        mirror is adjusted hundreds of times a second, using information provided by a <a
+                            href="#wavefrontsensors">wavefront sensor</a>, which picks off the (unwanted) blue light in
+                        the beam using a dichroic beamsplitter. Note that the shape of the wavefront is independent of
+                        wavelength, which is why it is then possible to sense and correct at different wavelengths</p>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-10">
+                    {%set fig=figures['ao_principles'] %}
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-6">
+                            <div class="thumbnail"><img src="{{ fig.filename }}"></div>
+                        </div>
+                        <div class="cell small-12 medium-5">
+                            <p><strong>Figure {{fig.fignum}}: </strong> {{fig.caption | safe }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: wavefrontsensors -->
+    <section id="wavefrontsensors" data-magellan-target="wavefrontsensors">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Wavefront Sensors</h5>
+                    <p>The key to adaptive optics is being able to measure the shape of the wavefront, so the deformable
+                        mirror can correct for it. There are many different designs of wavefront sensor, but the
+                        simplest to understand is the Shack-Hartmann sensor, which is described here. The principles of
+                        the Shack-Hartmann sensor are shown in {%figref "sh_schematic" %}. The Shack-Hartmann wavefront
+                        sensor consists of a lenslet array which the corrugated wavefront is incident upon. A plane
+                        wavefront incident on the lenslet array would produce a regular series of spots on a high-speed
+                        detector in the focal plane - the positions of these spots can be considered reference
+                        positions. A corrugated wavefront, on the other hand, would produce irregularly spaced spots,
+                        where the tilt of each section of the wavefront can be determined by measuring the displacement
+                        of the spot from the reference positions (measured by illuminating the lenslet array with a
+                        plane wavefront).</p>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-10">
+                    {%set fig=figures['sh_schematic'] %}
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-7">
+                            <div class="thumbnail"><img src="{{ fig.filename }}"></div>
+                        </div>
+                        <div class="cell small-12 medium-5">
+                            <p><strong>Figure {{fig.fignum}}: </strong> {{fig.caption | safe }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <p>The tilt of the wavefront at each lenslet is then used to set the tilt of each corresponding
+                        element in the segmented deformable mirror (to a value equal to half of the tilt of the
+                        wavefront), so that the reflected wavefront becomes planar. For accurate correction, it is
+                        essential that the delay between sensing the wavefront and adjusting the shape of the deformable
+                        mirror is no greater than the coherence time of the atmosphere, which is typically a few
+                        milliseconds in the optical part of the spectrum at a good astronomical site. Hence high-speed
+                        computer processors to measure the wavefront and move the mirror in a real-time correction loop
+                        are also an essential component of any adaptive optics system. It is also vital that the sizes
+                        of the lenslets, and hence the mirror segments, are well matched to the typical values of the
+                        Fried parameter at the observing site and wavelength of interest.</p>
+                    <p>These practical considerations mean that adaptive optics systems in the near-infrared can have
+                        fewer elements, be larger and operate more slowly than in the optical. As we saw when we
+                        discussed the isoplanatic angle, they can also correct larger areas of sky. For these reasons,
+                        AO is much easier to implement in the infrared than the optical.</p>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-10">
+                    {%set fig=figures['sh_movie'] %}
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-4">
+                            <div class="thumbnail"><img src="{{ fig.filename }}"></div>
+                        </div>
+                        <div class="cell small-12 medium-6">
+                            <p><strong>Figure {{fig.fignum}}: </strong> {{fig.caption | safe }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: guidestars -->
+    <section id="guidestars" data-magellan-target="guidestars">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Laser Guide Stars</h5>
+                    <p>In order for a Shack-Hartmann wavefront sensor to measure the tilts of a wavefront accurately, it
+                        is necessary to observe a bright point source to provide a sufficient signal-to-noise ratio in
+                        the short exposure times. It is possible that the science target itself can be used to sense the
+                        wavefront, e.g. if it has a bright, point-like central structure, such as an active galactic
+                        nucleus or young stellar object. Unfortunately, many astronomical targets are either faint,
+                        extended, or both. One way round this is to observe a bright star close to the target, but such
+                        a <strong>natural guide star</strong> would have to be within the isoplanatic angle of the
+                        target, otherwise the target and guide stars would be sampling different turbulence in the
+                        atmosphere (as shown in {%figref "fried" %}). In the near-infrared the isoplanatic angle is
+                        10-20", so only a very small number of stars can be observed using natural guide stars. The only
+                        way of significantly increasing the sky coverage is to generate an artificial guide star close
+                        to the target using a laser: a so-called <strong>laser guide star</strong>. A schematic of a
+                        laser guide star is shown in {%figref "guidestars" %}, whilst a photograph of a laser guide star
+                        in operation on the VLT in Chile is shown on this course's homepage.</p>
+                </div>
+
+                <div class="cell small-11">
+                    {%showfigstack "guidestars" %}
+                </div>
+
+                <div class="cell">
+                    <p>There are two types of laser guide star. The first, known as a Rayleigh beacon, uses the Rayleigh
+                        back-scattering of light from molecules in the lower atmosphere to produce an artificial star at
+                        altitudes of approximately 20 km. The second type is the sodium beacon, which uses a laser tuned
+                        to the yellow sodium D lines around 589 nm. This excites sodium atoms (deposited by
+                        micrometeorites) in the mesosphere at an altitude of approximately 90 km, which subsequently
+                        re-emit the light, producing an artificial star, as shown in {%figref "guidestars" %}. </p>
+                    <p>Although much more more costly and complex than Rayleigh beacons, sodium beacons have one major
+                        advantage: they do not suffer as badly from the <strong>cone effect</strong>, resulting in
+                        superior adaptive optics correction. This is shown schematically in the bottom panel of {%figref
+                        "guidestars" %}, where it can be seen that the higher altitude of the sodium beacon means that
+                        it shares much more of the turbulence experienced by light from the star than the lower-altitude
+                        Rayleigh beacon.</p>
+                    <p>No matter which type of laser beacon is used, an artificial star is created well above the
+                        typical altitudes at which turbulence occurs. The artificial star can be placed within the
+                        isoplanatic angle of the science target, resulting in 100% sky coverage for adaptive optics.
+                        Since the laser light is monochromatic, a simple notch filter can be used to direct all of the
+                        laser light to the wavefront sensor, leaving the rest of the light to be directed to the science
+                        detector.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: performance -->
+    <section id="performance" data-magellan-target="performance">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Performance of adaptive optics</h5>
+                    <p>We have already seen that the spatial resolution of a seeing-limited image is usually
+                        characterised by the <a href="../../principles/l01/#seeing">full-width at half-maximum</a>
+                        (FWHM) of a stellar profile, measured in arcseconds. This method becomes unreliable, however, as
+                        the spatial resolution approaches the <a href="../../principles/l01/#diffraction">diffraction
+                            limit</a>, as measurement of the FWHM becomes complicated by the presence of diffraction
+                        rings. A more useful measure in this case is the <strong>Strehl ratio</strong>, which is the
+                        ratio of the intensity at the peak of the observed seeing disc divided by the intensity at the
+                        peak of the theoretical Airy disc, as shown in {%figref "strehl" %}.</p>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-10">
+                    {%set fig=figures['strehl'] %}
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-6">
+                            <div class="thumbnail"><img src="{{ fig.filename }}"></div>
+                        </div>
+                        <div class="cell small-12 medium-6">
+                            <p><strong>Figure {{fig.fignum}}: </strong> {{fig.caption | safe }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <p>Most large telescopes in the world are now equipped with adaptive optics systems. The most
+                        advanced such systems incorporate laser beacons and wavefront sensors/deformable mirrors with
+                        1000+ elements, delivering diffraction-limited imaging in the infrared across most of the sky.
+                        However, diffraction-limited imaging on large-aperture telescopes is still not achievable in the
+                        optical. As discussed above, this is due to the lower values of the Fried parameter and
+                        coherence time, implying that an unfeasibly large number of adaptive elements and corrections
+                        per second would be required.</p>
+                    <p>{%figref "ao_examples", true %}, below, shows some examples of adaptive optics in action. </p>
+                </div>
+
+                <div class="grid-x grid-margin-x align-center">
+                    {% set fig = figures['ao_examples'] %}
+                    <div class="cell small-12 medium-3">
+                        <div class="thumbnail" data-toggle="IWTau">
+                            <img src="{{ fig.thumbnails[0] }}">
+                        </div>
+                    </div>
+                    <div class="cell small-12 medium-3">
+                        <div class="thumbnail" data-toggle="AOMovie">
+                            <img src="{{ fig.thumbnails[1] }}">
+                        </div>
+                    </div>
+                    <div class="cell small-12 medium-3">
+                        <div class="thumbnail" data-toggle="GalacticCenter">
+                            <img src="{{ fig.thumbnails[2] }}">
+                        </div>
+                    </div>
+                    <div class="cell small-10">
+                        <figure id="figure{{fig.fignum}}">
+                            <figcaption><strong>Figure {{fig.fignum}}:</strong> {{fig.caption}}</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="full reveal" id="IWTau" data-reveal>
+                    <img src="{{fig.filenames[0]}}">
+                    <p>Images of the binary star IW Tau without (left) and with (right) adaptive optics on the 5.1 m
+                        Hale Telescope in California. The separation of the two stars is 0.3".</p>
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="full reveal" id="AOMovie" data-reveal>
+                    <img src="{{fig.filenames[1]}}">
+                    <p>A movie showing images of a star taken with AO correction turned off and then on. </p>
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="full reveal" id="GalacticCenter" data-reveal>
+                    <img src="{{fig.filenames[2]}}">
+                    <p>Arguably the most famous AO result to date - a movie of the orbits of stars around the Galactic
+                        centre, taken using the 8.2 m Very Large Telescope in Chile, which was used to infer the
+                        presence of a supermassive black hole. The image is only 3 arcseconds across. </p>
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

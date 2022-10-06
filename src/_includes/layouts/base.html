@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ title }} | PHY241</title>
+
+    <link rel="stylesheet" href="{{site.url}}/css/foundation.css">
+    <link rel="stylesheet" href="{{site.url}}/css/app.css">
+    <link rel="stylesheet" href="{{site.url}}/css/mystyles.css">
+    <link rel="stylesheet" href="{{site.url}}/css/foundation-icons/foundation-icons.css" />
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"
+        integrity='RUrdBUoFnEhDTvqEMp5N8+JJOmAVDA5iIZ82nsaGBjm5991b9gGoBZdR46uF0NFs' crossorigin="anonymous"></script>
+
+    <script src="{{site.url}}/js/vendor/jquery.js"></script>
+    <script src="{{site.url}}/js/vendor/what-input.js"></script>
+    <script src="{{site.url}}/js/vendor/foundation.js"></script>
+    <script src="{{site.url}}/js/app.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
+        });
+    </script>
+</head>
+
+<body>
+    {% include "partials/site-head.html" %}
+    <div class="main">
+        {% block content %}{% endblock %}
+    </div>
+    {% include "partials/site-foot.html" %}
+</body>
+
+</html>

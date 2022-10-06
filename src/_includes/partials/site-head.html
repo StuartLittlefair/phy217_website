@@ -1,0 +1,52 @@
+<div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">PHY217 <small>Observational Astronomy</small></li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="{{ site.url }}/index.html"><i class="fi-home"></i></a></li>
+            <li>
+                <a href="#">Lectures</a>
+                <ul class="menu vertical">
+                    <li>
+                        <a href="#">Principles</a>
+                        <ul class="menu vertical">
+                            {% for item in navigation.principles %}
+                            <li><a href="{{ site.url }}/lectures/principles/{{item.url}}">{{item.text}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Telescopes</a>
+                        <ul class="menu vertical">
+                            {% for item in navigation.telescopes %}
+                            <li><a href="{{ site.url }}/lectures/telescopes/{{item.url}}">{{item.text}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Instruments</a>
+                        <ul class="menu vertical">
+                            {% for item in navigation.instruments %}
+                            <li><a href="{{ site.url }}/lectures/instruments/{{item.url}}">{{item.text}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Statistics</a>
+                        <ul class="menu vertical">
+                            {% for item in navigation.stats %}
+                            <li><a href="{{ site.url }}/lectures/stats/{{item.url}}">{{item.text}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href=" {{ site.url }}/course_info/">Course Info</a></li>
+            <li><a href="{{ site.url }}/observing/">Observing Project</a></li>
+        </ul>
+    </div>
+</div>

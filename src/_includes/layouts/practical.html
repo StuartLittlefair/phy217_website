@@ -1,0 +1,10 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<!-- HERO SECTION -->
+<section class="hero">
+    <h4>{{ title }} <small>{{ subtitle }}</small></h4>
+</section>
+
+{{ content | safe}}
+
+{% endblock %}

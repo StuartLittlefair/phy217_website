@@ -1,0 +1,19 @@
+{
+  "name": "phy217",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ELEVENTY_ENV=development npx eleventy --serve",
+    "build": "ELEVENTY_ENV=production npx eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.2"
+  },
+  "dependencies": {
+    "html-prettify": "^1.0.7"
+  }
+}

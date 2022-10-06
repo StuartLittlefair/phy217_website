@@ -1,0 +1,336 @@
+---
+title: "L02: Telescopes I"
+subtitle: reflectors and refractors
+layout: 'layouts/lecture.html'
+
+sections: [
+{"id":'principles', "label":"Principles"},
+{"id":'refractors', "label":"Refractors"},
+{"id":'reflectors', "label":"Reflectors"},
+{"id":'offaxis', "label": "Off-axis Abberations"}
+]
+---
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: principles -->
+    <section id="principles" data-magellan-target="principles">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <p>In the previous lectures we have seen how light arrives at our telescopes, but how do telescopes
+                        work to create an image? In the next block of lectures we're going to look at telescopes - how
+                        they work, and the pros and cons of different telescope designs. Telescopes are vital to
+                        astronomy, as they fulfil two roles:
+                    <ol>
+                        <li>they allow the collection of light over a much larger area, so that faint objects can be
+                            studied,</li>
+                        <li>they provide higher angular resolution, allowing studies in greater spatial detail.</li>
+                    </ol>
+                    All telescope designs share certain basic principles of operations. We start with those principles.
+                    </p>
+                    <h5>Basic Principles</h5>
+                    <p>{%figref "telschematic", true %} shows a schematic of a telescope. On the left, light from two
+                        distant
+                        sources arrives at the telescope. As all astronomical sources are effectively at an infinite
+                        distance compared to the dimensions of a telescope, the rays from each source can be assumed to
+                        be parallel.</p>
+
+                    <p id="focal_length">The light is collected by an aperture of diameter \(D\) which forms an image of
+                        the two sources
+                        at the focal plane. The line through the centre of the aperture and the focal plane, and
+                        orthogonal to them, defines the optical axis of the system. Since the sources are at infinity,
+                        the focal length, \(F\), of the telescope is defined by the distance between the focal plane and
+                        the aperture. In astronomical telescopes, the aperture is usually a lens or a mirror, and is
+                        circular, hence the amount of light collected is proportional to \(D^2\).</p>
+
+                    <p>The aperture diameter is the single most important parameter affecting the performance of a
+                        telescope and hence most telescopes are usually referred to in terms of it, e.g. the ESO 3.6m
+                        telescope in Chile, where the 3.6m is the diameter of its primary mirror.</p>
+                </div>
+            </div>
+
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    {%showfigure "telschematic" %}
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="cell">
+                    <p>From {%figref "telschematic" %}, we can define two terms which are important for describing the
+                        specifications of a telescope.</p>
+                    <h6 id="platescale"><strong>Platescale</strong></h6>
+                    <p>The plate scale, \(p\) relates the size of the image in the focal plane, \(s\), to it's angular
+                        size on the sky, \(\theta\). Given that \(\theta\) is usually small, we can apply the small
+                        angle approximation. Figure 34 shows that \(s\) and \(\theta\) are related by:
+                        \[ s=F \theta, \] where \(\theta\) is measured in radians. If we want to study an object with
+                        angular size \(\theta\) in high spatial detail, then \(s\) needs to be large. Therefore \(F\)
+                        needs to be large; we require a telescope with a long focal length.</p>
+                    <p>The plate scale is the ratio between the angular size and the image size. In other words, \(p =
+                        \theta / s \). Since \(s=F \theta\), it follows that \(p = 1/F. \) Since we have used the small
+                        angle approximation, if \(F\) is measured in mm, this is the plate scale in radians per mm. It
+                        is more usual to quote the plate scale in arc seconds per mm. Since there is 206265 arc seconds
+                        in one radian, the plate scale in arc seconds per mm is given by
+                        \[p = 206265/F,\] where \(F\) is measured in mm.</p>
+                    <h6 id="focal_ratio"><strong>Focal ratio</strong></h6>
+                    <p>The focal ratio \(f\) is defined as the ratio of the focal length to the diameter, i.e \(f =
+                        F/D\). The focal ratio is often used to describe the speed of a telescope (it is used in
+                        photography the same way). this can be understood as follows. If we fix \(F\), the image scale
+                        \(s\) remains the same. For a smaller \(D\), less light is spread over the same area; the image
+                        gets dimmer. We would have to expose for longer to get the same amount of light in a given area.
+                        Therefore, large values of \(f\) imply slow telescopes, and vice-versa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: refractors -->
+    <section id="refractors" data-magellan-target="refractors">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Refractors</h5>
+                    <p>The refracting telescope was the first type of telescope to be developed. The question of who
+                        invented the telescope is a controversial one. It is usually credited to the Dutch optician Hans
+                        Lippershey in 1608, although recent research suggests that a form of telescope may have been
+                        discovered by the Englishman Leonard Digges around 1550. The first person to systematically use
+                        a telescope for astronomy was the Italian scientist Galileo Galilei in 1610, however others were
+                        close behind, and the Englishman <a href="http://galileo.rice.edu/sci/harriot.html">Thomas
+                            Harriot</a> was the first to record a telescopic observation of the Moon, and Sunspots. </p>
+                    <p>The refractor focuses light using a lens, known as the objective. The objective is usually made
+                        of glass and, in it's simplest form, has a bi-convex shape where both surfaces are sections of a
+                        sphere. The lens collects the parallel light from an astronomical source and forms an image of
+                        it, as shown in {%figref "chromatic_abb" %}. This figure also shows that a simple refractor has
+                        a major defect, known as chromatic aberration. This aberration is the largest imperfection to
+                        affect astronomical telescopes. </p>
+                </div>
+            </div>
+
+            <!-- image -->
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    {%showfigure "chromatic_abb" %}
+                </div>
+            </div>
+
+            <!-- begin two column for figure -->
+            <div class="media-object stack-for-small">
+                <div class="media-object-section">
+                    {% showfigure "chromatic_halos" %}
+                </div>
+                <div class="media-object-section">
+                    <p>Chromatic aberration arises because the glasses used to make lenses typically have refractive
+                        indices which decrease as the wavelength of light increases, resulting in the focal length of
+                        the objective increasing as the wavelength increases. Hence there is no single focal plane in
+                        which light of all wavelengths from a star is in focus, as shown in {%figref "chromatic_abb" %}.
+                        Moving the focal plane towards the lens will provide a point-like blue image surrounded by a red
+                        halo. Similarly, moving the focal plane away from the lens will result in a point-like red image
+                        surrounded by a blue halo, as shown in {%figref "chromatic_halos" %}. A compromise can be
+                        reached by moving the focal plane to the circle of least confusion, as shown in
+                        {%figref "chromatic_abb"%}. This is still a poor image, and clever design is needed to improve
+                        the refractor.</p>
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="cell">
+                    <h6><strong>Achromats and Apochromats</strong></h6>
+                    <p>In 1758, the English optician John Dolland patented the achromatic doublet (or achromat). The
+                        achromat corrects for chromatic aberration by using two lenses made of different materials,
+                        typically crown and flint glass. The positive crown-glass lens strongly converges the light, but
+                        introduces strong chromatic aberration. The flint glass element is negative. It has a weak
+                        refractive index, so it does not undo the convergent effect of the crown glass element. However,
+                        the refractive index of flint glass changes rapidly with wavelength, and so it has a stronger
+                        effect on the blue light, thus correcting chromatic aberration. The situation is shown
+                        schematically in {%figref "achromat" %}.</p>
+                </div>
+            </div>
+
+            <!-- image -->
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    {%showfigure "achromat" %}
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="cell">
+                    <p>An achromatic doublet can only make the focus the same for two wavelengths and there is residual
+                        chromatic aberration at intermediate wavelengths. Nevertheless, achromats deliver
+                        order-of-magnitude reductions in chromatic aberration. Further improvement is possible by adding
+                        a third lens. These are called <em>apochromats</em>, and they can bring three wavelengths (e.g.
+                        red, green and blue) to the same focus. Even greater improvements can be obtained by adding more
+                        lenses, so-called <em>super-apochromats</em>, but these become economically unviable for the
+                        large apertures required for telescope objectives.</p>
+
+                    <h5>Refractors: Pros & Cons</h5>
+                    <p>Since apochromats use flint glass to undo some of the convergent effects of the crown glass
+                        element, one implication of using achromats to minimise aberrations is that the <a
+                            href="#focal_length">focal length</a> becomes quite long. This makes refractors slow, with
+                        <a href="#focal_ratio">focal ratios</a> around 10 to 20. The <a href="#platescale">plate
+                            scale</a> is therefore quite small, which spreads the image of a point source over a large
+                        area in the focal plane. This makes refractors a poor choice for faint objects, but ideal for
+                        planetary observations and astrometry (i.e. measuring the positions of stars).
+                    </p>
+                    <p>One of the biggest issues with refractors is their practicality as we move to larger telescopes.
+                        The lens in a refractor has to be held by its edge, and as the lens becomes larger it starts
+                        sagging under its own weight and hence distorts the image; second, as the diameter of the lens
+                        increases, so does its thickness and thus so does the amount of light absorbed in the glass. As
+                        a result, the largest refractor currently in existence is the 40-inch (1m) telescope at Yerkes
+                        Observatory near Chicago, built in 1897. {%figref "yerkes", true %} shows the immense scale of
+                        the telescope tube and dome - it is unlikely that a bigger refractor will ever be built.</p>
+                    <p>Because of the immense challenge in building large refractors, most professional telescopes are
+                        reflecting telescopes.</p>
+                </div>
+            </div>
+
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    {%showfigure "yerkes" %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: REFLECTORS -->
+    <section id="reflectors" data-magellan-target="reflectors">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Using Mirrors</h5>
+                    <p>Chromatic aberration is the most serious aberration that affects any optical telescope. It is,
+                        however, easily avoided. Reflecting telescopes use mirrors to collect and focus light. Since
+                        these rely on reflection, and not refraction, they are free from chromatic aberration. Mirrors
+                        are also simpler than lenses in that they only have a single optical surface. Mirrors are
+                        usually made of a rigid, hard (i.e. polishable) material with a low thermal expansion
+                        coefficient (such as the glass Pyrex), and coated with a thin layer of aluminium, silver or gold
+                        to give high reflectivity. A telescope which uses a mirror to collect and focus light is known
+                        as a reflector.</p>
+                    <p id="spherical">Reflectors, are not aberration free, however. The easiest mirror to make is a
+                        spherical mirror. {%figref "spherical_parabola", true %} shows that the rays from the edge of a
+                        spherical mirror come to a focus nearer the mirror than do rays from the centre of the mirror,
+                        causing a point source to be imaged as a blurred disc. This defect is known as spherical
+                        aberration.</p>
+                </div>
+            </div>
+
+            <!-- two column image stack -->
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    {%showfigstack 'spherical_parabola' %}
+                </div>
+            </div>
+
+            <!-- back to normal layout -->
+            <div class="grid-x">
+                <div class="cell">
+                    <h6><strong>Spherical Aberration and Parabolic Mirrors</strong></h6>
+                    <p>
+                        The effects of spherical aberration in mirrors can be reduced by positioning the focal plane
+                        coincident with the circle of least confusion, as shown in {%figref "spherical_parabola" %}, but
+                        this still leaves an unsatisfactory blurring of the image. However, the Scottish astronomer
+                        James Gregory realised in 1663 that spherical aberration can be eliminated if the curve of the
+                        surface of a mirror is a parabola. This is also shown in {%figref "spherical_parabola" %}, where
+                        all on-axis rays parallel to the axis of a parabolic mirror are reflected to meet at the <a
+                            href="http://www.physicsinsights.org/parabola_focus.html">focus of the parabola</a>.</p>
+                    <p>Creating mirrors with parabolic surfaces is not straightforward, as special grinding and
+                        polishing techniques are required in order to create the deeper central depression of a parabola
+                        compared to a spherical surface. A famous example of spherical aberration is given by the Hubble
+                        Space Telescope (HST), which suffered from spherical aberration due to a mistake during the
+                        manufacture of its (hyperbolic) 2.4m mirror, as shown in {%figref "hst_aberration" %}.
+                        Corrective
+                        optics were later installed by astronauts on a space shuttle servicing mission and the telescope
+                        is now functioning perfectly.</p>
+                </div>
+            </div>
+
+            <!-- image -->
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    {%showfigure "hst_aberration" %}
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="cell">
+                    <p>It should be noted that lenses, and hence refractors, suffer from spherical aberration in exactly
+                        the same way as mirrors, but it is a much smaller effect than chromatic aberration. Spherical
+                        aberration can be eliminated from refractors using aspheric lenses, in which the curvature of
+                        the surfaces is not constant, but these are difficult and expensive to produce. It is more
+                        common to remove spherical aberration from refractors by designing achromats in such a way that
+                        the negative lens cancels out the spherical aberration introduced by the positive lens, whilst
+                        still correcting for chromatic aberration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- NEW SECTION: OFF-AXIS ABERRATIONS -->
+    <section id="offaxis" data-magellan-target="offaxis">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Off-Axis Aberrations</h5>
+                    <p>Parabolic mirrors only bring on-axis light to a single point of focus. In {%figref
+                        "parabola_offaxis_rays" %}, we see what happens when off-axis sources are imaged using a
+                        parabolic mirror. We can see that the light is not brought to a well-defined focus, thus
+                        producing off-axis aberrations. Note that these aberrations are not unique to parabolic mirrors:
+                        refractors and spherical mirrors suffer from them too. Due to their nature, off-axis aberrations
+                        affect objects imaged at the edges of the field of view.</p>
+                </div>
+            </div>
+
+
+            <!-- image-->
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    {% showfigure "parabola_offaxis_rays" %}
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="cell">
+                    <h6><strong>coma, astigmatism, curvature of field and distortion of field</strong></h6>
+                    <p>We will only briefly discuss off-axis aberrations here. If you want to know more about how they
+                        arise, see Vik Dhillon's <a
+                            href="http://www.vikdhillon.staff.shef.ac.uk/teaching/phy217/telescopes/phy217_tel_reflectors.html">detailed
+                            notes</a>. For more info on each off-axis aberration, click on the buttons below.</p>
+                </div>
+            </div>
+
+
+            <div class="grid-x">
+                <div class="cell medium-2">
+                    <ul class="vertical tabs" data-tabs id="off-axis-examples">
+                        <li class="tabs-title is-active"><a href="#coma" aria-selected="true">Coma</a></li>
+                        <li class="tabs-title"><a href="#astigmatism">Astigmatism</a></li>
+                        <li class="tabs-title"><a href="#distortion">Distortion</a></li>
+                        <li class="tabs-title"><a href="#curvature">Curvature</a></li>
+                    </ul>
+                </div>
+                <div class="cell medium-10">
+                    <div class="tabs-content vertical" data-tabs-content="off-axis-examples">
+                        <div class="tabs-panel is-active" id="coma">
+                            {%showfigure "coma" %}
+                        </div>
+                        <div class="tabs-panel" id="astigmatism">
+                            {%showfigure "astigmatism" %}
+                        </div>
+                        <div class="tabs-panel" id="distortion">
+                            {%showfigure "distortion" %}
+                        </div>
+                        <div class="tabs-panel" id="curvature">
+                            {%showfigure "curvature" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>

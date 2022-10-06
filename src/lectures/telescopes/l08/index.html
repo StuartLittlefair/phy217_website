@@ -1,0 +1,245 @@
+---
+title: "L08: Using Telescopes"
+subtitle: amateur astronomy
+layout: 'layouts/lecture.html'
+
+sections: [
+{"id":'top', "label":"Visual Use"},
+{"id":'magnification', "label": "Magnification"},
+{"id":'mounts', "label": "Mounts"},
+{"id":'buy', "label": "Buying a Telescope"}
+]
+---
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: Intro -->
+    <section id="top" data-magellan-target="top">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <p>Visual use of research telescopes is rare, because the eye is such a poor detector. However, it
+                        is a common way of using amateur telescopes. For visual use, an eyepiece is required. A
+                        schematic showing the use of an eyepiece is shown in {%figref "eyepieces" %}.</p>
+                </div>
+                <div class="cell small-11">
+                    {%showfigure "eyepieces" %}
+                </div>
+                <div class="cell">
+                    <p>The role of the eyepiece can be thought of as a magnifying glass which takes the diverging rays
+                        of light from each point in the focal plane and makes them parallel. The lens in the eye then
+                        focuses this parallel light, creating an image of the object on the retina, as seen in {%figref
+                        "eyepieces" %}. The image on the retina is the correct way up. However, since the brain inverts
+                        all images falling on the retina (if it didn't, the everyday world around us would look upside
+                        down!), the view in a telescope appears upside down.
+                    </p>
+                    <h6><strong>Eyepiece properties</strong></h6>
+                    <p>Looking in more detail at {%figref "eyepieces" %}, it is useful to define the following terms:
+                        the <strong>entrance pupil</strong> is the area at the entrance of the telescope that can accept
+                        light. The <strong>exit pupil</strong> is the image of the entrance pupil formed by the
+                        eyepiece. During visual use, only rays which pass through the exit pupil can enter the eye.
+                        Therefore, the exit pupil should not be greater than the size of the dark-adapted pupil of the
+                        eye, i.e. about 8mm. Light is also lost if the eye is placed closer or further away form the
+                        eyepiece than the exit pupil. The distance of the last lens of the eyepiece to the exit pupil is
+                        known as the <strong>eye relief</strong>. </p>
+                    <p>Many different designs for telescope eyepieces are available. More expensive eyepieces use
+                        multiple lenses to reduce aberrations and provide comfortable eye relief. But the most important
+                        property of an eyepiece is it's <strong>focal length</strong>, which defines the magnification.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: eyepiece magnification -->
+    <section id="magnification" data-magellan-target="magnification">
+        <div class="grid-container">
+            <div class="grid-x">
+                <hr />
+                <h5>Magnification</h5>
+                <div class="cell">
+                    <p>By definition, a lens of focal length \(F\) takes parallel light and produces a point image in
+                        it's focal plane - a distance \(F\) from the lens. Two point sources separated by an angle
+                        \(\theta_1\) will be separated by a distance \(s\) in the focal plane. From {%figref "eyepieces"
+                        %}, we can
+                        see that, for a focussed telescope, the focal plane of the objective lens and the eyepiece is
+                        the same. Therefore
+                        \[s = F\theta_1 = F_e \theta_2,\]
+                        where \(F_e\) is the focal length of the eyepiece, and \(\theta_2\) is the angle at which the
+                        parallel beam produced by the eyepiece diverge. We can re-write this as
+                        \[\theta_2 = \frac{F}{F_e} \theta_1.\]
+                        Viewed with the naked eye, these two sources would be separated by an angle \(\theta_1\), but
+                        the telescope and eyepiece means we see them separated by an angle \(\theta_2\). If \( \theta_2
+                        > \theta_1 \), the image is magnified. We therefore define the magnification, as
+                        \[M = \frac{\theta_2}{\theta_1} = \frac{F}{F_e}.\]
+                        The most obvious implication is that eyepieces with a small focal length produce the most
+                        magnification - a result which will seem counter-intuitive to those of you keen on photography.
+                    </p>
+                    <h6><strong>Useful magnification</strong></h6>
+                    <p>Only a limited range of eyepieces will be useful for any given telescope. For a full discussion
+                        of magnification limits, see <a
+                            href="http://www.vikdhillon.staff.shef.ac.uk/teaching/phy217/telescopes/phy217_tel_visual.html#magnificationlimits">Vik
+                            Dhillon's notes</a>. We will only discuss these limits briefly here. </p>
+                    <p>A further inspection of the on-axis rays in {%figref "eyepieces" %} shows that the triangle
+                        formed by the diameter of the objective, \(D\), and the image in the focal plane at a distance
+                        \(F\) from the objective is similar to the triangle formed by the diameter of the exit pupil at
+                        the eyepiece, \(d\), and the image in the focal plane at a distance \(F_e\) from the eyepiece,
+                        i.e.
+                        \[D / d = F / Fe = M.\]
+                        Hence an alternative way to express magnification is as the ratio of the diameters of the
+                        objective and the exit pupil. This naturally leads to a lower limit to the useful magnification
+                        of a telescope; the magnification must be sufficiently high to make the exit pupil equal to or
+                        smaller than the diameter of the dark-adapted pupil of the eye, otherwise not all of the light
+                        collected by the telescope will be gathered by the eye. If we write the eye's pupil diameter as
+                        \(d_{\rm eye}\), then \(d = D/M \le d_{\rm eye}\), so
+                        \[ M \ge D/d_{\rm eye} \ge D/8,\]
+                        if the telescope diameter \(D\) is measured in mm.</p>
+                    <p>To produce high magnifications, remember that we need eyepieces with a short focal length. An
+                        upper limit on magnification results from the fact that the exit pupil shrinks as the focal
+                        length of the eyepiece decreases. The eye's vision starts to become impaired for beams of less
+                        than about 1mm, so exit pupils smaller than about 1mm are not useful. This sets an upper limit
+                        of
+                        \[M \le D.\]
+                        Hence an 200mm diameter telescope, would have a maximum magnifications of around 200.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: mount types -->
+    <section id="mounts" data-magellan-target="mounts">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Telescope Mounts</h5>
+                    <p>A telescope mount must hold the telescope stably, and be able to track an object as it moves in
+                        the night sky. The only type of mount available before the 1980s, and still a common mount for
+                        smaller telescopes is the <strong>equatorial mount</strong>, shown in {%figref "eq_mount" %}
+                        below.</p>
+                </div>
+            </div>
+
+            <!-- begin two column for figure -->
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-6">
+                    {% showfigure "eq_mount" %}
+                </div>
+                <div class="cell small-12 medium-6">
+                    <p>The beauty of an equatorial mount is the one-to-one relationship between RA and Dec and the axes
+                        of the mount. Not only does this make it easy to point at an object, this also makes it simple
+                        to track the motion of an object due to the Earth's rotation by driving just the polar axis at
+                        an equal angular velocity, but in the opposite direction, to the angular velocity of the Earth
+                        on its rotation axis.</p>
+                    <p>There are many different types of equatorial mount, described in detail for the curious in <a
+                            href='http://www.vikdhillon.staff.shef.ac.uk/teaching/phy217/telescopes/phy217_tel_equatorial.html'>Vik
+                            Dhillon's notes</a>. However, all share the same flaw - the polar axis must be aligned with
+                        the Earth's rotation axis. This means that unless the telescope is situated at the Earth's
+                        poles, the polar axis will be inclined relative to the ground, thereby creating stresses on the
+                        axes which vary as the telescope moves. For large research telescopes, such as the <a
+                            href='http://www.vikdhillon.staff.shef.ac.uk/teaching/phy217/telescopes/phy217_tel_equatorial.html#figure33'>3.9m
+                            Anglo-Australian Telescope</a>, this makes equatorial mounts incredibly hard to build, since
+                        the amount of material needed to make them rigid becomes prohibitive.</p>
+                </div>
+            </div>
+
+            <!-- back to 1 column layout -->
+            <div class="grid-x">
+                <div class="cell">
+                    <p>The solution to this is use an Alt-Az Mount, short for Altitude-Azimuth. As the name implies, the
+                        two axes of this mount are aligned with the altitude and azimuth axes of the horizontal
+                        coordinate system. The telescope is mounted on a short fork, as shown in {%figref "altaz_mount"
+                        %}. The great advantage of the Alt-Az mount is the telescope's center of mass is fixed above the
+                        mounting point, meaning that very stable mounts can be built, even for the largest telescopes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- begin two column for figure -->
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-6">
+                    {% showfigure "altaz_mount" %}
+                </div>
+                <div class="cell small-12 medium-6">
+                    <p>Alt-Az mounts are the only choice for the largest telescopes in the world, but they are not
+                        without disadvantages. For a start, tracking an object requires moving both axes of the mount,
+                        unlike an equatorial mount. Moreover, the speed at which each axis must move depends on the
+                        location of the object. The calculations required to move the two axes are quite complex (a
+                        coordinate conversion between the equatorial and horizontal systems) and need to be performed
+                        many times a second. This requires the use of a computer, but computers only became readily
+                        available in the 1970's. It is for this reason that every major research telescope made since
+                        the 1980's uses an alt-azimuth mount, but every telescope made before this time was mounted
+                        equatorially.</p>
+                </div>
+            </div>
+
+            <!-- back to 1 column layout -->
+            <div class="grid-x">
+                <div class="cell">
+                    <p>Another big disadvantage of Alt-Az mounts is that the orientation of the telescope remains fixed
+                        with respect to the horizon. Since the night sky rotates around an axis which is inclined to the
+                        horizon, this means the orientation of the night sky, with respect to the telescope, changes
+                        over time. This effect, known as <strong>field rotation</strong>, is shown in {%figref
+                        "field_rotation_vid" %} below. Field rotation of Alt-Az mounts means that they are unsuitable
+                        for amateur astro-photograpy. Professional observatories get round this problem by having a
+                        <strong>field rotator</strong>, which mimics the rotation of the sky, keeping the camera
+                        orientation fixed with respect to the stars.
+                    </p>
+                </div>
+            </div>
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    {% set fig = figures['field_rotation_vid'] %}
+                    <div class="responsive-embed">
+                        <iframe width="363" height="282" src="https://www.youtube.com/embed/{{ fig.url }}"></iframe>
+                    </div>
+                    <figure id="figure{{fig.fignum}}">
+                        <figcaption><strong>Figure {{fig.fignum}}:</strong> {{fig.caption}}</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: buying scopes -->
+    <section id="buy" data-magellan-target="buy">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Which Telescope Should I Buy?</h5>
+                    <p>Based on what we've learned, what telescope should you buy? The answer is, of course, that it
+                        depends on what you want to use it for! Will you be looking at very faint objects like Galaxies,
+                        or bright ones, like planets? Faint objects require a large aperture to collect a lot of light,
+                        and thus have a small <a href="../l06/#focal_ratio">focal ratio</a>, \(f = F/D\). 6 to 8 inch
+                        telescopes or larger are good for looking at faint sources, and the more aperture you have, the
+                        fainter you can go. Resolving the fine detail of planets requires a long focal length, which
+                        will imply slow focal ratios! These telescopes may be great for planets, but not so good for
+                        faint galaxies.</p>
+                    <p>
+                        Reflector or refractor? This will depend on budget to some extent. Refractors are very easy to
+                        use and produce great views and images with little maintenance. For this reason they are popular
+                        for astrophotography. However, refractors are bulkier and heavier than a reflector with the same
+                        aperture, and large aperture refractors are very expensive! Reflectors are the cheapest way to
+                        get a large aperture, but they need looking after to produce sharp images.</p>
+                    <p>What design of reflector? Newtonians are an excellent beginners scope, offering lots of aperture
+                        for little cost. They are fast for reflectors (f/5) and so good for faint objects. However, they
+                        are physically quite large, and the eyepiece location can be awkward! Schmidt-Cassegrains offer
+                        smaller sizes and a more convenient eyepiece location. They are slower (f/10) and so are better
+                        for detailed views of brighter objects, but worse for faint galaxies. If money is no option, buy
+                        a Ritchey-Chretien!</p>
+                    <p>What kind of mount? If you are using the telescope purely for visual use, then an Alt-Az mount is
+                        easy to use, and easy to set up. An equatorial mount is essential if you want to take photos,
+                        but it can take some time aligning the polar axis. If you want to track the stars you'll need a
+                        motorised mount - this will vastly up the price so if you only plan on visual use, think if you
+                        really need it. It's worth spending a fair fraction of your budget on the mount - a stable mount
+                        with smooth tracking will make both visual use and photography much more pleasant. If you buy a
+                        high quality mount, the telescope often comes free!</p>
+                    <p>Whatever you do, don't buy a telescope based upon magnification. As we have seen, magnification
+                        is easily changed with different eyepieces, and a telescope which advertises itself on
+                        magnification is very rarely a quality piece of kit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

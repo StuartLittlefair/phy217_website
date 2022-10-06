@@ -1,0 +1,289 @@
+---
+title: "Relative Photometry"
+subtitle: making lightcurves with AstroImageJ
+layout: 'layouts/practical.html'
+---
+<div class="grid-container">
+    <div class="grid-x align-center">
+
+        <div class="cell">
+            <p>In this practical you will learn to do relative photometry on astronomical data. Our example dataset will
+                be data on the <a href="http://www.aavso.org/vsots_delsct">delta-Scuti</a> star <a
+                    href="http://www.aavso.org/vsots_delsct">SZ Lyn</a>. The data was taken by third-year students using
+                the department's remote controlled 10-inch telescope, <a
+                    href="https://www.shef.ac.uk/physics/teaching/astronomy/robodome">ROSA</a>. </p>
+
+
+            <p>We know how to do aperture photometry in <a href="../../lectures/l05/">principle</a>. In practice, there
+                are many software packages available to perform aperture photometry. We will analyse our images using
+                <a href="http://www.astro.louisville.edu/software/astroimagej/">AstroImageJ</a>. This software package
+                is freely available, runs on Windows, Linux and OS X and does not have a steep learning curve.
+            </p>
+            <p>There is a Python <a href="http://photutils.readthedocs.org/en/latest/">library</a> designed for
+                performing photometry on images. However, it’s use can be quite complex, so we’ll focus on using easier
+                tools!</p>
+
+            <h5>The Data</h5>
+            <p>You will need a <strong>copy</strong> of the data. The data files can be found using Windows Explorer at
+                <kbd>ThisPC/shared/Student/PHY_Share/Public/PHY241/SZLyn</kbd>. There are 427 images of SZ Lyn, taken
+                over several hours. Each image is stored in a file format called FITS format, and end in the .fit
+                extension. FITS format is the standard image format for astronomical data. Inside one file is both the
+                image, and a <strong>header</strong>, which contains metadata about the image - such as when it was
+                taken, and what filter the data was taken in.
+            </p>
+            <p><strong>Do not copy</strong> the SZ Lyn FITS files to your shared folders (U: drive). The data is nearly
+                half a gigabyte, and will fill your allocation of networked drive space! </p>
+            <p>Instead, copy the SZ Lyn folder to C:/MyFolder/phxxxx, where "phyxxx" is your University username. This
+                copies the files to the hard drive of the machine you are sitting in front of, for rapid access.
+                <strong>You MUST delete anything you place in this directory at the end of the session</strong>.
+            </p>
+
+            <h5>The Software</h5>
+            <p>Instructions for installing AstroImageJ are below. Should you ever want to download a copy for your own
+                machine, it is available for download <a
+                    href="http://www.astro.louisville.edu/software/astroimagej/">here</a>. A detailed and helpful manual
+                is available <a
+                    href="http://www.astro.louisville.edu/software/astroimagej/guide/AstroImageJ_User_Guide_2.1.4.pdf">here</a>.
+                If you encounter difficulty, or do not understand a setting, <strong>check the manual</strong>.</p>
+
+            <!-- task 0 -->
+            <div class="callout primary">
+                <p><strong>Task 0:</strong> Install AstroImageJ. Using Windows Explorer, copy the ZIP file
+                    fromAstroImageJ\AstroImageJ.exe
+                    <kbd>ThisPC/shared/Student/PHY_Share/Public</kbd> , and save it on your computer. Locate the file in
+                    Windows Explorer, right-click and choose <kbd>"Extract All"</kbd>. This will create a folder
+                    starting with AstroImageJ. Inside that folder is <strong>another</strong> folder called AstroImageJ.
+                    You can run the program by double-clicking on <kbd>AstroImageJ\AstroImageJ.exe</kbd>.
+                </p>
+                <p><strong>Note:</strong> You may get several windows asking for permission to run the program. Click
+                    "OK" to these. If you get a window requesting permission for AstroImageJ to get through a
+                    <strong>FireWall</strong>, click <strong>cancel</strong> on that window <strong>only</strong>.
+                </p>
+            </div>
+
+            <!-- task 1 -->
+            <div class="callout primary">
+                <p>Task 1: Open AstroImageJ. You are presented with the main window, as seen in {%figref "aij_mw" %}.
+                    Load all of our images by choosing <kbd>File > Import > Image Sequence...</kbd> Navigate to the
+                    folder that contains all the .fit images, select one, and click <kbd>Open</kbd>.</p>
+                <p>You will be presented with a second window presenting options for loading an image sequence. Here it
+                    is <strong>extremely important</strong> that you tick the <kbd>Use Virtual Stack</kbd> box. If you
+                    don't the PC will attempt to store every picture at once into it's memory. You may get lucky, or you
+                    may cause your PC to grind to a painful halt.</p>
+            </div>
+        </div>
+
+        <div class="cell small-10">
+            {%set fig=figures['aij_mw'] %}
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-8">
+                    <div class="thumbnail"><img src="{{ fig.filename }}"></div>
+                </div>
+                <div class="cell small-12 medium-4">
+                    <p><strong>Figure {{fig.fignum}}: </strong> {{fig.caption | safe }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cell">
+            <p>You should see a new window open, with a display of the first image in the stack. This is the
+                <em>photometry window</em>, shown in {%figref "aij_photwin" %}. Near the bottom of the photometry window
+                is a slider which moves through the images, and a <i class="fi-play"></i> button, which will animate
+                through all the images in the stack. Press this button and notice how the stars move around slightly
+                with time. This is due to imperfect tracking of the telescope. Note also the subtle changes in size of
+                the stars as the <a href="../../l01/#seeing">seeing</a> changes from frame to frame, and the random
+                occurrence of bright pixels as they are struck by cosmic rays.
+            </p>
+        </div>
+
+        <div class="cell small-10">
+            {%set fig=figures['aij_photwin'] %}
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-8">
+                    <div class="thumbnail"><img src="{{ fig.filename }}"></div>
+                </div>
+                <div class="cell small-12 medium-4">
+                    <p><strong>Figure {{fig.fignum}}: </strong> {{fig.caption | safe }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cell">
+            <div class="callout primary">
+                <p><strong>Task 2:</strong> Align the images by choosing <kbd>Process > Align stack using WCS or
+                        apertures...</kbd> This brings up the stack aligner window (figure 3). Make sure the <kbd>Use
+                        previous N apertures</kbd> box and the <kbd>Align only to whole pixels boxes</kbd> are
+                    unchecked. Make sure the <kbd>Show help panel box</kbd> is checked.</p>
+                <p>The radii of the object aperture and sky annuli are not too important, but you might want to make
+                    sure the object radius is set to a reasonable value, since if the star lies outside this radius,
+                    AstroImageJ will not be able to calculate the image shift. Set this value to somewhere in the range
+                    15-20. </p>
+                <p>Click <kbd>OK</kbd> to begin selecting stars to use for alignment. Left click on a star to add an
+                    aperture around it. Add two or three bright stars to use for alignment and press <kbd>Enter</kbd> or
+                    right-click to begin the alignment procedure. </p>
+                <p>AstroImageJ will now look for a star within each aperture, and measure the centroid of those stars.
+                    For each image, it uses the centroid of the stars to estimate the image shift.</p>
+                <p>When AstroImageJ has finished, you should have a new ImageSequence already loaded called "Aligned".
+                    Hit the <i class="fi-play"></i> button to run through the images and check the alignment.</p>
+            </div>
+        </div>
+
+        <div class="cell small-10">
+            {%set fig=figures['aij_stacking'] %}
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-8">
+                    <div class="thumbnail"><img src="{{ fig.filename }}"></div>
+                </div>
+                <div class="cell small-12 medium-4">
+                    <p><strong>Figure {{fig.fignum}}: </strong> {{fig.caption | safe }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cell">
+            <p>Now it is time to perform the relative photometry on the aligned images. Recall that aperture photometry
+                involves three steps, centroiding, sky background estimation and extraction of the counts from our
+                object. AstroImageJ performs all three of these steps with the Multi-Aperture Photometry tool. First
+                however, we need to know how large to make our object apertures, and the inner and outer radius of our
+                sky annulus. To do that we need to know what the FWHM of the stars in our image is.</p>
+            <div class="callout primary">
+                <p>Task 3: In the photometry window, click on a star, then choose <kbd>Analyze > Plot Seeing
+                        Profile...</kbd> You should end up with a plot like {%figref "aij_seeing_prof" %}. Based upon
+                    this plot, decide how large you want your aperture sizes to be.</p>
+                <p>You will need to consider what effect using an aperture that is too small, or one that is too large,
+                    may have on your data.</p>
+            </div>
+        </div>
+
+        <div class="cell small-10">
+            {%set fig=figures['aij_seeing_prof'] %}
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-6">
+                    <div class="thumbnail"><img src="{{ fig.filename }}"></div>
+                </div>
+                <div class="cell small-12 medium-6">
+                    <p><strong>Figure {{fig.fignum}}: </strong> {{fig.caption | safe }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cell">
+            <div class="callout primary">
+                <p><strong>Task 4:</strong> Open the Multi-Aperture photometry tool by choosing <kbd>Analyze >
+                        Multi-aperture...</kbd> Set the radius of the object aperture, and the inner and outer radii of
+                    the background annulus to the values chosen earlier. </p>
+                <p>Make sure the various options boxes are marked as indicated in {%figref "aij_aps" %}, and click
+                    <kbd>Place Apertures</kbd> to begin. Aperture placement is done in exactly the same way as when you
+                    aligned the images.
+                </p>
+                <p>{%figref "szlyn", true %} shows a plot of the sky centred on SZ Lyn. The orientation of this image is
+                    not the same as the images from ROSA. Place your first aperture around SZ Lyn, and at least one
+                    other aperture around a comparison star. When choosing a comparison star, you should choose an
+                    unsaturated, bright star. If possible, it should be brighter than SZ Lyn. <strong>Why?</strong></p>
+                <p>Once you've placed your apertures, right-click or press <kbd>Enter</kbd> to start performing
+                    photometry.</p>
+            </div>
+        </div>
+
+        <div class="cell small-10">
+            {%set fig=figures['aij_aps'] %}
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-7">
+                    <div class="thumbnail"><img src="{{ fig.filename }}"></div>
+                </div>
+                <div class="cell small-12 medium-5">
+                    <p><strong>Figure {{fig.fignum}}: </strong> {{fig.caption | safe }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cell">
+            <p>The measurement window, which appears following aperture photometry, contains many entries for each
+                image. Only a few are of direct interest to us however. These are:
+            <dl>
+                <dt>J.D - 2400000</dt>
+                <dl>J.D stands for <a href="http://en.wikipedia.org/wiki/Julian_day">Julian Date</a>, which is a
+                    continuous timescale used by astronomers to avoid complications caused by leap days and seconds.
+                    Julian Date is simply a count of the number of days elapsed since January 1, 4713 BC.</dl>
+                <dt>Source-Sky_T1</dt>
+                <dl>This is the number of counts measured from our target object. Sky background has been subtracted.
+                </dl>
+                <dt>Source-Sky_C2</dt>
+                <dl>is the number of sky-subtracted counts from the comparison star.</dl>
+                <dt>rel_flux_T1</dt>
+                <dl>Remember that to perform <a href="../../lectures/l05/">relative photometry</a>, we divide the target
+                    counts by the comparison star counts. AstroImageJ does that for us, and places the results in this
+                    column.</dl>
+            </dl>
+            </p>
+        </div>
+
+        <div class="cell small-10">
+            {%set fig=figures['szlyn'] %}
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-6">
+                    <div class="thumbnail"><img src="{{ fig.filename }}"></div>
+                </div>
+                <div class="cell small-12 medium-6">
+                    <p><strong>Figure {{fig.fignum}}: </strong> {{fig.caption | safe }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cell">
+            <div class="callout primary">
+                <p>Task 5: Save your data to a Tab-Separated Values text file by clicking in the <kbd>Measurements</kbd>
+                    window and choosing <kbd>File > Save As...</kbd> </p>
+                <p>You have two options to make a plot from the data in this file. You can use Excel, or upload the
+                    saved file to CoCalc and plot it using Python. If you choose the latter route, you will find the
+                    text file hard to read in using NumPy, because some of the columns don't contain numbers. Instead,
+                    you can use the <a href="https://pandas.pydata.org/">Pandas</a> library instead, and use something
+                    like the following code snippet to read in the file:
+                </p>
+                <!-- HTML generated using hilite.me -->
+                <div
+                    style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+                    <pre style="margin: 0; line-height: 125%"><span style="color: #888888"># use the Pandas library </span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">pandas</span> <span style="color: #008800; font-weight: bold">as</span> <span style="color: #0e84b5; font-weight: bold">pd</span>
+
+<span style="color: #888888"># read in the data, explaining that columns</span>
+<span style="color: #888888"># are separated by tabs (\t)</span>
+data <span style="color: #333333">=</span> pd<span style="color: #333333">.</span>read_csv(delimiter<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\t</span><span style="background-color: #fff0f0">&#39;</span>)
+
+<span style="color: #888888"># you can access data directly by column name</span>
+x <span style="color: #333333">=</span> data[<span style="background-color: #fff0f0">&#39;J.D - 2400000&#39;</span>]
+y <span style="color: #333333">=</span> data[<span style="background-color: #fff0f0">&#39;rel_flux_T1&#39;</span>]
+</pre>
+                </div>
+                <p>Use your preferred method to make two scatter plots, one of <strong>JD</strong> vs
+                    <strong>Source-Sky_T1</strong> and another of <strong>JD</strong> vs <strong>rel_flux_T1</strong>.
+                </p>
+                <p>Notice how using relative photometry has corrected the large jump that occurs in the plot of the
+                    counts from the target star. This jump is associated with a change in position of the stars, but it
+                    has affected our target and comparison star equally, so it is not present in the count ratio plot.
+                </p>
+            </div>
+
+            <p>Now you have successfully learnt to use AstroImageJ for aperture photometry. However there are two issues
+                remaining. The first is that your lightcurve does not have accurate error bars. The second is that you
+                do not know if you used the best aperture sizes. Before we can calculate error bars we need to know more
+                about how CCDs work. We will cover that later in the course.</p>
+            <p>However, we can fix the second problem.</p>
+
+            <div class="callout primary">
+                <p><strong>Task 6:</strong> Re-run your aperture photometry with a few different aperture sizes, and
+                    save the results. You will need to <kbd>Clear</kbd> the Measurements table each time. Leave the sky
+                    annulus unchanged for now, and simply change the object aperture radius.</p>
+                <p>For your new measurements plot <strong>JD</strong> vs <strong>rel_flux_T1</strong> in each case. Try
+                    to plot them on the same graph, and add a small offset to each dataset in y, so you can see the
+                    curves. </p>
+                <p>Which aperture size is best? What does the light curve look like when the object aperture is too
+                    small? What happens when it is too big? <strong>See if you can understand these effects.</strong>
+                </p>
+                <p>One final thing to think about - if you use a small aperture radius like 2 pixels, much of the light
+                    from your object is falling outside your aperture. Why do you still get a reasonable lightcurve?</p>
+            </div>
+        </div>
+
+    </div>
+</div>

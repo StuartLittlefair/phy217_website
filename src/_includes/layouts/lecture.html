@@ -1,0 +1,20 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<!-- HERO SECTION -->
+<section class="hero">
+    <h4>{{ title }} <small>{{ subtitle }}</small></h4>
+</section>
+
+<!-- MAGELLAN -->
+<div data-sticky-container>
+    <div class="magellan" data-sticky data-margin-top="0" id="magellan-menu">
+        <ul class="menu" data-magellan>
+            {% for item in sections %}
+            <li><a href="#{{ item.id }}">{{item.label}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<br />
+{{ content | safe}}
+{% endblock %}

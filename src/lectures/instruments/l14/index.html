@@ -1,0 +1,148 @@
+---
+title: "L04: Imaging and Cameras"
+subtitle: simple imagers and re-imagers
+layout: 'layouts/lecture.html'
+
+sections: [
+{"id":'intro', "label":"Introduction"},
+{"id":'reducers', "label":"Focal Reducers"},
+{"id":'reimagers', "label": "Re-imagers"}
+]
+---
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: introduction -->
+    <section id="intro" data-magellan-target="intro">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <h5>Simple Imaging</h5>
+                    <p>Imagers are instruments capable of forming images of sources. The simplest imager is when we
+                        simply place a multi-pixel detector, such as a CCD, at the focal plane of the telescope.
+                        Usually, a filter wheel is placed in front of the detector, as shown in {%figref
+                        "simple_imaging" %}.</p>
+                    <p>Focusing a simple imager is accomplished either by moving the detector itself backward and
+                        forward until it is in the focal plane, or by moving the secondary mirror towards or away from
+                        the primary mirror. </p>
+                </div>
+
+                <div class="cell small-10">
+                    {%showfigstack "simple_imaging" %}
+                </div>
+
+                <div class="cell">
+                    <p>Since the filter in a simple imager is in the converging beam from the telescope, it causes the
+                        focal plane to move away from the primary, as shown in {%figref "simple_imaging" %}. Every time
+                        the filter is changed, the focus must be adjusted. The only way round this is by ensuring that
+                        the filters all have the same optical thickness, i.e. the product of the physical thickness and
+                        refractive index of each filter in the wheel is the same. In this case all the filters affect
+                        the focus position equally. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: focal reducers -->
+    <section id="reducers" data-magellan-target="reducers">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Focal Reducers/Enlargers</h5>
+                    <p>The issue with simple imagers is that they rely on the native <a
+                            href="../l02/index.html#platescale">plate scale</a>. This may be wholly unsuitable. For
+                        example a telescope with a focal length of 40m (say a 4m \(f/10\) Cassegrain) will have a plate
+                        scale of 5 arcseconds/mm. Typical CCDs are 2000 pixels across, and each pixel is 13 \(\mu\)m, so
+                        the total size of a CCD is around 25mm. The FoV of a simple imager would be around 2 arcminutes,
+                        which is no use for wide-field use. In addition, each pixel would only be 0.06". If the seeing
+                        was 1", we would have roughly 17 pixels across the seeing disc. Such a setup is non-optimal.
+                    </p>
+                    <h6><strong>Optimal CCD Sampling</strong></h6>
+                    <p>How many pixels should there be in the seeing disc? In the example above, we were spreading the
+                        light out over a disc of diameter 17 pixels. Each pixel has <a
+                            href="../l06/index.html#readout">read noise</a>, so this means lots of read noise for
+                        every star! On the other hand, if the pixels were larger than the seeing disc, the size of our
+                        stars would be set by our pixel size, and not the seeing - we are throwing away spatial
+                        resolution. As a compromise, it is common for instruments to be built so that the typical seeing
+                        disc is sampled by two pixels. But how do we achieve that? Replacing the telescope for one of a
+                        shorterfocal length, or the detector for one with more and/or larger pixels, is usually neither
+                        apractical nor economical solution, so what can be done?</p>
+                </div>
+
+            </div>
+            <!-- begin two column for figure -->
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-6">
+                    {% showfigure "focal_reducer" %}
+                </div>
+                <div class="cell small-12 medium-6">
+                    <p>One possibility is to use a focal reducer. This is a positive lens (or combination of lenses)
+                        which is usually placed in front of the focal plane, in the converging beam from the telescope,
+                        as shown in {%figref "focal_reducer", false, true %}. The lens acts to shorten the focal length
+                        of the telescope, resulting in a larger plate scale and hence a larger field of view. We might
+                        also wish to use the opposite of a focal reducer - the focal extender or Barlow lens - which has
+                        negative optical power and acts to lengthen the focal length of the telescope, and hence
+                        decrease the plate scale and field of view.</p>
+                    <p>Note that although the focal plane is shifted by a focal reducer or extender, this shift is not
+                        the same as the change in the focal length. This seems odd, but remember the example of a filter
+                        in a simple imager ({%figref "simple_imaging" %}). A filter has no optical power, and cannot
+                        change the overall focal length. Yet, a filter in a converging beam affects the location of the
+                        focal plane. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: re-imagers -->
+    <section id="reimagers" data-magellan-target="reimagers">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Re-imagers</h5>
+                    <p>Focal reducers and extenders are common on amateur telescopes. On professional telescopes, a more
+                        complex method of changing the plate scale, known as a re-imager is employed. Re-imagers have
+                        several advantages over other methods, which we'll describe below. First though, it helps to
+                        look at how they work. A re-imager is shown in {%figref "re-imager" %}. A collimator is used to
+                        make the telescope's diverging beam parallel. The parallel beam then passes through the filter
+                        before being re-focussed onto the detector using a camera lens.</p>
+                    <p>The advantages of the re-imager arise from the fact that the filter and any additional optics are
+                        placed in a parallel beam. Thus, there change of focus if filters of different optical thickness
+                        are used, and no optical aberrations are introduced. The collimated beam is also easier to
+                        control than a diverging/converging beam. This makes it easy to add additional optics - for
+                        example to make a spectrograph, or a multi-coloured imager like ULTRACAM ({%figref "ultracam"
+                        %}).</p>
+                </div>
+
+                <div class="cell small-10">
+                    {%showfigure "re-imager" %}
+                </div>
+
+                <div class="cell">
+                    <p>The optical design of a re-imager is shown above in {%figref "re-imager" %}. We can see that our
+                        two stars are separated by a distance \(s_{\rm tel}\) in the telescope focal plane, where
+                        \(s_{\rm tel} = F_{\rm tel} \theta_1 = F_{\rm coll} \theta_2\). In the camera focal plane, where
+                        we place the detector, the same two stars are separated by a distance \(s_{\rm cam} = F_{\rm
+                        cam} \theta_2\). We can define a magnification for our re-imager by
+                        \[ M_r = s_{\rm cam}/s_{\rm tel}.\]
+                        With this definition, if \(M_r < 1\) we have a focal reducer (a de-magnifier), and if \(M_r> 1\)
+                            we have a focal extender. We can derive a different expression for \(M_r\) as follows:
+                            \[M_r = s_{\rm cam}/s_{\rm tel} = F_{\rm cam} \theta_2 / F_{\rm coll} \theta_2 = F_{\rm cam}
+                            / F_{\rm coll}.\]</p>
+                    <p>The magnification of a re-imager can thus be tuned by carefully selecting the focal lengths of
+                        the camera and collimator lenses. For \(M \lt 1\) we have a focal reducer (a de-magnifier).
+                        For most large telescopes, this is what we require. This is because, as shown above, the
+                        platescales of large telescopes are such that they will have very small fields-of-view without
+                        some de-magnification.
+                    </p>
+                </div>
+
+                <div class="cell small-10">
+                    {%showfigstack "ultracam" %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

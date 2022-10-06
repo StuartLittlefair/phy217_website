@@ -1,0 +1,105 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [28.75661, -17.89203]},
+            "properties": {"name": "GTC"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [19.8264, -155.4750]},
+            "properties": {"name": "Keck"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-32.3760, 20.8017]},
+            "properties": {"name": "SALT"}
+        },        
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [30.6814, -104.0147]},
+            "properties": {"name": "Hobby-Eberly"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [32.7013, -109.8891]},
+            "properties": {"name": "Large Binocular Telescope"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [19.8241, -155.4698]},
+            "properties": {"name": "Subaru"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-24.6272, -70.4042]},
+            "properties": {"name": "VLT"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [19.8240, -155.4698]},
+            "properties": {"name": "Gemini N"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-30.23073, -70.73659]},
+            "properties": {"name": "Gemini S"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [31.6883, -110.8850]},
+            "properties": {"name": "MMT"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-29.015, -70.69167]},
+            "properties": {"name": "Magellan"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [43.650, 41.4333]},
+            "properties": {"name": "BTA"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [49.287587, -122.572778]},
+            "properties": {"name": "LZT"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [33.3563, -116.8649]},
+            "properties": {"name": "Hale"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [28.76047, -17.88161]},
+            "properties": {"name": "WHT"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-30.2379, -70.7336]},
+            "properties": {"name": "SOAR"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [40.39576, 117.55861]},
+            "properties": {"name": "LAMOST"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-30.1697, -70.8065]},
+            "properties": {"name": "Victor Blanco"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-24.6158, -70.3975]},
+            "properties": {"name": "Vista"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-31.2754, 149.0672]},
+            "properties": {"name": "AAT"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [31.9634, -111.6003]},
+            "properties": {"name": "Mayall"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [19.8225, -155.4706944]},
+            "properties": {"name": "UKIRT"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-29.2610, -70.7317]},
+            "properties": {"name": "ESO 3.6"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [19.8253, -155.4696]},
+            "properties": {"name": "CFHT"}
+        },
+        {   "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [28.754, -17.889056]},
+            "properties": {"name": "TNG"}
+        }     
+    ]
+}

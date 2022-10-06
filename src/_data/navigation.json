@@ -1,0 +1,86 @@
+{
+    "principles": [
+        {
+            "text": "The Photon's Path",
+            "url": "l01"
+        },
+        {
+            "text": "Photometry I",
+            "url": "l02"
+        },
+        {
+            "text": "Relative Photometry",
+            "url": "p03"
+        },
+        {
+            "text": "Photometry II",
+            "url": "l04"
+        },
+        {
+            "text": "Absolute Photometry",
+            "url": "p05"
+        }
+    ],
+    "telescopes": [
+        {
+            "text": "Refractors",
+            "url": "l06"
+        },
+        {
+            "text": "Reflectors",
+            "url": "l07"
+        },
+        {
+            "text": "Amateur Use",
+            "url": "l08"
+        },
+        {
+            "text": "Professional Use",
+            "url": "l09"
+        },
+        {
+            "text": "Adaptive Optics",
+            "url": "l10"
+        }
+    ],
+    "instruments": [
+        {
+            "text": "Detectors",
+            "url": "l11"
+        },
+        {
+            "text": "Working with CCD data",
+            "url": "l12"
+        },
+        {
+            "text": "CCD processing in AstroImageJ",
+            "url": "p13"
+        },
+        {
+            "text": "Cameras",
+            "url": "l14"
+        },
+        {
+            "text": "Spectrographs I",
+            "url": "l15"
+        },
+        {
+            "text": "Spectrographs II",
+            "url": "l16"
+        }
+    ],
+    "stats": [
+        {
+            "text": "Basic Stats",
+            "url": "l17"
+        },
+        {
+            "text": "Signal/Noise",
+            "url": "l18"
+        },
+        {
+            "text": "The Bayesian Astronomer",
+            "url": "l19"
+        }
+    ]
+}
