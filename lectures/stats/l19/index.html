@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>L19: The Bayesian Astronomer | PHY217</title>
+
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/app.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/mystyles.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation-icons/foundation-icons.css" />
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"
+        integrity='RUrdBUoFnEhDTvqEMp5N8+JJOmAVDA5iIZ82nsaGBjm5991b9gGoBZdR46uF0NFs' crossorigin="anonymous"></script>
+
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/jquery.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/what-input.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/foundation.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/app.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">PHY217 <small>Observational Astronomy</small></li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/index.html"><i class="fi-home"></i></a></li>
+            <li>
+                <a href="#">Lectures</a>
+                <ul class="menu vertical">
+                    <li>
+                        <a href="#">Principles</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l01">The Photon&#39;s Path</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l02">Photometry I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p03">Relative Photometry</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l04">Photometry II</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p05">Absolute Photometry</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Telescopes</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l06">Refractors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l07">Reflectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l08">Amateur Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l09">Professional Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l10">Adaptive Optics</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Instruments</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l11">Detectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l12">Working with CCD data</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/p13">CCD processing in AstroImageJ</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l14">Cameras</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l15">Spectrographs I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l16">Spectrographs II</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Statistics</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l17">Basic Stats</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l18">Signal/Noise</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l19">The Bayesian Astronomer</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href=" https://stuartlittlefair.github.io/phy217_website/course_info/">Course Info</a></li>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/observing/">Observing Project</a></li>
+        </ul>
+    </div>
+</div>
+    <div class="main">
+        
+<!-- HERO SECTION -->
+<section class="hero">
+    <h4>L19: The Bayesian Astronomer <small>a clearer way to think about stats</small></h4>
+</section>
+
+<!-- MAGELLAN -->
+<div data-sticky-container>
+    <div class="magellan" data-sticky data-margin-top="0" id="magellan-menu">
+        <ul class="menu" data-magellan>
+            
+            <li><a href="#intro">Introduction</a></li>
+            
+            <li><a href="#hypothesis">Hypothesis Testing</a></li>
+            
+            <li><a href="#models">Model Fitting</a></li>
+            
+            <li><a href="#bayes">Bayes Theorem</a></li>
+            
+            <li><a href="#bayesmodel">Bayesian Model Fitting</a></li>
+            
+            <li><a href="#distances">Distances</a></li>
+            
+            <li><a href="#reading">Further Reading</a></li>
+            
+        </ul>
+    </div>
+</div>
+<br />
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: introduction -->
+    <section id="intro" data-magellan-target="intro">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <h5>Introduction</h5>
+                    <p>We now know enough about error bars and uncertainties to be able to calculate them for our data
+                        points. This is half the battle. In this lecture we will show how those uncertainties are used
+                        to test scientific hypotheses and models. In doing so we will discuss Bayesian statistics; an
+                        approach which is in my view more intuitive and useful than the frequentist view discussed in
+                        the <a href="../l18/">previous lecture</a>.
+                    </p>
+
+                    <h6><strong>The Likelihood function</strong></h6>
+                    <p>Frequentists use a property known as the Likelihood to test models and hypotheses. The Likelihood
+                        is the probability that we would obtain our data \(D\), given a model \(M\) or a hypothesis
+                        \(H\). It is written \(L \equiv P(D \mid M) \) or \(L \equiv P(D \mid H) \). In plain English,
+                        the Likelihood is the probability of the data, given the model. In the first half of this
+                        lecture we will show how to use the Likelihood to test hypotheses and fit models. </p>
+                    <p>In the second half of the lecture we will introduce a world of statistical controversy, and
+                        introduce Bayesian statistics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: hypothesis testing -->
+    <section id="hypothesis" data-magellan-target="hypothesis">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Hypothesis Testing</h5>
+                    <p>A common problem in science is to ask whether our data is consistent with some hypothesis, \(H\).
+                        For example, I have a hypothesis that the flux of a star is \(S\). Let's say I observe the star
+                        - how do I use my data to test this hypothesis?</p>
+                    <p>Suppose that the hypothesis \(H\) is correct; in my exposure I would expect to detect \(N=400\)
+                        electrons. Therefore given this hypothesis if I took many of these exposures the number of
+                        electrons in each would follow a Poisson distribution, well approximated by a Gaussian
+                        distribution with \(\mu = 400\) and \(\sigma = 20\).</p>
+                    <p>Suppose I actually take an exposure, and detect 385 electrons. What is the chance that we would
+                        have detected this many electrons or fewer, if we assume the original hypothesis is correct. Our
+                        measurement is 0.75\(\sigma\) from the mean, and the Gaussian PDF implies that we expect this to
+                        occur 22% of the time. This is the Likelihood of getting our data (385 electrons or less), given
+                        our hypothesis. This is not very unlikely, so I see no reason to assume our original hypothesis
+                        is incorrect.</p>
+                    <p>This is the way a frequentist tests a hypothesis. They assume the hypothesis is true (the null
+                        hypothesis), and ask how likely their data is to occur, given the hypothesis. This probability
+                        is called the p-value. Typically, scientists will conclude there is reason to reject the null
+                        hypothesis if \(p < 0.05\). We will see <a href="#bayes">later</a> how this can lead to trouble.
+                    </p>
+
+                    <h6><strong>Some useful statistical tests</strong></h6>
+                    <p>Don't worry about trying to revise this section. It is here for your reference later in the
+                        course. In it I outline a few tests which use the above technique, and when you might consider
+                        using them.</p>
+                    <h6><strong>Spearman Rank Correlation</strong></h6>
+                    <p>The null hypothesis is that two variables \(x\) and \(y\) are not correlated. This test will
+                        return a statistic which tends towards +1 for perfect linear correlation, and -1 for perfect
+                        linear anti-correlation. For a given correlation coefficient \(r\), a \(p\)-value can be
+                        calculated by randomly shuffling your data many times, and seeing how many times the shuffled
+                        data gives a correlation coefficient of size greater than or equal to \(r\).</p>
+                    <h6><strong>Students-t test</strong></h6>
+                    <p>Actually a whole family of tests. The most common example is comparing two samples to see if they
+                        have the same true mean. The name derives from the fact that, under the null hypothesis that the
+                        two samples share a true mean, the difference between the sample means follows a mathematical
+                        distribution known as the t-distribution</p>
+                    <h6><strong>Kolmogorov-Smirnov (KS) test</strong></h6>
+                    <p>A very useful test to see if two samples were drawn from the same distribution. The null
+                        hypothesis is that both distributions are the same. For example, we might have measured the
+                        masses of stars in two star clusters, and wish to test if they are drawn from the same mass
+                        distribution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- NEW SECTION: model fitting -->
+    <section id="models" data-magellan-target="models">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Model Fitting</h5>
+                    <p>Probably the most common task for an observational astronomer is fitting a model to some data.
+                        Model fitting can be thought of as an extension of hypothesis testing. Suppose we have a model
+                        \(M\) with some parameters \(\theta\). For example, our model, \(M\) could be a straight line
+                        \(y = mx+c\), with parameters \(\theta = (m,c)\). Model fitting is the process of finding the
+                        parameters which best fit our data, and the corresponding uncertainties on them. To do this, we
+                        obviously have to have some measure of how well our model fits our data.</p>
+                    <h6><strong>The \(\chi^2\) statistic</strong></h6>
+                    <p>This is the most commonly used measure of goodness-of-fit. Suppose we have a model \(y(x)\) and
+                        we observe a set of points \((x_i,y_i)\), each with corresponding uncertainties \(\sigma_i\).
+                        The \(\chi^2\) statistic is
+                        \[\chi^2 = \sum_i \left(\frac{y_i - y(x_i)}{\sigma_i} \right) ^2,\]
+                        where \(y(x_i)\) is the prediction of our model at \(x_i\). Intuitively, we can see that
+                        \(\chi^2\) measures goodness of fit. The quantity \( [y_i - y(x_i)]/\sigma_i \) is a measure of
+                        how many error bars a data point is away from our model. We saw in a <a href="../l18/">previous
+                            lecture</a> that if our model fits well, most data points lie within 1\(\sigma\), but a
+                        third lie further away. Therefore, we'd expect \(\chi^2\) for a good fit to roughly equal the
+                        number of data points. Poor fits will yield larger versions of \(\chi^2\). A common way to fit a
+                        model is therefore to find the model parameters which minimise \(\chi^2\).
+                    </p>
+                    <p>How to use a computer to automatically find the model parameters which give the lowest \(\chi^2\)
+                        is a whole other lecture course! Suffice it to say that several different algorithms exist,
+                        which you can usually find in libraries for your computer language of choice; either the <a
+                            href="http://www.nr.com">numerical recipes library</a> for C/C++ (the University Library and
+                        Astro Library have copies) or <a href="http://docs.scipy.org/doc/">scipy</a> for Python. Some of
+                        these algorithms will also give uncertainties on the model parameters - these are usually
+                        calculated by seeing how much the model parameters can change before \(\chi^2\) increases too
+                        much. </p>
+                    <h6><strong>Justifying \(\chi^2\) - The principle of maximum likelihood</strong></h6>
+                    <p>Here we will show why minimising \(\chi^2\) is a sensible way of fitting a model to data. We will
+                        show that minimising \(\chi^2\) is equivalent to maximising the Likelihood - the probability of
+                        obtaining our data, assuming our model is correct. </p>
+                    <p>We start by assuming our model is true. We then know the predicted value of \(y(x)\). If
+                        measurement \(i\) has an error \(\sigma_i\) then our \(i^{\rm th}\) data point is a Gaussian
+                        random variable with mean \(\mu = y(x)\) and standard deviation \(\sigma_i\). The probability
+                        that this datapoint has the value it does (\(y_i\)) is therefore given by
+                        \[P(y_i \mid \theta) = \frac{1}{\sqrt{2\pi\sigma_i^2}} \exp{ \left[ \frac{-(y_i - y(x_i))^2
+                        }{2\sigma_i^2} \right] }.\]
+                        We assume the data points are independent, so the Likelihood, or the probability of getting our
+                        whole dataset is
+                        \begin{align}
+                        P(y_1,y_2,\ldots,y_n \mid \theta) &= P(y_1 \mid \theta) P(y_2 \mid \theta) \ldots P(y_n \mid
+                        \theta) \\
+                        &= \prod_{i=1}^n P(y_i \mid \theta) \\
+                        &= \prod_{i=1}^n \frac{1}{\sqrt{2\pi\sigma_i^2}} \exp{ \left[ \frac{-(y_i - y(x_i))^2
+                        }{2\sigma_i^2} \right] } \\
+                        &= \prod_{i=1}^n \frac{1}{\sqrt{2\pi\sigma_i^2}} \prod_{i=1}^n \exp{ \left[ \frac{-(y_i -
+                        y(x_i))^2 }{2\sigma_i^2} \right] } \\
+                        L = P(D \mid \theta) &= \alpha \prod_{i=1}^n \exp{ \left[ \frac{-(y_i - y(x_i))^2 }{2\sigma_i^2}
+                        \right]},
+                        \end{align}
+                        where \(\alpha\) is a constant. We now take the natural log of the Likelihood to obtain
+                        \[ \ln L = \ln \alpha - \frac{1}{2} \sum_{i=1}^n \left(\frac{y_i - y(x_i)}{\sigma_i} \right)
+                        ^2.\]
+                        But the sum on the RHS is just \(\chi^2\), so we can write
+                        \[ \ln L \propto -\chi^2.\]
+                        Therefore the model parameters which minimise \(\chi^2\) will maximise the Likelihood - the
+                        probability of obtaining our data, assuming our model.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Bayes -->
+    <section id="bayes" data-magellan-target="bayes">
+        <div class="grid-container">
+            <div class="grid-x align-center grid-margin-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Beyond Frequentism: Bayesian Statistics</h5>
+                </div>
+
+                <!-- two column with figure -->
+                <div class="cell small-12 medium-6"><figure id="figure107"><div class="thumbnail"><img src="files/small_53.png"></div><figcaption><strong>Figure 107:</strong> a <a href="http://blog.richmond.edu/physicsbunn/2013/06/16/the-bayes-wars-in-science/">cartoon</a> Venn diagram depicting the issue many Bayesian statisticians have with frequentist thinking.</figcaption></figure></div>
+                <div class="cell small-12 medium-6">
+                    <p>A frequentist asks "given my hypothesis, how likely is my data" - they calculate \(P(D \mid H)\).
+                        Much of the criticism of frequentism arises from the fact that most of the time this is the
+                        wrong question to ask. We really want to know is \(P(H \mid D)\) - how likely the hypothesis is,
+                        given the data! Unfortunately many scientists don't understand this subtlety. The result is that
+                        confusion arises, and scientists publishing in Nature are surprised to find 20% of published
+                        results based on P-values smaller than 0.05 are probably <a
+                            href="http://www.nature.com/news/weak-statistical-standards-implicated-in-scientific-irreproducibility-1.14131">wrong</a>.
+                    </p>
+
+                    <p>Remember - a P-value is the chance of getting my data, assuming my hypothesis is true. When
+                        testing a drug, we may start with the hypothesis that the drug does not work. A small P-value
+                        means the data was unlikely to arise given the hypothesis. It is tempting to conclude that the
+                        hypothesis was wrong, and the drug does work. </p>
+                </div>
+
+                <!-- one column -->
+                <div class="cell">
+                    <p>We will see that this is a serious mistake, which arises as a failure to compare the small
+                        Likelihood of my data to the probability that my hypothesis is true in the first place. I
+                        illustrate the problem with a common thought experiment.</p>
+                    <h6><strong>Bayes Theorem and Medical Tests</strong></h6>
+                    <p>Suppose I am worried about my health and fear I have Rabies. I go for a test. My null hypothesis
+                        is that I do not have Rabies. The test is positive. The Likelihood that the test is positive,
+                        given that I do not have Rabies is 1%. What is the chance I have Rabies after all?
+                    </p>
+                    <p>If you answered 99% you have fallen foul of the 'base rate fallacy', also known as the
+                        'prosecutors fallacy'. To answer the question correctly, let's imagine testing the whole
+                        population of Sheffield, 60 000 people. Let's say we know that, on average, 0.1% of people have
+                        Rabies at any time. Prior to taking the test, this is my best guess for the chance that I have
+                        the disease. We say the prior probability of having Rabies is 0.1%. In Sheffield then, at any
+                        one time 60 people have Rabies, and 59 940 people do not. When we test the whole population, 1%
+                        of these 59 940 people will receive a positive test. Thats 599 people who falsely test positive.
+                        If all the people who do have Rabies also test positive, that's 659 positive tests in total.</p>
+                    <p>Let us ask this question - given I have had a positive test, what are the chances I have Rabies?
+                        Well, out of all 659 positive tests, 60 of them are genuinely sick people. Therefore the
+                        conditional probability that I have Rabies, given a positive test is \(60 / 659 \approx 9\)%. I
+                        am much more likely to be well than not - even after a positive test!</p>
+                    <p>The confusion arises because although the Likelihood of a positive test was small, we were
+                        testing a hypothesis which was itself very unlikely. This is why it is so important to compare
+                        the Likelihood with the prior probability of your null hypothesis. It is why tests using the
+                        Likelihood can be so misleading. It is for this reason that particle physicists required such a
+                        high threshold (5\(\sigma\)) for claiming the detection of the Higgs boson. It is also the
+                        reason why so many scientific studies with apparently significant p-values are wrong - the
+                        claims they were making were very unlikely, and so needed extra-ordinary levels of evidence. As
+                        well as it's impact in science, ignorance of the base rate fallacy has widespread ramifications
+                        in society. People have spent <a href="http://understandinguncertainty.org/node/545">years in
+                            jail</a> due to a failure to
+                        understand this point. We shall now look at how to fix this problem using Bayes theorem.</p>
+                    <p>Recall Bayes Theorem states that
+                        \[P(B \mid A) = \frac{P(A \mid B) \, P(B)}{P(A)}.\]
+                        Let's label the event that I have Rabies as \(R\), and the event of a positive test \(T^+\).
+                        Bayes Theorem tells us that the probability I have Rabies, given my positive test is
+                        \[P(R \mid T^+) = \frac{P( T^+ \mid R) \, P(R)}{P(T^+)}.\]
+                        We assume the test always works when someone does have Rabies, i.e \(P( T^+ \mid R) = 1\). We
+                        know the prior probability that I have Rabies is 1%, i.e \(P(R) = 0.001\). What is \(P(T^+)\)?
+                        Well, I either have Rabies (event \(R\)) or I do not (event \(\tilde{R}\)). I can get a positive
+                        test in either case, so the probability I receive a positive test is
+                        \[P(T^+) = P( T^+ \mid R) \, P(R) + P( T^+ \mid \tilde{R}) \, P(\tilde{R}) = 1 \times 0.001 +
+                        0.01 \times 0.999 = 0.01099.\]
+                        Putting this all together gives the correct chance that I have Rabies given a positive test,
+                        \(P(R \mid T^+) = 0.09\). Phew.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Bayes Model -->
+    <section id="bayesmodel" data-magellan-target="bayesmodel">
+        <div class="grid-container">
+            <div class="grid-x align-center grid-margin-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Bayesian Model Fitting</h5>
+                    <p>How does this relate to model fitting? The Bayesian approach to model fitting is to find the
+                        probability distribution of the model parameters, given the data, \(p (\theta \mid D)\). We use
+                        Bayes theorem to see how this relates to model fitting by minimising \(\chi^2\). Using Bayes
+                        theorem, we can write
+                        \[ p(\theta \mid D) = \frac{ p(\theta) \,p(D \mid \theta) }{ p(D) }.\]
+                        Let's examine the equation term by term.
+                    <ul>
+                        <li>\(p(\theta \mid D)\) is what we want to know. What is our knowledge of the model parameters
+                            given both our data, and our prior information? This is referred to as the posterior
+                            probability distribution.</li>
+                        <li>\(p(\theta)\) is the prior, and represents the prior probability that the model parameters
+                            take a particular value.</li>
+                        <li>\(p(D \mid \theta)\) is the Likelihood - how likely is our data given our model parameters
+                            and our prior knowledge?</li>
+                        <li>\(p(D)\) is known as the evidence. It is the odds of getting our data given only our prior
+                            knowledge, regardless of the model parameters.</li>
+                    </ul>
+                    </p>
+                    <p>Very often the evidence is very hard to calculate. We can get round this by noting that it is a
+                        constant (i.e it doesn't depend on the model parameters), so we can write.
+                        \[ p(\theta \mid D) \propto p(\theta) \,p(D \mid \theta). \]
+                        We can work out the constant of proportionality by noting that \(\int_{\infty}^{\infty} p(\theta
+                        \mid D) d\theta = 1\).</p>
+                    <p>Like \(\chi^2\) minimisation, many algorithms exist to perform Bayesian model fitting. The most
+                        widely used in astronomy is the Markov-Chain Monte-Carlo (MCMC) algorithm. A great Python
+                        library for fitting a model to data using MCMC is <a
+                            href="http://dan.iel.fm/emcee/current/">emcee</a>. These algorithms will estimate the full
+                        posterior probability distributions for your model parameters, from which you can calculate both
+                        the mean (best fit) and standard deviation (error bars). </p>
+                    <h6><strong>When to use Bayesian Model Fitting</strong></h6>
+                    <p>Here is a good question. When should you fit a model with \(\chi^2\) minimisation, and when
+                        should you use a Bayesian method? Remember we can write Bayes theorem as \( p(\theta \mid D)
+                        \propto p(\theta) \,p(D \mid \theta). \) Therefore, if \(p(\theta) = \mathrm{const}\), we have
+                        \( p(\theta \mid D) \propto p(D \mid \theta) = L\). In other words, if you suspect your prior
+                        distributions are flat - independent of the parameter values - then Bayesian fitting and
+                        \(\chi^2\) minimisation are identical. </p>
+                    <p>Choosing distributions for the priors can sometimes be hard. It is always subjective. The need to
+                        choose a prior is one of the most common criticisms of Bayesian methods, however we can see
+                        above that choosing to minimise \(\chi^2\) is also choosing a prior - a flat one in this case.
+                        Priors can reflect physical certainty - i.e I know a speed must lie between 0 and \(c\). They
+                        can reflect previous measurements of a model parameter - i.e if my model has Hubble's constant
+                        as a parameter, we have good prior knowledge that \(H_0 = 69.6 \pm 0.7\) km/s/Mpc. Thus I would
+                        probably choose to represent \(P(H_0)\) as a Gaussian with mean 69.6 and standard deviation of
+                        0.7 km/s/Mpc.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: distance estimation -->
+    <section id="distance" data-magellan-target="distance">
+        <div class="grid-container">
+            <div class="grid-x align-center grid-margin-x">
+                <div class="cell">
+                    <hr />
+                    <h5>An astronomical application of Bayes theorem: distance estimation</h5>
+                    <p>Suppose we measure the parallax to a star, and find it's parallax is \(\pi = (6.6 \pm 1.1) \times
+                        10^{-3}\) arcseconds. What is the most likely distance to the star? This seems simple, but we
+                        have to remember the prior. A star is a-priori more likely to lie at a large distance, since a
+                        large spherical shell has a larger volume than a small one. </p>
+                    <p>The probability of a distance \(d\) given our observation \(O\) is
+                        \[ P(d \mid O) \propto P(d) \, P(O | d), \]
+                        where \(P(d)\) is the prior probability of a given distance. Now the Likelihood of our parallax
+                        observation \(O\), given a distance is a Gaussian with some mean and standard deviation. The
+                        mean can be found from \(\bar{d} = f(\pi) = 1/\pi = 150\) pc. We can find the standard deviation
+                        by applying the <a href="../l18/#propagation">error propagation formula</a> to find \(\sigma_d =
+                        \sigma_{\pi} / \pi^2 = 30\) pc. Therefore \(P(O \mid d)\) is a Gaussian with a mean of 150 and a
+                        standard deviation of 30, as shown in <a href="#figure108">figure 108</a>. </p>
+                    <p>What about the prior? Well, the probability of a star lying in a spherical shell with radius
+                        \(r\) and thickness \(dr\) is proportional to the volume of that shell \(4\pi r^2 dr\). The
+                        probability that the distance is between \(r\) and \(r+dr\) is therefore \(P(r)dr \propto r^2
+                        dr\). Therefore we have \(P(r) \propto r^2\). Putting all this together we have
+                        \[ P(d \mid O) \propto P(d) \, P(O | d) \propto d^2 \exp{\left( \frac{-(d-150)^2}{2\times30^2}
+                        \right) }. \]
+                        This probability distribution is also plotted in <a href="#figure108">figure 108</a>. You can see the bias
+                        towards large distances that we would have missed had we not taken a Bayesian approach.</p>
+                </div>
+
+                <div class="cell small-10">
+                    <div class="grid-x align-center grid-margin-x">
+                        
+
+                        <div class="cell small-12 medium-7">
+                            <div class="thumbnail"><img src="files/small_79.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-5">
+                            <p><strong>Figure 108: </strong> Bayesian distance estimation. The measured parallax naively suggests a distance of \(150 \pm 30\) pc. This is shown in the histogram, and the green line. Proper consideration of the prior knowledge of the distance  gives the probability distribution in red, which is biased towards larger distances, and has a most probable distance of 161 pc.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: distance estimation -->
+    <section id="reading" data-magellan-target="reading">
+        <div class="grid-container">
+            <div class="grid-x align-center grid-margin-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Further Reading</h5>
+                    <p>The stats lectures in this course are intended to be enough to use as a reference during your
+                        degree. The previous lecture and the first half of this one should give just enough information
+                        to get through your degree. The second half of this lecture is intended to make you aware of
+                        some of the pitfalls which await the statistically naive. Should you wish to read more on this
+                        subject, I recommend the excellent site <a href="http://www.statisticsdonewrong.com">Statistics
+                            Done Wrong</a>.</p>
+                    <p>Should you wish to learn more about model fitting, I encourage you to see just how complicated
+                        something as simple as fitting a straight line to data can get, by reading the short and
+                        informative <a href="http://arxiv.org/abs/1008.4686">paper on the subject</a> by David W. Hogg.
+                        This paper is also an excellent detailed tutorial on Bayesian fitting methods. </p>
+                    <p>Finally, the textbook <a
+                            href="http://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691151687/">Statistics,
+                            Data Mining and Machine Learning in Astronomy</a> is a comprehensive treatise on this
+                        subject, and the associated <a href="http://www.astroml.org/index.html">website</a> includes
+                        Python code and libraries for many of the techniques contained within.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+    </div>
+    <footer>
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell small-5">
+                <h5>Contact Info</h5>
+                <hr />
+                <a href="#"><span>Email:</span> s.littlefair@sheffield.ac.uk</a>
+                <a href="#"><span>Address:</span> University of Sheffield, UK</a>
+            </div>
+            <div class="cell small-5">
+                <h5>Re-Use</h5>
+                <hr />
+                <p>These notes are made available under a creative commons license.</p>
+                <a href="https://github.com/StuartLittlefair/phy217_website/blob/main/./src/lectures/stats/l19/index.html"><i
+                        class="fi-social-github"></i> Edit
+                    this Page on GitHub</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

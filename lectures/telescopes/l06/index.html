@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>L06: Telescopes I | PHY217</title>
+
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/app.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/mystyles.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation-icons/foundation-icons.css" />
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"
+        integrity='RUrdBUoFnEhDTvqEMp5N8+JJOmAVDA5iIZ82nsaGBjm5991b9gGoBZdR46uF0NFs' crossorigin="anonymous"></script>
+
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/jquery.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/what-input.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/foundation.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/app.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">PHY217 <small>Observational Astronomy</small></li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/index.html"><i class="fi-home"></i></a></li>
+            <li>
+                <a href="#">Lectures</a>
+                <ul class="menu vertical">
+                    <li>
+                        <a href="#">Principles</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l01">The Photon&#39;s Path</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l02">Photometry I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p03">Relative Photometry</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l04">Photometry II</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p05">Absolute Photometry</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Telescopes</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l06">Refractors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l07">Reflectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l08">Amateur Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l09">Professional Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l10">Adaptive Optics</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Instruments</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l11">Detectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l12">Working with CCD data</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/p13">CCD processing in AstroImageJ</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l14">Cameras</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l15">Spectrographs I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l16">Spectrographs II</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Statistics</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l17">Basic Stats</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l18">Signal/Noise</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l19">The Bayesian Astronomer</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href=" https://stuartlittlefair.github.io/phy217_website/course_info/">Course Info</a></li>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/observing/">Observing Project</a></li>
+        </ul>
+    </div>
+</div>
+    <div class="main">
+        
+<!-- HERO SECTION -->
+<section class="hero">
+    <h4>L06: Telescopes I <small>principles and refractors</small></h4>
+</section>
+
+<!-- MAGELLAN -->
+<div data-sticky-container>
+    <div class="magellan" data-sticky data-margin-top="0" id="magellan-menu">
+        <ul class="menu" data-magellan>
+            
+            <li><a href="#principles">Principles</a></li>
+            
+            <li><a href="#refractors">Refractors</a></li>
+            
+            <li><a href="#pros">Pros &amp; Cons</a></li>
+            
+        </ul>
+    </div>
+</div>
+<br />
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: principles -->
+    <section id="principles" data-magellan-target="principles">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <p>In the previous lectures we have seen how light arrives at our telescopes, but how do telescopes
+                        work to create an image? In the next block of lectures we're going to look at telescopes - how
+                        they work, and the pros and cons of different telescope designs. Telescopes are vital to
+                        astronomy, as they fulfil two roles:
+                    <ol>
+                        <li>they allow the collection of light over a much larger area, so that faint objects can be
+                            studied,</li>
+                        <li>they provide higher angular resolution, allowing studies in greater spatial detail.</li>
+                    </ol>
+                    All telescope designs share certain basic principles of operations. We start with those principles.
+                    </p>
+                    <h5>Basic Principles</h5>
+                    <p><a href="#figure34">Figure 34</a> shows a schematic of a telescope. On the left, light from two
+                        distant
+                        sources arrives at the telescope. As all astronomical sources are effectively at an infinite
+                        distance compared to the dimensions of a telescope, the rays from each source can be assumed to
+                        be parallel.</p>
+
+                    <p id="focal_length">The light is collected by an aperture of diameter \(D\) which forms an image of
+                        the two sources
+                        at the focal plane. The line through the centre of the aperture and the focal plane, and
+                        orthogonal to them, defines the optical axis of the system. Since the sources are at infinity,
+                        the focal length, \(F\), of the telescope is defined by the distance between the focal plane and
+                        the aperture. In astronomical telescopes, the aperture is usually a lens or a mirror, and is
+                        circular, hence the amount of light collected is proportional to \(D^2\).</p>
+
+                    <p>The aperture diameter is the single most important parameter affecting the performance of a
+                        telescope and hence most telescopes are usually referred to in terms of it, e.g. the ESO 3.6m
+                        telescope in Chile, where the 3.6m is the diameter of its primary mirror.</p>
+                </div>
+            </div>
+
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    <figure id="figure34"><div class="thumbnail"><img src="files/small_2170.png"></div><figcaption><strong>Figure 34:</strong> A schematic showing the function of a telescope. The 'aperture' in the figure represents an optical element, such as a mirror or lens, with the ability to bring light to a focus. Light rays from two objects, separated by an angle \(\theta\) on the sky, are shown. Notice how the image in the focal plane is upside down.</figcaption></figure>
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="cell">
+                    <p>From <a href="#figure34">figure 34</a>, we can define two terms which are important for describing the
+                        specifications of a telescope.</p>
+                    <h6 id="platescale"><strong>Platescale</strong></h6>
+                    <p>The plate scale, \(p\) relates the size of the image in the focal plane, \(s\), to it's angular
+                        size on the sky, \(\theta\). Given that \(\theta\) is usually small, we can apply the small
+                        angle approximation. Figure 34 shows that \(s\) and \(\theta\) are related by:
+                        \[ s=F \theta, \] where \(\theta\) is measured in radians. If we want to study an object with
+                        angular size \(\theta\) in high spatial detail, then \(s\) needs to be large. Therefore \(F\)
+                        needs to be large; we require a telescope with a long focal length.</p>
+                    <p>The plate scale is the ratio between the angular size and the image size. In other words, \(p =
+                        \theta / s \). Since \(s=F \theta\), it follows that \(p = 1/F. \) Since we have used the small
+                        angle approximation, if \(F\) is measured in mm, this is the plate scale in radians per mm. It
+                        is more usual to quote the plate scale in arc seconds per mm. Since there is 206265 arc seconds
+                        in one radian, the plate scale in arc seconds per mm is given by
+                        \[p = 206265/F,\] where \(F\) is measured in mm.</p>
+                    <h6 id="focal_ratio"><strong>Focal ratio</strong></h6>
+                    <p>The focal ratio \(f\) is defined as the ratio of the focal length to the diameter, i.e \(f =
+                        F/D\). The focal ratio is often used to describe the speed of a telescope (it is used in
+                        photography the same way). this can be understood as follows. If we fix \(F\), the image scale
+                        \(s\) remains the same. For a smaller \(D\), less light is spread over the same area; the image
+                        gets dimmer. We would have to expose for longer to get the same amount of light in a given area.
+                        Therefore, large values of \(f\) imply slow telescopes, and vice-versa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: refractors -->
+    <section id="refractors" data-magellan-target="refractors">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Refractors</h5>
+                    <p>The refracting telescope was the first type of telescope to be developed. The question of who
+                        invented the telescope is a controversial one. It is usually credited to the Dutch optician Hans
+                        Lippershey in 1608, although recent research suggests that a form of telescope may have been
+                        discovered by the Englishman Leonard Digges around 1550. The first person to systematically use
+                        a telescope for astronomy was the Italian scientist Galileo Galilei in 1610, however others were
+                        close behind, and the Englishman <a href="http://galileo.rice.edu/sci/harriot.html">Thomas
+                            Harriot</a> was the first to record a telescopic observation of the Moon, and Sunspots. </p>
+                    <p>The refractor focuses light using a lens, known as the objective. The objective is usually made
+                        of glass and, in it's simplest form, has a bi-convex shape where both surfaces are sections of a
+                        sphere. The lens collects the parallel light from an astronomical source and forms an image of
+                        it, as shown in <a href="#figure35">figure 35</a>. This figure also shows that a simple refractor has
+                        a major defect, known as chromatic aberration. This aberration is the largest imperfection to
+                        affect astronomical telescopes. </p>
+                </div>
+            </div>
+
+            <!-- image -->
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    <figure id="figure35"><div class="thumbnail"><img src="files/small_2183.gif"></div><figcaption><strong>Figure 35:</strong> Schematic of a simple refracting telescope, illustrating the effect of chromatic aberration. Credit: Vik Dhillon.</figcaption></figure>
+                </div>
+            </div>
+
+            <!-- begin two column for figure -->
+            <div class="media-object stack-for-small">
+                <div class="media-object-section">
+                    <figure id="figure36"><div class="thumbnail"><img src="files/small_2191.jpg"></div><figcaption><strong>Figure 36:</strong> Photograph of the Lagoon Nebula, showing the blue halos due to chromatic aberration. The bright star at the top is probably quite red, and hence lacks a halo.</figcaption></figure>
+                </div>
+                <div class="media-object-section">
+                    <p>Chromatic aberration arises because the glasses used to make lenses typically have refractive
+                        indices which decrease as the wavelength of light increases, resulting in the focal length of
+                        the objective increasing as the wavelength increases. Hence there is no single focal plane in
+                        which light of all wavelengths from a star is in focus, as shown in <a href="#figure35">figure 35</a>.
+                        Moving the focal plane towards the lens will provide a point-like blue image surrounded by a red
+                        halo. Similarly, moving the focal plane away from the lens will result in a point-like red image
+                        surrounded by a blue halo, as shown in <a href="#figure36">figure 36</a>. A compromise can be
+                        reached by moving the focal plane to the circle of least confusion, as shown in
+                        <a href="#figure35">figure 35</a>. This is still a poor image, and clever design is needed to improve
+                        the refractor.</p>
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="cell">
+                    <h6><strong>Achromats and Apochromats</strong></h6>
+                    <p>In 1758, the English optician John Dolland patented the achromatic doublet (or achromat). The
+                        achromat corrects for chromatic aberration by using two lenses made of different materials,
+                        typically crown and flint glass. The positive crown-glass lens strongly converges the light, but
+                        introduces strong chromatic aberration. The flint glass element is negative. It has a weak
+                        refractive index, so it does not undo the convergent effect of the crown glass element. However,
+                        the refractive index of flint glass changes rapidly with wavelength, and so it has a stronger
+                        effect on the blue light, thus correcting chromatic aberration. The situation is shown
+                        schematically in <a href="#figure37">figure 37</a>.</p>
+                </div>
+            </div>
+
+            <!-- image -->
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    <figure id="figure37"><div class="thumbnail"><img src="files/small_2199.gif"></div><figcaption><strong>Figure 37:</strong> Schematic showing how an achromatic doublet can correct for chromatic aberration by bringing light of two different colours to the same focus. Credit: Vik Dhillon</figcaption></figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: pros and cons -->
+    <section id="pros" data-magellan-target="pros">
+        <div class="grid-container">
+            <div class="grid-x">
+
+                <div class="cell">
+                    <p>An achromatic doublet can only make the focus the same for two wavelengths and there is residual
+                        chromatic aberration at intermediate wavelengths. Nevertheless, achromats deliver
+                        order-of-magnitude reductions in chromatic aberration. Further improvement is possible by adding
+                        a third lens. These are called <em>apochromats</em>, and they can bring three wavelengths (e.g.
+                        red, green and blue) to the same focus. Even greater improvements can be obtained by adding more
+                        lenses, so-called <em>super-apochromats</em>, but these become economically unviable for the
+                        large apertures required for telescope objectives.</p>
+
+                    <h5>Refractors: Pros & Cons</h5>
+                    <p>Since apochromats use flint glass to undo some of the convergent effects of the crown glass
+                        element, one implication of using achromats to minimise aberrations is that the <a
+                            href="#focal_length">focal length</a> becomes quite long. This makes refractors slow, with
+                        <a href="#focal_ratio">focal ratios</a> around 10 to 20. The <a href="#platescale">plate
+                            scale</a> is therefore quite small, which spreads the image of a point source over a large
+                        area in the focal plane. This makes refractors a poor choice for faint objects, but ideal for
+                        planetary observations and astrometry (i.e. measuring the positions of stars).
+                    </p>
+                    <p>One of the biggest issues with refractors is their practicality as we move to larger telescopes.
+                        The lens in a refractor has to be held by its edge, and as the lens becomes larger it starts
+                        sagging under its own weight and hence distorts the image; second, as the diameter of the lens
+                        increases, so does its thickness and thus so does the amount of light absorbed in the glass. As
+                        a result, the largest refractor currently in existence is the 40-inch (1m) telescope at Yerkes
+                        Observatory near Chicago, built in 1897. <a href="#figure38">Figure 38</a> shows the immense scale of
+                        the telescope tube and dome - it is unlikely that a bigger refractor will ever be built.</p>
+                    <p>Because of the immense challenge in building large refractors, most professional telescopes are
+                        reflecting telescopes.</p>
+                </div>
+            </div>
+
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    <figure id="figure38"><div class="thumbnail"><img src="files/small_2213.jpg"></div><figcaption><strong>Figure 38:</strong> A photogaph of the 40-inch, f/19 Yerkes refractor. Note human on left for scale.</figcaption></figure>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+    </div>
+    <footer>
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell small-5">
+                <h5>Contact Info</h5>
+                <hr />
+                <a href="#"><span>Email:</span> s.littlefair@sheffield.ac.uk</a>
+                <a href="#"><span>Address:</span> University of Sheffield, UK</a>
+            </div>
+            <div class="cell small-5">
+                <h5>Re-Use</h5>
+                <hr />
+                <p>These notes are made available under a creative commons license.</p>
+                <a href="https://github.com/StuartLittlefair/phy217_website/blob/main/./src/lectures/telescopes/l06/index.html"><i
+                        class="fi-social-github"></i> Edit
+                    this Page on GitHub</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

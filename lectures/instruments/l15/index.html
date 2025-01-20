@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>L15: Spectrographs I | PHY217</title>
+
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/app.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/mystyles.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation-icons/foundation-icons.css" />
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"
+        integrity='RUrdBUoFnEhDTvqEMp5N8+JJOmAVDA5iIZ82nsaGBjm5991b9gGoBZdR46uF0NFs' crossorigin="anonymous"></script>
+
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/jquery.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/what-input.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/foundation.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/app.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">PHY217 <small>Observational Astronomy</small></li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/index.html"><i class="fi-home"></i></a></li>
+            <li>
+                <a href="#">Lectures</a>
+                <ul class="menu vertical">
+                    <li>
+                        <a href="#">Principles</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l01">The Photon&#39;s Path</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l02">Photometry I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p03">Relative Photometry</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l04">Photometry II</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p05">Absolute Photometry</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Telescopes</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l06">Refractors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l07">Reflectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l08">Amateur Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l09">Professional Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l10">Adaptive Optics</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Instruments</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l11">Detectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l12">Working with CCD data</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/p13">CCD processing in AstroImageJ</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l14">Cameras</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l15">Spectrographs I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l16">Spectrographs II</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Statistics</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l17">Basic Stats</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l18">Signal/Noise</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l19">The Bayesian Astronomer</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href=" https://stuartlittlefair.github.io/phy217_website/course_info/">Course Info</a></li>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/observing/">Observing Project</a></li>
+        </ul>
+    </div>
+</div>
+    <div class="main">
+        
+<!-- HERO SECTION -->
+<section class="hero">
+    <h4>L15: Spectrographs I <small>design principles</small></h4>
+</section>
+
+<!-- MAGELLAN -->
+<div data-sticky-container>
+    <div class="magellan" data-sticky data-margin-top="0" id="magellan-menu">
+        <ul class="menu" data-magellan>
+            
+            <li><a href="#top">Introduction</a></li>
+            
+            <li><a href="#gratings">Gratings</a></li>
+            
+            <li><a href="#design">Spectrograph Designs</a></li>
+            
+        </ul>
+    </div>
+</div>
+<br />
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: Introduction -->
+    <section id="top" data-magellan-target="top">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <p>Obtaining spectroscopic data on astronomical objects is at the heart of observational astronomy.
+                        <a href="../../principles/l04/">Photometry</a> through different coloured filters can provide
+                        crude information on the spectrum of an object, but what if we need finer detail? Perhaps we
+                        wish to study the absorption lines present in a star's spectrum, or measure a star's radial
+                        velocity through the shift in those lines. The astronomical spectrograph is designed for this
+                        purpose. An astronomical spectrograph splits, or disperses, the light from a source into its
+                        component wavelengths. Some means of dispersing the light is therefore required. This function
+                        used to be performed by a prism, which exploits the fact that light of different wavelengths are
+                        refracted by different amounts, with blue light being refracted more than red light. However,
+                        prisms are inefficient, as light is lost at each air-glass surface (see <a href="#figure87">figure 87</a>). In
+                        addition, the amount of dispersion is not very high, and not easy to control.
+                    </p>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-5">
+                            <div class="thumbnail"><img src="files/small_4411.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-5">
+                            <p><strong>Figure 87: </strong> Dispersion of light by a prism. Note the loss of light at each air-glass surface, which makes prisms inefficient.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: gratings -->
+    <section id="gratings" data-magellan-target="gratings">
+        <div class="grid-container">
+            <div class="grid-x align-center grid-margin-x">
+                <div class="cell">
+                    <hr />
+                    <h5> Gratings</h5>
+                    <p>The almost universal choice for the dispersing element in modern astronomical spectrographs is
+                        the diffraction grating. There are two types of diffraction grating in use:
+                    <ul>
+                        <li>a <strong>transmission grating</strong>, where a large number of fine, equidistant, parallel
+                            lines are ruled onto a transparent glass plate so that light can pass between the lines, but
+                            not through them.</li>
+                        <li>a <strong>refection grating</strong>, where the lines are ruled onto a reflective piece of
+                            glass so that only the light between the lines is reflected.</li>
+                    </ul>
+                    Regardless of the grating type, they both work on the same principle. The gaps between the lines act
+                    as secondary light sources. In certain directions, these light sources will constructively
+                    interfere. This principle is shown in <a href="#figure88">figure 88</a>.
+                    </p>
+                </div>
+
+                <div class="cell small-12 medium-4"><figure id="figure88"><div class="thumbnail"><img src="files/small_4425.png"></div><figcaption><strong>Figure 88:</strong> A simplified diffraction grating with two lines. </figcaption></figure></div>
+                <div class="cell small-12 medium-8">
+                    <p>In <a href="#figure88">figure 88</a>, I show a simplified diffraction grating, where we have two
+                        gaps between the ruled lines acting as secondary sources. The path length between these two
+                        sources to a distant detector is given by \(d\phi = d\sin\theta\). When this path length is
+                        equal to an integer number of wavelengths, we will get constructive interference. Hence, the
+                        condition for constructive interference is written as
+                        \[n\lambda = d\sin\theta.\]
+                        <a name="gratingeqn"></a>This equation is known as the <strong>grating equation</strong>, and is
+                        fundamental to understanding how gratings work.
+                    </p>
+                    <p>If we imagine monochromatic light falling on our grating, we will get constructive interference,
+                        and thus beams of light, where \(n=0,1,2,...\), and so on. These are referred to as the zeroth,
+                        first and second <strong>orders</strong>. Now consider what happens when white light is incident
+                        on our grating. In the zeroth order, \(n=0\) and the angle at which constructive interference
+                        occurs, \(\theta\), is independent of wavelength. The zeroth order is not dispersed. In the
+                        first orders \(n = \pm 1\), the grating equation implies that \(\theta\) must increase as
+                        \(\lambda\) increases. Thus, the angle at which constructive inteference occurs is wavelength
+                        dependent, and dispersion occurs. This is shown in <a href="#figure89">figure 89</a>.</p>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-10">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-5">
+                            <div class="thumbnail"><img src="files/small_4432.jpg"></div>
+                        </div>
+                        <div class="cell small-12 medium-7">
+                            <p><strong>Figure 89: </strong> <a href="http://h2physics.org/?cat=49">Photograph</a> showing the diffraction pattern produced by a monochromatic light source (<strong>top</strong>) and a white light source (<strong>bottom</strong>) incident on a diffraction grating. The central bright line is the zeroth order, with orders ±1, ±2 and ±3 shown either side of this. Notice the larger dispersion in the higher orders, as predicted by the grating equation. We will discuss the origin of the fainter lines between the bright lines in the <a href="../l16/">next lecture</a>. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: design -->
+    <section id="design" data-magellan-target="design">
+        <div class="grid-container">
+            <div class="grid-x align-center grid-margin-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Basic spectrograph design</h5>
+                    <p>Most spectrographs use the same design, based on the <a href="../l14/#reimagers">re-imager</a> we
+                        saw in the previous lecture. Schematics of spectrographs, using transmission and reflection
+                        gratings, are shown in <a href="#figure90">figure 90</a>. The five basic components of an
+                        astronomical spectrograph are the slit, collimator, grating, camera and detector. The roles of
+                        each of these components are described in more detail below.</p>
+                </div>
+                <div class="cell small-11">
+                    <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_4447.png"></div></div><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_4448.png"></div></div><div class="cell"><figure id="figure90"><figcaption><strong>Figure 90:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong>schematic of an astronomical spectrograph incorporating a reflection grating. The slit is in the focal plane of the telescope. The detector is in the focal plane of the camera.<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>schematic of a spectrograph using a transmission grating.</figcaption></figure></div></div>
+                </div>
+                <div class="cell">
+                    <h6><strong>Slit</strong></h6>
+                    <p>The slit is a mask with a narrow rectangular aperture that is placed in the focal plane of the
+                        telescope. The slit has two main functions. First, the slit acts as a means of isolating the
+                        region of interest on the sky. Without a slit present, the spectra from sources either side of
+                        the target would overlap <a href="#figure91">figure 91</a>, contaminating the target spectrum. Additional
+                        sky background from either side of the target would also be recorded, degrading the
+                        signal-to-noise ratio of the spectrum. By putting a slit in the focal plane of the telescope,
+                        only light falling on the slit may enter the spectrograph, as shown in <a href="#figure92">figure 92</a>. </p>
+                </div>
+                <div class="cell small-11">
+                    <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_4488.png"></div></div><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_4489.png"></div></div><div class="cell"><figure id="figure91"><figcaption><strong>Figure 91:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong><a href="http://www.hs.uni-hamburg.de/EN/For/Exg/Sur/hes/qso_surveys.html">image</a> of a star field.<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>the same star field, but imaged by a slitless spectrograph. Note how the spectra of objects at the same y position in the image overlap.</figcaption></figure></div></div>
+                    <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-4"><div class="thumbnail"><img src="files/small_4490.png"></div></div><div class="cell small-12 medium-4"><div class="thumbnail"><img src="files/small_4491.png"></div></div><div class="cell small-12 medium-4"><div class="thumbnail"><img src="files/small_4492.png"></div></div><div class="cell"><figure id="figure92"><figcaption><strong>Figure 92:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong>ULTRASPEC data showing the image of a star field recorded with the slit and grating removed from the beam<strong> Middle</strong>the image of the star field when just the slit is inserted into the beam<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>the spectra of the stars on the slit that result when the grating is also inserted into the beam. The y axis is the spatial direction and the x axis is the dispersion direction. Credit: Vik Dhillon.</figcaption></figure></div></div>
+                </div>
+                <div class="cell">
+                    <p>The second function of the slit is to provide stable spectral resolution. This can be understood
+                        by noting that a spectrum is essentially an infinite number of images of the telescope focal
+                        plane, each shifted slightly in wavelength. Hence, without a slit present, the spectral
+                        resolution of an object would be defined by the width of the object. For a point source like a
+                        star the would be defined by the seeing. However, since seeing varies with time, the spectral
+                        resolution would then vary with time. The solution is to illuminate a narrow slit with the
+                        source, so that the spectrum becomes an infinite number of images of the slit, not the source.
+                        The minimum width of any spectral lines would then be defined by the slit width, and would hence
+                        be stable.</p>
+                    <p>Spectrographs re-image, or project, the slit in the focal plane of the telescope onto the
+                        detector, which lies in the focal plane of the camera. As we discovered when looking at <a
+                            href="../l14/#reimagers">re-imagers</a>, the ratio of the camera to collimator focal lengths
+                        determines the magnification of the image of the slit on the detector: \(M = F_{\rm cam} /
+                        F_{\rm coll}\). Hence a slit of width 50 μm in a spectrograph with a collimator of focal length
+                        500 mm and camera of focal length 250 mm would be projected to a width of 25 μm on the detector.
+                        We will see what sets the optimal slit width, when we discuss spectral resolution in the
+                        <a href="../l16/">next lecture</a>.
+                    </p>
+                </div>
+                <div class="cell small-11">
+                    <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_4523.jpg"></div></div><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_4524.jpg"></div></div><div class="cell"><figure id="figure93"><figcaption><strong>Figure 93:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong>Image of the Ring Nebula (M57)<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>Slitless spectrum of the Ring Nebula, showing that individual spectral lines take on the appearance of the nebula.</figcaption></figure></div></div>
+                    <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_4525.jpg"></div></div><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_4526.jpg"></div></div><div class="cell"><figure id="figure94"><figcaption><strong>Figure 94:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong>Photograph of light illuminating five different slits of width, from top-to-bottom, 400 μm, 100 μm, 50 μm, 200 μm and 400 μm.<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>spectra of a hydrogen lamp, produced by illuminating the slits in the left-hand panel. Note how the spectrum is made up of images of the slit shifted in wavelength.</figcaption></figure></div></div>
+                </div>
+
+                <div class="cell">
+                    <h6><strong>Collimator</strong></h6>
+                </div>
+                <div class="cell small-12 medium-7">
+                    <p>When we derived the grating equation, we assumed the light was arriving perpendicular to the
+                        grating. In general the light will arrive at the grating at an angle \(\phi\), and this will
+                        add an additional phase shift to the light emerging from each gap between the grating lines.
+                        The situation is shown in <a href="#figure95">figure 95</a>.
+                    </p>
+                    <p>In <a href="#figure95">figure 95</a>, we see that the new phase shift between the two sources is
+                        \(x + y\). Since \(x = d\sin\phi\) and \(y = d\sin\theta\), a modified version of the
+                        grating equation to account for this is
+                        \[n\lambda = d (\sin\theta + \sin\phi).\]
+                        Without a collimator, the diverging light from the slit would hit the grating, resulting in
+                        variable angles of incidence as a function of position on the grating. From the equation
+                        above, we see that varying the angle of incidence, \(\phi\), results in changes to the angle
+                        of diffraction, \(\theta\). Hence the same wavelength of light in the same order would be
+                        imaged onto different positions on the detector, blurring the resulting spectrum. With a
+                        collimator, however all angles of incidence on the grating are equal and no such blurring would
+                        result.</p>
+                </div>
+                <div class="cell small-12 medium-5"><figure id="figure95"><div class="thumbnail"><img src="files/small_4506.png"></div><figcaption><strong>Figure 95:</strong> A modified version of the simple diffraction grating. Now the light falls on the grating at an angle \(\phi\).</figcaption></figure></div>
+
+                <div class="cell">
+                    <h6><strong>Grating</strong></h6>
+                    <p>As discussed above, the grating splits the light into its component wavelengths. The modified
+                        grating equation above shows that by varying \(\phi\), the wavelength that gets diffracted into
+                        angle \(\theta\) can be varied. This will affect the location on the detector of each
+                        wavelength. Hence most spectrographs have gratings that can be tilted in order to adjust the
+                        start and end wavelengths of the spectrum.</p>
+                    <h6><strong>Camera</strong></h6>
+                    <p>The role of the camera in an astronomical spectrograph is to collect the spectrally-dispersed
+                        beams from the grating, which are still collimated, and make them converge so that the spectrum
+                        is imaged onto the detector. The camera can be either a lens, mirror, or catadioptric system.
+                    </p>
+                    <h6><strong>Detector</strong></h6>
+                    <p>The dispersed light is ultimately imaged by the spectrograph onto the detector, forming a
+                        spectrum, as shown in the bottom-right panel of <a href="#figure92">figure 92</a>. We can define the
+                        direction along the slit (i.e. the vertical direction in the right panel of <a href="#figure92">figure 92</a>) as the spatial axis, and the direction along the spectrum (i.e. the
+                        horizontal direction in the right panel of <a href="#figure92">figure 92</a>) as the dispersion
+                        axis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+    </div>
+    <footer>
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell small-5">
+                <h5>Contact Info</h5>
+                <hr />
+                <a href="#"><span>Email:</span> s.littlefair@sheffield.ac.uk</a>
+                <a href="#"><span>Address:</span> University of Sheffield, UK</a>
+            </div>
+            <div class="cell small-5">
+                <h5>Re-Use</h5>
+                <hr />
+                <p>These notes are made available under a creative commons license.</p>
+                <a href="https://github.com/StuartLittlefair/phy217_website/blob/main/./src/lectures/instruments/l15/index.html"><i
+                        class="fi-social-github"></i> Edit
+                    this Page on GitHub</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

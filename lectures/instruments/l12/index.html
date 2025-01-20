@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>L12: Dealing with CCD data | PHY217</title>
+
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/app.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/mystyles.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation-icons/foundation-icons.css" />
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"
+        integrity='RUrdBUoFnEhDTvqEMp5N8+JJOmAVDA5iIZ82nsaGBjm5991b9gGoBZdR46uF0NFs' crossorigin="anonymous"></script>
+
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/jquery.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/what-input.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/foundation.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/app.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">PHY217 <small>Observational Astronomy</small></li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/index.html"><i class="fi-home"></i></a></li>
+            <li>
+                <a href="#">Lectures</a>
+                <ul class="menu vertical">
+                    <li>
+                        <a href="#">Principles</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l01">The Photon&#39;s Path</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l02">Photometry I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p03">Relative Photometry</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l04">Photometry II</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p05">Absolute Photometry</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Telescopes</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l06">Refractors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l07">Reflectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l08">Amateur Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l09">Professional Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l10">Adaptive Optics</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Instruments</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l11">Detectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l12">Working with CCD data</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/p13">CCD processing in AstroImageJ</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l14">Cameras</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l15">Spectrographs I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l16">Spectrographs II</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Statistics</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l17">Basic Stats</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l18">Signal/Noise</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l19">The Bayesian Astronomer</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href=" https://stuartlittlefair.github.io/phy217_website/course_info/">Course Info</a></li>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/observing/">Observing Project</a></li>
+        </ul>
+    </div>
+</div>
+    <div class="main">
+        
+<!-- HERO SECTION -->
+<section class="hero">
+    <h4>L12: Dealing with CCD data <small>practical considerations</small></h4>
+</section>
+
+<!-- MAGELLAN -->
+<div data-sticky-container>
+    <div class="magellan" data-sticky data-margin-top="0" id="magellan-menu">
+        <ul class="menu" data-magellan>
+            
+            <li><a href="#top">Bias Frames</a></li>
+            
+            <li><a href="#darks">Dark Frames</a></li>
+            
+            <li><a href="#flats">Flat Fields</a></li>
+            
+            <li><a href="#example">Example</a></li>
+            
+        </ul>
+    </div>
+</div>
+<br />
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: bias frames -->
+    <section id="top" data-magellan-target="top">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <p>In the <a href="../l11/">previous lecture</a>, we covered the basics of how CCDs work. Once we
+                        have taken our CCD image we'd like to use it for some scientific purpose. For example, we might
+                        wish to perform <a href="../../principles/l02/">relative</a> or <a
+                            href="../../principles/l04/">absolute photometry</a> on the stars in the image. However,
+                        before we can do that, we must perform some additional processing on the image. To understand
+                        why, we need to look at some details of CCD operation.</p>
+                    <h5>Bias Frames</h5>
+                    <p>Let's recall how a CCD measures the number of electrons \(N_e\) in each pixel. These electrons
+                        have a total charge \(Q = eN_e\). We measure this charge by dumping it onto a capacitor with
+                        capacitance \(C\) and measuring the voltage \(V = Q/C\). We can re-write the number of electrons
+                        in terms of this tiny, analog voltage as
+                        \[N_e = CV/e.\]
+                        In other words, the voltage is proportional to the number of electrons. Because we need to store
+                        the data in digital format, the analog voltage is converted to a digital number of counts
+                        \(N_c\), by an analog-to-digital converter (ADC). Since the value in counts is proportional to
+                        the voltage \(N_c \propto V\), it follows that the number of counts is proportional to the
+                        number of photo-electrons, i.e \(N_e = GN_c\), where \(G\) is the Gain, measured in e-/ADU. The
+                        number of bits used by the ADC to store the count values limits the number of different count
+                        values that can be represented. For a 16-bit ADC, we can represent count values from 0 to
+                        65,535. </p>
+                    <p>Now, imagine a relatively short exposure, taken from a <a href="../../telescopes/l09/">dark
+                            astronomical site</a>. Suppose that the gain, \(G=1\) e-/ADU and that in our short exposure
+                        we create, on average, two photo-electrons from the sky in each pixel. Because of <a
+                            href="../l11/#readout">readout noise</a>, we will NOT have 2 counts in each pixel. Instead,
+                        the pixel values will follow a Gaussian distribution, with a mean of 2 counts, and a standard
+                        deviation given by the readout noise, which may be of the order of 3 counts. It should be
+                        obvious that this implies that many pixels should contain negative count values. However, our
+                        ADC cannot represent numbers less than 0! This means our data has been corrupted by the
+                        digitisation process. If we didn't fix this, it would cause all sorts of problems: in this case
+                        it would lead us to over-estimate the sky level.</p>
+                    <p>The solution is to apply a <strong>bias voltage</strong>. This is a constant offset voltage
+                        applied to the capacitor before analog-to-digital conversion. The result is that, even if the
+                        pixel contains no photo-electrons, the ADC returns a value of a few hundred counts, nicely
+                        solving the issue of negative counts. However, it does mean that we must correct for the bias
+                        level when doing photometry! Each pixel in our image contains counts from stars, from the sky
+                        background and from the bias level. We must subtract the bias level before performing
+                        photometry. </p>
+                    <p>How do we know what the bias level is? The easiest way to do this is to take a series of images
+                        with zero exposure time. Because there is no exposure time, these images contain no
+                        photo-electrons, and no thermally excited electrons. These images, known as bias frames, allow
+                        us to measure the bias level, and subtract it from our science data. A bias frame is shown in
+                        <a href="#figure73">figure 73</a>. Several bias frames are needed because the value of any pixel in a given
+                        bias frame will differ from the bias level due to readout noise. Averaging several frames
+                        together reduces the impact of readout noise and gives a more accurate estimate of the bias
+                        level. The master bias frame produced from this averaging can be subtracted from all science
+                        images to remove the bias level from each pixel. </p>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-7">
+                            <div class="thumbnail"><img src="files/small_3595.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-5">
+                            <p><strong>Figure 73: </strong> A single bias frame, taken with the department's robotic telescope ROSA. The bias level in this image is 320 counts. Each pixel is scattered around this value due to read noise.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: darks -->
+    <section id="darks" data-magellan-target="darks">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Dark Frames</h5>
+                    <p>Recall that photo-electrons are produced in CCDs by photons exciting electrons from the valence
+                        band to the conduction band. However, this is not the only way to excite electrons into the
+                        conduction band. <strong>Thermal excitation</strong> is also capable of producing electrons in
+                        the conduction band. Thermal excitation of electrons is known as <strong>dark current</strong>
+                        and the electrons produced by it are indistinguishable from photo-electrons.</p>
+                    <p>Dark current can be very substantial. At room temperature, the dark current of a standard CCD is
+                        typically 100,000 e-/pixel/s, which is sufficient to saturate most CCDs in only a few seconds!
+                        The solution is to cool the CCD. The typical operating temperatures of CCDs are in the range 150
+                        to 263 K (i.e. -123 to -10&#8451;). At major observatories, most CCDs are cooled to the bottom
+                        end of this range, generally using liquid nitrogen. The resulting dark current can be as low as
+                        a few electrons per pixel per hour. The CCDs on the Hicks telescopes are air-cooled to a few
+                        degrees below zero, and have dark currents of around 40 e-/pixel/hour. </p>
+                    <p>Neither of these values are negligible, especially for short exposures. Thus, every pixel in our
+                        image contains contributions from stars, sky background, bias level and dark current. The dark
+                        current must be measured, and subtracted from our science images for the same reasons as the
+                        bias level. For this purpose <strong>dark frames</strong> are taken. These are long exposures,
+                        taken with the shutter closed. These frames will have no contribution from photo-electrons, but
+                        they will contain dark current and the bias level. This means that dark frames must have the
+                        bias subtracted from them before use. Once the bias level has been subtracted off, several dark
+                        frames can be combined to make a master dark frame, which can be subtracted from your images.
+                    </p>
+                    <p>It is best to combine the dark frames using the median, rather than the mean. Dark frames are
+                        often long exposures, which can be affected by <strong>cosmic rays</strong>. Cosmic rays hitting
+                        the CCD will excite also excite electrons. Taking the median of the master dark will help remove
+                        cosmic rays from the master dark frame.</p>
+                    <p>Because the dark frame increases with time, it is easiest if the dark frames have the same
+                        exposure time as your science images. If they do not, it is possible to <strong>scale</strong>
+                        the dark frame by the ratio of exposure times, since dark current increases (roughly) linearly
+                        with time. Dark current is also a strong function of temperature - it is essential that dark
+                        frames are taken with the CCD at the same temperature as your science frame. </p>
+                    <p><a href="#figure74">Figure 74</a> shows an example dark frame. In this 300-sec exposure the dark current
+                        is about 50 counts. Note that not every pixel has the same value. Some of this is read noise,
+                        but it is also true that different pixels in a CCD show different levels of dark current. Some
+                        pixels show very high levels of dark current - these so called <strong>hot pixels</strong> can
+                        have a very serious effect on your photometry if your target star happens to lie on top of one.
+                    </p>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-7">
+                            <div class="thumbnail"><img src="files/small_3625.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-5">
+                            <p><strong>Figure 74: </strong> A single dark frame, with an exposure time of 300s, taken with the department's robotic telescope ROSA. The mean level in this image is 370 counts. 320 of these counts are bias level, giving a dark current of 50 counts. </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: flats -->
+    <section id="flats" data-magellan-target="flats">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Flat Fields</h5>
+                    <p>Suppose we use our telescope and CCD to take an image of a perfectly uniform light source. Would
+                        every pixel have the same number of counts in it? No - as we have seen each pixel will have a
+                        varying contribution from dark current and readout noise. What if we ignored these effects? The
+                        answer is still no. Various effects combine to mean that the count level can vary significantly
+                        across the image. <a href="#figure75">Figure 75</a> shows an image of the twilight sky taken with the
+                        ROSA telescope on the roof of the Hicks building. On the small image scale of a telescope, the
+                        twilight sky is an excellent approximation to a uniformly illuminated light source. However,
+                        <a href="#figure75">figure 75</a> is far from uniform. </p>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-7">
+                            <div class="thumbnail"><img src="files/small_3655.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-5">
+                            <p><strong>Figure 75: </strong> An image of the twilight sky, taken using the ROSA telescope on the roof of the Hicks building. The overall illumination pattern is a result of vignetting. Pixel-to-pixel variations, and large donuts from out-of-focus dust spots can also be seen.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <p>There are three main reasons for the structure seen in <a href="#figure75">figure 75</a>. </p>
+                    <dl>
+                        <dt>Vignetting</dt>
+                        <dd>
+                            Consider the design of the Newtonian telescope shown in figure 41. If the secondary mirror
+                            is exactly the right size to fit the beam produced by an on-axis source, some fraction of
+                            the beam produced by an off-axis source will miss the secondary mirror. This light will be
+                            lost, and off-axis sources will appear dimmer than on-axis sources. This is vignetting, and
+                            its effect is clearly visible in <a href="#figure75">figure 75</a>.
+                        </dd>
+                        <dt>Pixel-to-Pixel variations</dt>
+                        <dd>
+                            Each pixel in a CCD is not exactly the same size; manufacturing tolerances mean that some
+                            pixels are larger than others. If each CCD pixel is exposed to a constant flux, the
+                            variation in pixel area means that some pixels will capture more photons than others. This
+                            effect can also be seen in <a href="#figure75">figure 75</a> if you look closely, and is often called flat
+                            field <strong>grain</strong>.
+                        </dd>
+                        <dt>Dust grains on optical surfaces</dt>
+                        <dd>
+                            Dust grains on the window of the CCD, or on the filters will block out a small fraction of
+                            the light falling on the CCD. These grains appear as dark donuts, with the size of the donut
+                            depending on how far from the focal plane the dust grain is. Two such donuts are visible in
+                            <a href="#figure75">figure 75</a>.
+                        </dd>
+                    </dl>
+                    <h6><strong>Flat field frames</strong></h6>
+                    <p>It is essential to correct our images for these effects. If we did not, the number of counts from
+                        an object would vary depending upon its location in the image, ruining our photometry.
+                        Fortunately, we can correct these effects using flat field frames. These are images taken of the
+                        twilight sky, which is assumed to be uniform (this is a good assumption for most instruments).
+                        Any variation in the flat field is therefore due to the effects above. Because vignetting and
+                        the contribution from dust grains can depend on the filter, flat fields must be taken in the
+                        same filters as your science data.</p>
+                    <p>For small telescopes, it can be more convenient to use a specially constructed <strong>flat-field
+                            panel</strong>, such as the one shown in <a href="#figure76">figure 76</a>. These panels are
+                        carefully designed to provide a uniform light source. The advantage of a flat field panel over
+                        the twilight sky is that flat fields can be taken at any time, whereas twilight flats can only
+                        be taken in a narrow window after sunset. </p>
+                    <p>How should the flat field be used? First of all, we must realise that the flat field image must
+                        be bias subtracted. Dark frame subtraction is not normally necessary, since exposure times are
+                        short and the dark current will be very small. The count level of pixel \((i,j)\) in the
+                        bias-subtracted flat field image can be written as
+                        \[F_{ij} = \alpha_{ij} F,\]
+                        where F is the uniform flux of the twilight sky, or flat field panel. The quantity
+                        \(\alpha_{ij}\) represents the fraction of light lost to vignetting, pixel-to-pixel variations
+                        and dust grains. If we normalise our image, i.e. divide the flat field by the mean flux, \(F\),
+                        we get an image whose brightness \(f\) is given by \(f_{ij} = \alpha_{ij}\). Our science image
+                        is given by the product of the flux falling on each pixel \(G_{ij}\), and the flat field
+                        effects, giving an image in which the brightness of pixel (i,j) is given by
+                        \[G'_{ij} = G_{ij}\alpha_{ij}.\]
+                        Dividing our science image, \(G'_{ij}\) by the normalised flat field image, \(\alpha_{ij}\),
+                        gives the actual flux falling on each pixel \(G_{ij}\), as desired. </p>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-4">
+                            <div class="thumbnail"><img src="files/small_3668.jpg"></div>
+                        </div>
+                        <div class="cell small-12 medium-7">
+                            <p><strong>Figure 76: </strong> A <a href="http://www.gerdneumann.net/english/astrofotografie-parts-astrophotography/aurora-flatfield-panels/uebersicht-aurora-flatfield-panels-overview.html">flat field panel</a> placed at the aperture of a Newtonian telescope. The panel provides a roughly uniform illumination and can be placed at the aperture of a small telescope. The 16" Hicks telescope uses a panel like this for taking flat field frames.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: example -->
+    <section id="example" data-magellan-target="example">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>A worked example - M52</h5>
+                    <p>
+                        The calibration frames shown in the figures above were taken to support observations with ROSA
+                        of the nearby galaxy M52, by a first year student in 2012. A raw CCD image in the I-band is
+                        shown in <a href="#figure77">figure 77</a>. Five sets of each calibration frame were taken. The five biasses
+                        were median-combined to make a master bias. The darks were bias-subtracted and median-combined
+                        to make a master dark. The flat field images were bias subtracted and median-combined to make a
+                        master flat, which was normalised. The raw CCD image then had the master dark and bias frames
+                        subtracted, and was divided by the normalised master flat to make the calibrated CCD image, also
+                        shown in <a href="#figure77">figure 77</a>.
+                    </p>
+                    <p>Note that the calibrated image has had the dark current from hot pixels removed. If you look
+                        closely, you can also see that the illumination across the frame is even (as vignetting has been
+                        corrected), and that the pixel-to-pixel variations have been removed. </p>
+                    <p>Many science images in the BVI filters were taken, and calibrated as above. These were then
+                        aligned to correct for imperfections in telescope tracking, and combined into the colour image
+                        seen in <a href="#figure78">figure 78</a>. </p>
+                </div>
+
+                <div class="cell small-11">
+                    <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_3743.png"></div></div><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_3744.png"></div></div><div class="cell"><figure id="figure77"><figcaption><strong>Figure 77:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong>A raw CCD image of M51. This is a 200-sec exposure in the I-band taken using ROSA. Non-even illumination due to vignetting is visible, as are bright "hot pixels" which are scattered throughout the image.<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>a de-biassed, dark-subtracted and flat-fielded version of the same image. Note the correction for vignetting and removal of hot pixels. </figcaption></figure></div></div>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-7">
+                            <div class="thumbnail"><img src="files/small_3751.jpg"></div>
+                        </div>
+                        <div class="cell small-12 medium-5">
+                            <p><strong>Figure 78: </strong> A colour image of M51, taken using ROSA. 18 images were taken in each of the B, V and I filters. These images were de-biassed, dark-subtracted and flat-fielded. They were then aligned to account for errors in auto guiding, and median-combined to create a master image in each filter. These were combined to make a colour image.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+    </div>
+    <footer>
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell small-5">
+                <h5>Contact Info</h5>
+                <hr />
+                <a href="#"><span>Email:</span> s.littlefair@sheffield.ac.uk</a>
+                <a href="#"><span>Address:</span> University of Sheffield, UK</a>
+            </div>
+            <div class="cell small-5">
+                <h5>Re-Use</h5>
+                <hr />
+                <p>These notes are made available under a creative commons license.</p>
+                <a href="https://github.com/StuartLittlefair/phy217_website/blob/main/./src/lectures/instruments/l12/index.html"><i
+                        class="fi-social-github"></i> Edit
+                    this Page on GitHub</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

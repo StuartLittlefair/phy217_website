@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>P05: Absolute Photometry | PHY217</title>
+
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/app.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/mystyles.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation-icons/foundation-icons.css" />
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"
+        integrity='RUrdBUoFnEhDTvqEMp5N8+JJOmAVDA5iIZ82nsaGBjm5991b9gGoBZdR46uF0NFs' crossorigin="anonymous"></script>
+
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/jquery.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/what-input.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/foundation.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/app.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">PHY217 <small>Observational Astronomy</small></li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/index.html"><i class="fi-home"></i></a></li>
+            <li>
+                <a href="#">Lectures</a>
+                <ul class="menu vertical">
+                    <li>
+                        <a href="#">Principles</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l01">The Photon&#39;s Path</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l02">Photometry I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p03">Relative Photometry</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l04">Photometry II</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p05">Absolute Photometry</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Telescopes</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l06">Refractors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l07">Reflectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l08">Amateur Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l09">Professional Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l10">Adaptive Optics</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Instruments</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l11">Detectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l12">Working with CCD data</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/p13">CCD processing in AstroImageJ</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l14">Cameras</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l15">Spectrographs I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l16">Spectrographs II</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Statistics</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l17">Basic Stats</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l18">Signal/Noise</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l19">The Bayesian Astronomer</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href=" https://stuartlittlefair.github.io/phy217_website/course_info/">Course Info</a></li>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/observing/">Observing Project</a></li>
+        </ul>
+    </div>
+</div>
+    <div class="main">
+        
+<!-- HERO SECTION -->
+<section class="hero">
+    <h4>P05: Absolute Photometry <small>using VO software</small></h4>
+</section>
+
+<!-- MAGELLAN -->
+<div data-sticky-container>
+    <div class="magellan" data-sticky data-margin-top="0" id="magellan-menu">
+        <ul class="menu" data-magellan>
+            
+            <li><a href="#intro">Introduction</a></li>
+            
+            <li><a href="#astrometry">Astrometry</a></li>
+            
+            <li><a href="#apphot">Photometry</a></li>
+            
+            <li><a href="#calibrating">Calibration</a></li>
+            
+            <li><a href="#cmd">CMD</a></li>
+            
+        </ul>
+    </div>
+</div>
+<br />
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: introduction -->
+    <section id="intro" data-magellan-target="intro">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <p>In the <a href="../l04/">previous lecture</a>, we learnt the theory behind precise calibration of
+                        photometry, enabling us to put photometric observations onto a standard scale with precisions of
+                        better than 1%. In this practical we are going to learn how to produce calibrated photometry
+                        using a simplified method. This method does not yield the same accuracy as an analysis using
+                        observations of primary or secondary standard stars, combined with the use of colour terms. On
+                        the other hand, it is much simpler to apply, and even works to produce calibrated photometry
+                        through thin cloud. If you are happy to accept accuracies on the order of a few percent, I
+                        recommend using the method described below whenever you need to produce calibrated photometry.
+                    </p>
+                    <p>In this practical, we will produce a colour-magnitude diagram of the young open cluster NGC 869,
+                        using readily available software. First, I describe the method which will enable us to obtain
+                        calibrated magnitudes. </p>
+                    <h5>Method</h5>
+                    <p>In the last lecture we saw that, for any star, the difference between the calibrated magnitude,
+                        \(m\) and the above-atmosphere instrumental magnitude \(m_{0,i}\) is given by:
+                        \[m = m_{0,i} + m_{\rm zp},\]
+                        where \(m_{\rm zp}\) is known as the zero point. The above-atmosphere instrumental magnitude is
+                        given by:
+                        \[m_{0,i} = m_i - kX,\]
+                        where \(m_i = -2.5 \log_{10} \left( N_t/t_{\rm exp} \right)\) is the instrumental magnitude,
+                        \(k\) is the extinction coefficient, and \(X\) is the airmass. Therefore:
+                        \[m = m_i - kX + m_{\rm zp}.\]
+                        In other words, if we were to plot the calibrated magnitude \(m\) against instrumental magnitude
+                        \(m_i\) for all the stars in our image, we would expect a straight line, with a gradient of one,
+                        and an intercept equal to \( kX + m_{\rm zp} \). This intercept could then be added to all of
+                        our instrumental magnitudes to produce calibrated magnitudes. </p>
+                    <p>What makes this technique possible, is the existence of large sky surveys, which have provided
+                        calibrated magnitudes for many, relatively bright stars over a very wide areas of the sky. If
+                        your data is covered by one of these surveys, and it provides calibrated magnitudes in the same
+                        filter as your data, you can apply this technique relatively quickly.</p>
+                    <h6><strong>Accuracy</strong></h6>
+                    <p>The accuracy this technique can achieve is limited by two factors. First of all we are not taking
+                        into account any secondary effects, such as 2nd-order extinction, or colour terms. Secondly, our
+                        photometry cannot be any more accurate than that in the sky survey we use. Typically, large sky
+                        surveys achieve accuracies of a few percent. Ignoring the secondary effects will probably
+                        introduce errors on a similar level. If you need calibrated photometry to better than a few
+                        percent, you will have to observe standard stars, and apply the rigorous method described in the
+                        <a href="../l04/">previous lecture</a>.
+                    </p>
+                    <h6><strong>Steps</strong></h6>
+                    <p>Applying this method requires the application of four steps. These steps are:
+                    <ol>
+                        <li>astrometric solution of the image - so we know the RA and Dec of all the stars we measure in
+                            our image;</li>
+                        <li>finding the stars in our image, and calculating instrumental magnitudes;</li>
+                        <li>matching our stars against a sky-survey, so we know instrumental and calibrated magnitude
+                            for many stars;</li>
+                        <li>calculating the offset between instrumental and calibrated magnitudes, and applying to all
+                            stars in our image.</li>
+                    </ol>
+                    </p>
+                    <p>We will need to use several software packages to perform these steps and achieve our goal.
+                        Following the guide below will show you how to achieve this with readily available,
+                        cross-platform software packages. </p>
+                    <h5>The Data</h5>
+                    <p>You will need a copy of the data. The data files are located at
+                        <kbd>C:\SharedFolder\astrolab\NGC869\Images</kbd>.
+                    </p>
+                    <p>You don't need to copy the data from this location to work on it, but this folder is local to the
+                        PC you are working on now. If you want to save these files for later, you will need to copy them
+                        to your M: or U: drives. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: astrometry -->
+    <section id="astrometry" data-magellan-target="astrometry">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Astrometric Calibration</h5>
+                    <p>Eventually we are going to match our instrumental magnitudes for each star, against calibrated
+                        magnitudes from a catalog which comprises of RA, Dec and magnitude. Thus we will need to know
+                        the RA and Dec of every star we calculate an instrumental magnitude. We do this by ensuring the
+                        image file has an astrometric solution - a piece of metadata which allows software to convert
+                        between pixel positions (x, y) and sky coordinates (RA, Dec). </p>
+                    <p style="font-weight: bold;">For the data in today's practical, this step has already been carried
+                        out, and the image has an astrometric solution already. This section is included for reference
+                        if you use these notes to reduce your open cluster data. If you are just working through the
+                        practical, skip ahead to the section on <a href="#apphot">aperture photometry</a>. </p>
+                    <p>You can create an astrometric solution for your images using AstroImageJ, which we encountered in
+                        the <a href="../p03/">previous practical</a>. AstroImageJ has a tool to automatically find the
+                        RA and Dec of an astronomical image, using an online web tool called Astrometry.net. To use this
+                        service, you will need to sign up for an account at http://nova.astrometry.net. Once you have
+                        logged in, go to "Profile" and make a note of the API key listed there - you will need it to use
+                        astrometry.net from within AstroImageJ. </p>
+
+
+                    <!-- task 1 -->
+                    <div class="callout warning">
+                        <p><strong>Task 1:</strong> Open AstroImageJ. Load the B-band image by choosing <kbd>File >
+                                Open</kbd>. The astrometry solution can be controlled by choosing <kbd>WCS > Plate Solve
+                                Using Astronometry.net (with options)</kbd>. A window like the one shown in <a href="#figure26">figure 26</a> will appear.
+                        </p>
+                        <p>There are lots of options. The options for <kbd>Median Filter</kbd> and <kbd>Peak Find
+                                Options</kbd> control how stars are detected in the image. You probably want to uncheck
+                            these to start with, but if your images are very noisy, <kbd>Median Filter</kbd> can prevent
+                            the spurious identification of noise as stars. <kbd>Peak Find Options</kbd> can be used to
+                            prevent the use of <a href="../../instruments/l11/">saturated stars</a>, whose positions are
+                            unreliable.
+                        </p>
+                        <p>The option <kbd>SIP Distortion Correction</kbd> will enable a more complex transformation
+                            between pixel position and RA, Dec which can correct for <a
+                                href="../../telescopes/l07/#offaxis">aberrations</a> introduced by the telescope optics.
+                            You should usually check this box. </p>
+                        <p>Astrometry.net can usually find a solution for many images without an initial guess of the RA
+                            and Dec of the image. Try this by entering your astrometry.net API Key into the <kbd>User
+                                Key</kbd> box and clicking <kbd>Start</kbd>. Check the output log to see if the
+                            astrometric solution was successful.</p>
+                        <p>If it wasn't, you may need to give Astrometry.net some constraints on the image location. To
+                            do so we need to know the rough position the telescope was pointed at and the image scale
+                            (in arc seconds per pixel). In our case, the RA was roughly 02:18:57 and the Dec was roughly
+                            +57 08 46. The image was taken with 2x2 binning, and so the pixel scale is 1 arc second per
+                            pixel (image scales for the Hicks Observatory can be found here). You can make
+                            Astrometry.net search only around these values by ticking the <kbd>Constrain Plate
+                                Scale</kbd> and the <kbd>Constrain Sky Location</kbd> checkboxes, and entering
+                            appropriate values in the relevant text boxes.</p>
+                    </div>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    <div class="grid-x grid-margin-x align-center">
+                        
+
+                        <div class="cell small-12 medium-6">
+                            <div class="thumbnail"><img src="files/small_1348.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-6">
+                            <p><strong>Figure 26: </strong> The astrometry window in AstroImageJ. You must put your astrometry.net API key in the <kbd>User Key</kbd> box. If the <kbd>Auto Save</kbd> checkbox is ticked, your image will automatically be overwritten by one with an astrometric solution.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <p>Once we have a successful astrometric solution, we can move onto the aperture photometry. In
+                        <a href="#figure27">figure 27</a> I show the B-band image of NGC 869 displayed using the software
+                        Aladin. Also shown is data from an all-sky catalog. The fact that the catalog objects line up
+                        with the stars in the image show that the astrometric solution is accurate. </p>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    <div class="grid-x grid-margin-x align-center">
+                        
+
+                        <div class="cell small-12 medium-6">
+                            <div class="thumbnail"><img src="files/small_1366.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-6">
+                            <p><strong>Figure 27: </strong> A well-calibrated image of NGC 869. Notice how the stars and catalog objects line up. This tells us the conversion between pixel coordinates and sky coordinates is accurate.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: photometry -->
+    <section id="apphot" data-magellan-target="apphot">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Aperture Photometry</h5>
+                    <p>We have done aperture photometry <a href="../p03/">before</a>, using <a
+                            href="http://www.astro.louisville.edu/software/astroimagej/">AstroImageJ</a>. Whilst this
+                        tool is excellent for relative photometry, and producing light curves, each aperture must be
+                        placed by hand, which makes it onerous to use when we want to measure every star in an image.
+                        For this reason I will introduce a new software tool, the <a
+                            href="http://www.aperturephotometry.org/">Aperture Photometry Tool</a>, or APT for
+                        short. </p>
+                    <p>APT can be installed on Windows, Linux or Mac machines. There is excellent <a
+                            href="https://www.aperturephotometry.org/features-functions/">documentation</a>, and a
+                        35-minute long <a href="https://www.youtube.com/watch?v=5lXAWfBW_NQ">video tutorial</a>. Should
+                        you need to perform aperture photometry on a large number of stars in your course, it is a good
+                        place to start.</p>
+                    <p>APT is installed on the astrolab machines under <kbd>C:\SharedFolder\astrolab\APT_v2.4.7</kbd>.
+                        Double click on the Application in this folder to run APT. </p>
+
+                    <div class="callout warning">
+                        <p><strong>Task 2: </strong>Setup APT.</p>
+                        <p>Start APT and click <kbd>Open Image</kbd> to load your astrometrically calibrated image.
+                            Click on <kbd>More Settings</kbd> and make sure the <kbd>source algorithm</kbd> is set to
+                            <kbd>model 0</kbd> (this is straightforward aperture photometry), and the <kbd>sky
+                                algorithm</kbd> is set to <kbd>model B</kbd> (this will use a sky annulus to measure and
+                            subtract the sky background). Click <kbd>Apply Settings</kbd> and then <kbd>Close
+                                Window</kbd>.
+                        </p>
+                        <p>Now we need to set our aperture settings, but we'll need to find the FWHM so we know roughly
+                            what settings to use. Click on an isolated star in the image to place an aperture around it.
+                            Then click on <kbd>Aperture Slice</kbd>. You will see a plot with two cross sections across
+                            your star, one horizontal, one vertical (see, for example, <a href="#figure28">figure 28</a>).
+                            You can use this plot to estimate the FWHM of stars in your image. </p>
+                        <p>Once you know the FWHM, use it to set the values for your photometry apertures. You should
+                            have some experience in this from the relative photometry practicals, but decent starting
+                            values are an object aperture radius of 1.5xFWHM, an inner sky radius of 2xFWHM and an outer
+                            sky radius of 3xFWHM. </p>
+                        <p>Click on the big button in the GUI (labelled something like <kbd>5/5/0 -> Alter</kbd>) to set
+                            the aperture parameters. Two windows should appear. The <kbd>Major radius</kbd> in the
+                            larger window is where you enter the object aperture. Click <kbd>Apply</kbd>. The sky
+                            annulus radii are entered in the smaller window. Set these values and click
+                            <kbd>Apply</kbd>. <kbd>Close</kbd> both windows.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    <div class="grid-x grid-margin-x align-center">
+                        
+
+                        <div class="cell small-12 medium-6">
+                            <div class="thumbnail"><img src="files/small_1383.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-6">
+                            <p><strong>Figure 28: </strong> An aperture slice plot from APT, showing horizontal and vertical slices across the image. In this example, the peak of the star is around 2500 counts above the background, and the FWHM is roughly 3 pixels. Using these numbers, reasonable values for the aperture sizes have been set, and are shown on the plot.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <h5>Source Detection</h5>
+                    <p>With your apertures set, you can perform aperture photometry on any single star by clicking on
+                        it. Have a go at this, and look at the values reported in the <kbd>Aperture Photometry
+                            Results</kbd> area of the APT window. However, we want to detect all the stars in the image,
+                        and perform aperture photometry on all of them at once.</p>
+
+                    <div class="callout warning">
+                        <p><strong>Task 3: </strong> Click on the <kbd>Source List</kbd> button at the bottom of the APT
+                            screen. The source list tool will appear (<a href="#figure29">figure 29</a>). Click <kbd>Create
+                                Source List</kbd> to get the source list creation tool, also shown in <a href="#figure29">figure 29</a>. Make sure the settings are as in <a href="#figure29">figure 29</a>. The important
+                            settings are the detection threshold, which sets how bright an object must be to be
+                            detected, and the <kbd>Radial-profile sigma</kbd> which gives APT an idea how large the
+                            stars in the image will be. This last value wants to be at least twice the FWHM.
+                        </p>
+                        <p>When the settings are correct, click <kbd>Create Source List</kbd>, and close the window once
+                            processing is complete. You can view the detected sources by ticking the "<kbd>Check box to
+                                overlay sources on image</kbd>" checkbox in the source list tool. </p>
+                        <p>If you're not happy with the detected sources, you can tweak the parameters and try again.
+                        </p>
+                    </div>
+
+                    <h5>Photometry</h5>
+                    <p>Now we have a list of detected sources, and we have set our apertures, we can go ahead and
+                        perform aperture photometry on all the sources. </p>
+                    <div class="callout warning">
+                        <p><strong>Task 4:</strong> In the source list tool, click <kbd>Automatically Process Source
+                                List</kbd>, to perform aperture photometry with the current aperture settings on all
+                            stars in the source list. Close the source list tool window when complete. </p>
+                        <p>You can view your results by clicking <kbd>List Results</kbd> at the bottom of the APT
+                            window. Click on <kbd>Export Contents</kbd> to save your results to a text file that can be
+                            used by other programs. In the window that appears click <kbd>Reset CSV Filename</kbd> to
+                            set the filename to something useful (in this practical, use <kbd>NGC869_B.csv</kbd>) and
+                            click <kbd>Create CSV File</kbd>. You might want to save this file to your U: drive, so it
+                            is available later. </p>
+                        <p><em>It is important to note that the results file is not cleared each time you load a new
+                                image, or restart APT. Unless you clear it manually, the old results will still be
+                                present. Before you close the results window, click</em> <kbd>Clear Contents</kbd> <em>
+                                to empty the current results. </em>
+                        </p>
+                    </div>
+
+
+                </div>
+
+                <div class="cell small-11"> <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_1407.png"></div></div><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_1408.png"></div></div><div class="cell"><figure id="figure29"><figcaption><strong>Figure 29:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong>The APT source list window<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>The APT create source list window, with reasonable settings for the images in this practical.</figcaption></figure></div></div> </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: calibration -->
+    <section id="calibrating" data-magellan-target="calibrating">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Photometric Calibration</h5>
+                    <p>Now you should have a CSV file, called <kbd>NGC869_B.csv</kbd>, with your instrumental magnitudes
+                        (and much besides) in it. The next step is photometric calibration. As a reminder, this involves
+                        fitting a straight line to a graph of instrumental magnitude against calibrated magnitude, to
+                        find the offset between the two. </p>
+                    <p>This can be done inside APT itself, but slightly annoyingly APT requires files in a new format.
+                        The file format is space-separated, with three columns: RA, Dec and Magnitude. To get our
+                        instrumental magnitude data into this format, and to download calibrated magnitudes covering our
+                        image, we will introduce a new tool - <a
+                            href="http://www.star.bris.ac.uk/~mbt/topcat/">Topcat</a>.</p>
+                    <p>Topcat is an amazing tool for manipulating tables of astronomical data, and for accessing the
+                        wealth of data available over the web. Like all the software used in this practical it is
+                        cross-platform and freely available. It's rich functionality is described in <a
+                            href="http://www.star.bris.ac.uk/~mbt/topcat/#docs">detailed documentation</a>. Topcat is
+                        installed on the astrolab machines under <kbd>C:\SharedFolder\astrolab\topcat</kbd>.</p>
+
+                    <div class="callout warning">
+                        <p><strong>Task 5:</strong> Start Topcat and load your instrumental magnitude file by choosing
+                            <kbd>File > Load Table</kbd>. The load table dialog is used to load data from a wide range
+                            of sources, including web-based catalog data, so it is slightly complex. You will need to
+                            set the <kbd>Format</kbd> drop-down box to CSV and navigate to your file
+                            (<kbd>NGC869_B.csv</kbd>) using the <kbd>System Browser</kbd>.
+                        </p>
+                        <p>Now we will save our data to a simple text format, but we only want three columns - RA, Dec
+                            and Magnitude. To control which columns are shown in Topcat, and which columns are exported
+                            choose <kbd>Views > Column Info</kbd>. Make sure the only columns ticked are
+                            <kbd>ApertureRA</kbd>, <kbd>ApertureDec</kbd> and <kbd>Magnitude</kbd>. Close the column
+                            info window.
+                        </p>
+                        <p>Now export our data by choosing <kbd>File > Save Table(s)/Session</kbd>. Set the <kbd>output
+                                format</kbd> to ascii and choose a save location using the <kbd>System Browser</kbd>.
+                            Name your file <kbd>NGC869_B_instrumental_mags.txt</kbd>.</p>
+                    </div>
+
+                    <p>Now we have one of the two files required. We need to get catalog data for this part of the sky,
+                        and in the correct filter. The <a href="http://arxiv.org/abs/1212.6182">UCAC4</a> catalog is a
+                        catalog which combines other sky surveys to provide data in many filters across much of the sky.
+                        Crucially, in this case it includes B and V magnitudes, the two filters used for NGC 869. We can
+                        download the part of the UCAC4 catalog we need, and export to the correct format, using Topcat.
+                    </p>
+
+                    <div class="callout warning">
+                        <p><strong>Task 7:</strong> Inside Topcat, choose <kbd>VO > VizieR Catalogue Service</kbd>. In
+                            the window that opens, make sure the <kbd>Cone Selection</kbd> checkbox is selected. Enter
+                            NGC 869 in the <kbd>Object Name</kbd>, and click <kbd>Resolve</kbd>. Topcat will fill in the
+                            RA and Dec for NGC 869 for you. Next we set the area of catalog we want to download. Our
+                            image is about 20 arc minutes on it's long edge, so set the Radius box to 40 arcmins. </p>
+                        <p>In the <kbd>Catalogue Selection</kbd> part of the window, make sure the <kbd>Surveys</kbd>
+                            tab is active, select the UCAC4 survey. Check your settings against <a href="#figure30">figure 30</a> and click <kbd>OK</kbd> . Topcat will download the UCAC4 catalogue, and a new table will
+                            appear in the main topcat window (<a href="#figure31">figure 31</a>). </p>
+                        <p>We are almost ready to export our UCAC4 data in the same way we did with the instrumental
+                            magnitudes. First, however, make sure the UCAC4 table is selected in the main topcat window
+                            and choose <kbd>Views > Table Data</kbd>. Notice that not every star has a B-band magnitude
+                            (the column labelled <kbd>Bmag</kbd>). We will need to create a subset of the table,
+                            containing only those stars with B-band magnitudes. </p>
+                        <p>Close the table browser. In the main topcat window, choose <kbd>Views > Row Subsets</kbd>. In
+                            the window that appears, choose <kbd>Subsets > New Subset</kbd>. Give your subset a name,
+                            and enter "<kbd>! NULL_Bmag</kbd>" into the expression box. This will select only those
+                            values where the Bmag is not NULL (i.e empty). In the main topcat window, select your subset
+                            from the <kbd>Row Subset</kbd> drop down box and choose <kbd>Views > Table Data</kbd> again.
+                            Notice that topcat is now only showing the stars with B-band magnitudes. </p>
+                        <p>Follow the same steps you took in Task 6, to save an ascii file containing only these three
+                            columns; <kbd>RAJ2000</kbd>, <kbd>DEJ2000</kbd>, <kbd>Bmag</kbd>. Call this file
+                            <kbd>NGC869_B_calibrated_mags.txt</kbd>
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    <div class="grid-x grid-margin-x align-center">
+                        
+
+                        <div class="cell small-12 medium-6">
+                            <div class="thumbnail"><img src="files/small_1462.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-6">
+                            <p><strong>Figure 30: </strong> The VizieR catalog query window in Topcat. The settings shown here will download the UCAC4 catalog data in a 40 arc minute radius around NGC 869</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    <div class="grid-x grid-margin-x align-center">
+                        
+
+                        <div class="cell small-12 medium-6">
+                            <div class="thumbnail"><img src="files/small_1465.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-6">
+                            <p><strong>Figure 31: </strong> The Topcat main window. Loaded tables are shown in the list on the left. The active table is highlighted. On the right you can change the sort order of the table, and select the active subset.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <p>Now, finally, we have the two files we need to calculate our photometric calibration. This will
+                        be done in APT, using the Simple Photometric Calibration tool.</p>
+
+                    <div class="callout warning">
+                        <p><strong>Task 8:</strong> In APT, choose <kbd>Tools > Simple Photometric Calibration</kbd>.
+                            The calibration window will appear (<a href="#figure32">figure 32</a>). Select your saved instrumental
+                            magnitude data (<kbd>NGC869_B_instrumental_mags.txt</kbd>) by clicking the <kbd>Choose
+                                Uncalibrated Source List</kbd> button. Do the same for the UCAC4 data
+                            (<kbd>NGC869_B_calibrated_mags.txt</kbd>) by clicking the <kbd>Choose Calibrated Source
+                                List</kbd> button. </p>
+                        <p>When we run the tool, it will match the two lists by looking for stars with similar RAs and
+                            Decs. We can set the tolerance for this match in the <kbd>Match Radius</kbd> box. Set this
+                            to 2 arcseconds. </p>
+                        <p>Click the <kbd>Match Source Lists and Compute Zero Point</kbd> button. You should get a
+                            result something like <a href="#figure32">figure 32</a>. The zero point and uncertainty are shown in
+                            the console window (top-right). In this case, the zero point is \(24.24 \pm 0.05\)
+                            magnitudes. This is the difference between the calibrated and instrumental magnitudes, and
+                            should be added to all of your instrumental magnitudes to give calibrated B-band magnitudes.
+                        </p>
+                        <p>The uncertainty in your zero point is important. Changing the zero point will change the
+                            location of all of the stars in a colour-magnitude diagram. Therefore, the uncertainty in
+                            your zero point should not be combined with the measurement uncertainties in your
+                            instrumental magnitude. It will, however, act as a <strong>systematic error</strong> on the
+                            position of stars in your CMD. </p>
+                        <p>We can make our final, calibrated catalog in topcat. Make sure the table containing the
+                            instrumental magnitudes is highlighted. Choose <kbd>Views > Column Info</kbd>. With the
+                            column info window active, choose <kbd>Columns > New Synthetic Column</kbd>. Call the column
+                            "<kbd>Bmag</kbd>" and in the expression box, type "Magnitude + 24.24", where 24.24 should be
+                            replaced with the zero point you found in your data. </p>
+                        <p>Use Topcat to save your data in CSV format.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: cmd -->
+    <section id="cmd" data-magellan-target="cmd">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Constructing a Colour-Magnitude Diagram</h5>
+                    <p>To make a colour magnitude diagram, we need data in a different filter. I have produced a
+                        calibrated V-band catalog from another image, following exactly the steps in this tutorial. The
+                        catalog is located at <kbd>C:\SharedFolder\astrolab\NGC869\Cats</kbd>. </p>
+
+                    <div class="callout warning">
+                        <p><strong>Task 9:</strong> Load the V-band catalog into Topcat, and your own calibrated B-band
+                            data. We are going to match them by looking for stars of similar RA and Dec. Choose
+                            <kbd>Joins > Pair Match</kbd>. Select the <kbd>Sky</kbd> algorithm and a <kbd>Max
+                                Error</kbd> of 2 arc seconds. Select your two tables and choose ApertureRA for the
+                            <kbd>RA Column</kbd> and ApertureDec for the <kbd>Dec Column</kbd>. Click <kbd>Go</kbd>.
+                        </p>
+                        <p>A new table will be created with the matched stars. This table contains both V and B
+                            magnitudes for each star. Following the guidelines in Task 8 for making new columns, make a
+                            B-V column, and a column for the error in B-V. </p>
+                        <p>Finally, make a CMD by plotting B-V on the x-axis against V on the y-axis. You can do this
+                            either by using the <kbd>Graphics</kbd> options in Topcat, or by exporting the new catalog
+                            to CSV format and reading it into Excel. You should end up with something like <a href="#figure33">figure 33</a>.</p>
+                    </div>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    <div class="grid-x grid-margin-x align-center">
+                        
+
+                        <div class="cell small-12 medium-6">
+                            <div class="thumbnail"><img src="files/small_1490.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-6">
+                            <p><strong>Figure 33: </strong> A colour-magnitude diagram for the bright stars in the field of NGC 869, plotted using the 2D plotting option in Topcat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+    </div>
+    <footer>
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell small-5">
+                <h5>Contact Info</h5>
+                <hr />
+                <a href="#"><span>Email:</span> s.littlefair@sheffield.ac.uk</a>
+                <a href="#"><span>Address:</span> University of Sheffield, UK</a>
+            </div>
+            <div class="cell small-5">
+                <h5>Re-Use</h5>
+                <hr />
+                <p>These notes are made available under a creative commons license.</p>
+                <a href="https://github.com/StuartLittlefair/phy217_website/blob/main/./src/lectures/principles/p05/index.html"><i
+                        class="fi-social-github"></i> Edit
+                    this Page on GitHub</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

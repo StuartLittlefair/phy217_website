@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>L09: Professional Observatories | PHY217</title>
+
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/app.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/mystyles.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation-icons/foundation-icons.css" />
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"
+        integrity='RUrdBUoFnEhDTvqEMp5N8+JJOmAVDA5iIZ82nsaGBjm5991b9gGoBZdR46uF0NFs' crossorigin="anonymous"></script>
+
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/jquery.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/what-input.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/foundation.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/app.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">PHY217 <small>Observational Astronomy</small></li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/index.html"><i class="fi-home"></i></a></li>
+            <li>
+                <a href="#">Lectures</a>
+                <ul class="menu vertical">
+                    <li>
+                        <a href="#">Principles</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l01">The Photon&#39;s Path</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l02">Photometry I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p03">Relative Photometry</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l04">Photometry II</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p05">Absolute Photometry</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Telescopes</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l06">Refractors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l07">Reflectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l08">Amateur Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l09">Professional Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l10">Adaptive Optics</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Instruments</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l11">Detectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l12">Working with CCD data</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/p13">CCD processing in AstroImageJ</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l14">Cameras</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l15">Spectrographs I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l16">Spectrographs II</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Statistics</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l17">Basic Stats</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l18">Signal/Noise</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l19">The Bayesian Astronomer</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href=" https://stuartlittlefair.github.io/phy217_website/course_info/">Course Info</a></li>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/observing/">Observing Project</a></li>
+        </ul>
+    </div>
+</div>
+    <div class="main">
+        
+<!-- HERO SECTION -->
+<section class="hero">
+    <h4>L09: Professional Observatories <small>locations and technology</small></h4>
+</section>
+
+<!-- MAGELLAN -->
+<div data-sticky-container>
+    <div class="magellan" data-sticky data-margin-top="0" id="magellan-menu">
+        <ul class="menu" data-magellan>
+            
+            <li><a href="#locs">Locations</a></li>
+            
+            <li><a href="#guiding">Autoguiding</a></li>
+            
+            <li><a href="#activeoptics">Active Optics</a></li>
+            
+        </ul>
+    </div>
+</div>
+<br />
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: Locations -->
+    <section id="locs" data-magellan-target="locs">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <p>There no world-class optical telescopes in the UK. The reason for this is cost. The world's
+                        largest telescopes cost hundreds of millions of pounds. Construction has started on the 32-m
+                        diameter E-ELT, with an estimated cost of €1 billion. It makes sense to build these telescopes
+                        in the best locations on Earth. None of these are in continental Europe. So what makes a site
+                        suitable for a billion Euro telescope?</p>
+                    <h6><strong>Cloud Cover</strong></h6>
+                </div>
+
+                <!-- begin two column for figure -->
+                <div class="grid-x grid-margin-x">
+                    <div class="cell small-12 medium-6">
+                        
+                        <div class="responsive-embed widescreen">
+                            <video controls loop>
+                                <source src="files/MODAL2_M_CLD_FR.mov" type="video/mp4">
+                                <p>Your browser does not support the video tag</p>
+                            </video>
+
+                        </div>
+                        <figure id="figure54">
+                            <figcaption><strong>Figure 54:</strong> Monthly average cloud cover, as revealed by NASA&#39;s Terra satellite. Colours range from blue (no clouds) to white (totally cloudy).</figcaption>
+                        </figure>
+                    </div>
+                    <div class="cell small-12 medium-6">
+                        <p>Radio telescopes can see through cloud. Optical telescopes can't! This is one of the primary
+                            reasons there are no major research telescopes in the UK.
+                            <a class="show-for-medium" href="#figure54">Figure 54 (left)</a><a class="hide-for-medium" href="#figure54">Figure 54 (above)</a> shows monthly average cloud cover. Desert regions
+                            including Antarctica, Australia, parts of Africa and the west coast of the Americas provide
+                            some
+                            of the best cloud-free skies.</p>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <h6><strong>Light Pollution</strong></h6>
+                    <p>Light from street lights and industry can greatly increase the <a
+                            href="../../principles/l01/#transparency">sky background</a>. The increased background
+                        light causes increased noise in astronomical images, making it harder to detect faint
+                        sources. Therefore, the largest telescopes are placed in regions of low light pollution.
+                        <a href="#figure55">Figure 55</a> shows the artificial night sky brightness around the
+                        world. It can be seen that some of the regions which show low cloud cover in <a href="#figure54">figure 54</a>, such as the sparsely populated western coasts of South America and
+                        Africa, are also largely free of light pollution. <a href="#figure55">Figure 55</a>
+                        also clearly shows why no major telescopes are now built in mainland Europe.</p>
+                </div>
+
+                <div class="cell small-10">
+                    <figure id="figure55"><div class="thumbnail"><img src="files/world2020B_low3.png"></div><figcaption><strong>Figure 55:</strong> Image showing global light pollution, as recorded in the <a href='http://djlorenz.github.io/astronomy/lp2020/'>World Atlas of Artificial Night Sky Brightness (2020)</a></figcaption></figure>
+                </div>
+
+                <div class="cell">
+                    <h6><strong>Seeing</strong></h6>
+                    <p>Selecting a site with good <a href="../../principles/l01/#seeing">seeing</a>
+                        is one of the most important criteria. Lower seeing improves the spatial resolution of
+                        images. Since the light from the stars is also spread out over fewer pixels, good seeing
+                        also improves the <a href="../../stats/l18/">signal-to-noise</a> ratio. Seeing is caused by
+                        turbulence in the atmosphere and this has two causes: heat from the ground rising through
+                        the atmosphere and strong winds higher in the atmosphere (e.g the jet stream).</p>
+                    <p>The atmosphere over the sea tends to be much less turbulent than the atmosphere over land, as
+                        the sea exhibits an essentially smooth, constant-temperature surface compared to the land.
+                        Some of the best astronomical sites are therefore located on small islands in the middle of
+                        oceans, such as Hawaii and the Canaries, as these small land masses cause little additional
+                        turbulence. For the same reason, coastal regions that receive winds predominantly from the
+                        direction of the ocean, such as the western coasts of the Americas and Africa, also exhibit
+                        excellent seeing.
+                    </p>
+                    <h6><strong>Altitude</strong></h6>
+                    <p>The higher the site of an astronomical observatory, the thinner the atmosphere above the
+                        telescope. This reduces <a href="../../principles/l01/#extinction">atmospheric
+                            extinction</a>,
+                        and can also help reduce the seeing if the observatory lies above a turbulent layer in the
+                        atmosphere. High-altitude telescopes are also often above the local inversion layer in the
+                        atmosphere, meaning that local cloud formation occurs below the telescope, significantly
+                        increasing the number of usable nights at the observatory compared to a telescope sited
+                        below the inversion level.</p>
+                    <h6><strong>Other Factors</strong></h6>
+                    <p>Additional factors, such as the difficulty of supplying utilities like water and power,
+                        accessibility, humidity and wind speed all play a lesser role in locating professional
+                        observatories. For a detailed discussion of many of these factors, see Vik Dhillon's <a
+                            href="http://www.vikdhillon.staff.shef.ac.uk/teaching/phy217/telescopes/phy217_tel_sites.html">old
+                            notes</a>. </p>
+                    <p>Political stability is also a factor in the location of large telescopes. This has been a
+                        particular issue in recent years, with protests from Native Hawaiians causing <a
+                            href="https://en.wikipedia.org/wiki/Thirty_Meter_Telescope">severe issues</a> for the
+                        Thirty Meter Telescope project's plans to build their telescope on Mauna Kea.</p>
+                    <h5>The world's largest telescopes</h5>
+                    <p><a href="#figure56">Figure 56</a> shows the sites of the worlds largest telescopes. For the
+                        reasons
+                        discussed above these are clustered around a few major sites, namely Chile, Hawaii and the
+                        Canary Islands. The gallery below shows photos of these observatories. These sites have low
+                        cloud cover, low light pollution, good seeing and low humidity. They are all at high
+                        altitude
+                        and are politically stable.</p>
+                </div>
+                <div class="cell small-10">
+                    <figure id="figure56"><div class="thumbnail"><img src="files/small_5730.png"></div><figcaption><strong>Figure 56:</strong> A google map showing the location of the world's largest optical telescopes. The overlying heat map shows the density of big telescopes around the world. The worlds largest optical telescopes are concentrated on Mauna Kea, Hawaii and the Atacama desert in Chile.</figcaption></figure>
+                </div>
+
+                <div class="grid-x grid-margin-x align-center">
+                    
+                    <div class="cell small-12 medium-3">
+                        <div class="thumbnail" data-toggle="hawaii">
+                            <img src="files/thumb_5735.gif">
+                        </div>
+                    </div>
+                    <div class="cell small-12 medium-3">
+                        <div class="thumbnail" data-toggle="lapalma">
+                            <img src="files/thumb_5736.jpg">
+                        </div>
+                    </div>
+                    <div class="cell small-12 medium-3">
+                        <div class="thumbnail" data-toggle="paranal">
+                            <img src="files/thumb_5737.gif">
+                        </div>
+                    </div>
+                    <div class="cell small-10">
+                        <figure id="figure57">
+                            <figcaption><strong>Figure 57:</strong> Photographs of arguably the world&#39;s best astronomical observatories.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="full reveal" id="hawaii" data-reveal>
+                    <img src="files/fullres_5735.gif">
+                    <p>The Keck and Subaru telescopes at the summit of Mauna Kea, Hawaii. </p>
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="full reveal" id="lapalma" data-reveal>
+                    <img src="files/fullres_5736.jpg">
+                    <p>The Roque de los Muchachos Observatory (ORM) on La Palma in the Canary Islands. </p>
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="full reveal" id="paranal" data-reveal>
+                    <img src="files/fullres_5737.gif">
+                    <p>The Very Large Telescopes (VLT) at the Paranal Observatory in the Atacama Desert, Chile. </p>
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="cell">
+                    <h5>Space Based Observatories</h5>
+                    <p>The factors which degrade astronomical images, such as seeing, sky background, transparency
+                        variations and extinction are all atmospheric-induced phenomena. These effects can all be
+                        removed at a stroke by siting optical telescopes in space. The best known example of this is the
+                        2.4 m Hubble Space Telescope (HST), which has helped to revolutionise astronomy since 1990 with
+                        its diffraction-limited imaging capability. Because space-based telescopes don't suffer from
+                        atmospheric extinction, HST also allows astronomical observations in the UV - impossible from
+                        the ground! The main drawback with siting telescopes in space is the cost: the HST cost many
+                        billions of dollars to build and operate, approximately ten times the sum required for the
+                        largest ground-based telescopes.
+                    </p>
+                    <p>Another drawback with space is the risk involved in the launch, and the great difficulty of
+                        fixing problems, servicing the telescope and upgrading the instrumentation once the telescope
+                        has been deployed. For the HST, servicing missions, which cost nearly $1 billion each, were of
+                        limited number and were very risky for the astronauts involved. More recent telescopes, such as
+                        the JWST, have been located much further from Earth and the Sun to keep them cool for as long as
+                        possible; servicingmissions for these telescopes are impossible, so they had better work!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: autoguiding -->
+    <section id="guiding" data-magellan-target="guiding">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Autoguiding</h5>
+                    <p>We have already seen that telescopes use mounts to track the motion of stars in the sky. In
+                        practice, it isn't possible to do this accurately enough for professional work, or even for
+                        amateur astrophotography. This is due to mechanical imperfections in the drive systems of the
+                        mount, flexure of the mount, and misalignment of equatorial mounts with regard to the celestial
+                        pole. </p>
+                    <p>The result is that stars drift slowly across the field of view, which would cause smearing in
+                        long exposures. To get round this, it is necessary to guide telescopes. This is done using an
+                        autoguider, a system which monitors the position of a star somewhere in the field of view, and
+                        nudges the telescope to keep the guide star locked onto the same pixel on the autoguider's
+                        detector.</p>
+                    <p>There are two main types of autoguiders in use. <strong>Guidescopes</strong> use a separate,
+                        smaller telescope to image a wider field of view. The wide field of view means that guide scopes
+                        are likely to find a bright star to guide on, but because they are mechanically separate from
+                        the main telescope, they can flex relative to the main scope. This means that, even though the
+                        guide star is held fixed, the main telescope's view of the sky can drift slowly.
+                        <strong>Off-axis guiders</strong> use a mirror on a moveable stage to pick off some light from
+                        the main telescope, and focus it on a separate autoguiding camera. This exhibits less flexure
+                        than the guidescope method, and is the one most often used for large telescopes. Both designs
+                        are shown below in <a href="#figure58">figure 58</a>.
+                    </p>
+                </div>
+            </div>
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_5753.png"></div></div><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_5755.jpg"></div></div><div class="cell"><figure id="figure58"><figcaption><strong>Figure 58:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong>an off-axis guider using pick-off optics. The pick off optics can be moved in order to send the light from a guide star to the guide camera.<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>a photograph of ROSA, the 10" robotic telescope on the roof of the Department of Physics and Astronomy at Sheffield, with the dome removed. The piggy-back mounted guide scope, a 3-inch refractor, can be seen on top of the main telescope. A CCD autoguider has been inserted in place of the eyepiece.</figcaption></figure></div></div>
+                </div>
+            </div>
+    </section>
+
+    <!-- NEW SECTION: active optics -->
+    <section id="activeoptics" data-magellan-target="activeoptics">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Active Optics</h5>
+                    <p>The huge mirrors in the world's largest telescopes pose a difficult engineering problem - they
+                        can be too heavy. For example the 4.2 m mirror of the William Herschel Telescope (WHT) on La
+                        Palma, for example, has a thickness of 56 cm and a weight of 16.5 tonnes (see <a href="#figure59">figure 59</a>). Larger mirrors of the same thickness would be too heavy to move. But a
+                        thinner, lighter mirror will bend and change shape as the telescope moves, due to the effects of
+                        gravity. This distortion of the primary mirror would ruin the focusing properties of the
+                        telescope, producing poor quality images. Despite this, the 8-m mirror of the Very Large
+                        Telescope (VLT) in Chile is only 18cm thick and weighs only 24 tonnes. If it were the same
+                        thickness as the WHT mirror it would weigh around 100 tonnes!</p>
+                </div>
+
+                <div class="cell small-10">
+                    <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_3069.jpg"></div></div><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_3070.jpg"></div></div><div class="cell"><figure id="figure59"><figcaption><strong>Figure 59:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong>photograph of the 4.2 m primary mirror of the WHT, which has a thickness/diameter ratio of 13%.<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>photograph of the 8.1 m primary mirror of the Gemini North telescope, which has a thickness/diameter ratio of only 2%.</figcaption></figure></div></div>
+                </div>
+
+                <div class="cell">
+                    <p>The distortion of modern, thin mirrors is overcome by active optics, where the thin (and hence
+                        flexible) mirror is mounted on a set of actuators, which are devices that transform an
+                        electrical signal into linear motion. The system works as follows (see <a href="#figure60">figure 60</a>): whilst the telescope is observing a science target, the light from a bright reference star
+                        somewhere in the field of view around the science target is picked off and the quality of its
+                        image is measured. This measurement is usually performed by a <a href="../l10/">wavefront
+                            sensor</a>, which we shall discuss in more detail in the next lecture. The actuators are
+                        used to push and pull different parts of the primary mirror so that its shape changes in such a
+                        way as to improve the quality of the reference star image. Only about one measurement and
+                        correction cycle per minute is required, as the orientation of the telescope whilst tracking a
+                        target does not change significantly on timescales shorter than this. Note that, as well as
+                        correcting the shape of the primary mirror, many active optics systems also correct for the
+                        change in the position of the secondary mirror (see <a href="#figure60">figure 60</a>). This corrects
+                        for changes in the shape of the telescope itself, which can occur due to flexure under gravity
+                        or expansion and contraction caused by changes in temperature.</p>
+                </div>
+
+                <div class="cell small-10">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-7">
+                            <div class="thumbnail"><img src="files/small_3081.jpg"></div>
+                        </div>
+                        <div class="cell small-12 medium-5">
+                            <p><strong>Figure 60: </strong> <a href="http://www.eso.org/public/images/eso9940b/">schematic</a> showing the components of a typical active optics system. Note the actuators (shown as green springs) controlling the primary mirror shape and the vertical and horizontal position of the secondary mirror.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <p>An increasingly common alternative to the single-piece mirrors shown in <a href="#figure59">figure 59</a> are segmented mirrors. This approach has been adopted, for example, on
+                        the twin 10 m <a
+                            href="https://keckobservatory.org/wp-content/gallery/keck-i-keck-ii-telescopes/33R0061-180-2246417083-O.jpg?x32463">Keck
+                            telescopes</a>. The segments are typically hexagonal in shape and usually have an asymmetric
+                        profile so that when all of the segments are combined they form, for example, a hyperbolic
+                        shape. Active optics systems are essential for segmented-mirror telescopes, as the position of
+                        each segment needs to be carefully controlled so that the overall shape of the primary mirror is
+                        retained as it is tilted to different sky positions. Each segment is therefore mounted on its
+                        own set of actuators.</p>
+                    <p>Segmented mirrors are the only feasible way of constructing telescopes with apertures
+                        significantly in excess of 8 m, as single-piece mirrors would become extremely expensive and
+                        ultimately impossible to manufacture, transport, install and maintain. The <a
+                            href="http://www.eso.org/public/teles-instr/e-elt/">European Extremely Large Telescope</a>
+                        (E-ELT) will have a 39 m mirror, composed of 798 elements, each 1.4 m wide and 5 cm thick. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+    </div>
+    <footer>
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell small-5">
+                <h5>Contact Info</h5>
+                <hr />
+                <a href="#"><span>Email:</span> s.littlefair@sheffield.ac.uk</a>
+                <a href="#"><span>Address:</span> University of Sheffield, UK</a>
+            </div>
+            <div class="cell small-5">
+                <h5>Re-Use</h5>
+                <hr />
+                <p>These notes are made available under a creative commons license.</p>
+                <a href="https://github.com/StuartLittlefair/phy217_website/blob/main/./src/lectures/telescopes/l09/index.html"><i
+                        class="fi-social-github"></i> Edit
+                    this Page on GitHub</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

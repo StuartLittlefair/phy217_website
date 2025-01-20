@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>L04: Photometry II | PHY217</title>
+
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/app.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/mystyles.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation-icons/foundation-icons.css" />
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"
+        integrity='RUrdBUoFnEhDTvqEMp5N8+JJOmAVDA5iIZ82nsaGBjm5991b9gGoBZdR46uF0NFs' crossorigin="anonymous"></script>
+
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/jquery.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/what-input.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/foundation.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/app.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">PHY217 <small>Observational Astronomy</small></li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/index.html"><i class="fi-home"></i></a></li>
+            <li>
+                <a href="#">Lectures</a>
+                <ul class="menu vertical">
+                    <li>
+                        <a href="#">Principles</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l01">The Photon&#39;s Path</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l02">Photometry I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p03">Relative Photometry</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l04">Photometry II</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p05">Absolute Photometry</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Telescopes</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l06">Refractors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l07">Reflectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l08">Amateur Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l09">Professional Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l10">Adaptive Optics</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Instruments</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l11">Detectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l12">Working with CCD data</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/p13">CCD processing in AstroImageJ</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l14">Cameras</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l15">Spectrographs I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l16">Spectrographs II</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Statistics</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l17">Basic Stats</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l18">Signal/Noise</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l19">The Bayesian Astronomer</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href=" https://stuartlittlefair.github.io/phy217_website/course_info/">Course Info</a></li>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/observing/">Observing Project</a></li>
+        </ul>
+    </div>
+</div>
+    <div class="main">
+        
+<!-- HERO SECTION -->
+<section class="hero">
+    <h4>L04: Photometry II <small>calibrating photometry</small></h4>
+</section>
+
+<!-- MAGELLAN -->
+<div data-sticky-container>
+    <div class="magellan" data-sticky data-margin-top="0" id="magellan-menu">
+        <ul class="menu" data-magellan>
+            
+            <li><a href="#systems">Photometric Systems</a></li>
+            
+            <li><a href="#magsys">Magnitude Systems</a></li>
+            
+            <li><a href="#calibration">Photometric Calibration</a></li>
+            
+        </ul>
+    </div>
+</div>
+<br />
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: introduction -->
+    <section id="intro" data-magellan-target="intro">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <h5>Photometric Systems</h5>
+                    <p>We have already seen that astronomers use <strong>filters</strong> to isolate parts of the
+                        spectrum, and so measure monochromatic flux. The amount of the spectrum that a filter allows
+                        through is known as the <strong>bandpass</strong>. Filters are usually categorized into
+                        narrow-band filters, which have a bandpass of order 10 nm and typically isolate a spectral line,
+                        and broad-band filters, which have a bandpass of order 100 nm. The central wavelength of the
+                        filter bandpass is known as the <strong>effective wavelength</strong>. Most modern filters are
+                        constructed of different coloured glasses, often in conjunction with thin-film coatings to help
+                        define the bandpasses and minimise reflection at the surfaces.</p>
+                    <p>Photometry of a source in a set of filters provides crude spectral information about the source.
+                        Well-defined sets of filters are known as <strong>photometric systems</strong>. A photometric
+                        system with too many filters, each with a very narrow bandpass, would make it difficult to
+                        detect sufficient photons from a source, and strong absorption/emission features in the spectrum
+                        might adversely affect some of the bandpasses. Conversely, a photometric system with too few
+                        filters, each with a very wide bandpass, would provide insufficient spectral information.</p>
+                    <p>There are two very common photometric systems that you may encounter. The system that was most
+                        widely used until recently is the <em>UBVRI</em> system, also known as the
+                        Johnson-Morgan-Cousins system (see Prof Vik Dhillon's notes for an excellent discussion of the
+                        <a
+                            href="http://www.vikdhillon.staff.shef.ac.uk/teaching/phy217/instruments/phy217_inst_photsys.html">history
+                            of this system</a>). The filters cover the whole range of optical wavelengths - <em>UBV</em>
+                        covers the "Ultraviolet", "Blue" and "Visual" ranges, whilst <em>RI</em> cover the "Red" and
+                        "Infrared" range. The <em>UBVRI</em> filter set is shown in <a href="#figure20">figure 20</a> below.
+                    </p>
+                </div>
+
+                <div class="cell small-10">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-9">
+                            <div class="thumbnail"><img src="files/small_1213.gif"></div>
+                        </div>
+                        <div class="cell small-12 medium-3">
+                            <p><strong>Figure 20: </strong> filter profiles of the UBVRI filter set. Also plotted is the transmission of the atmosphere (dotted line) and the quantum efficiency of a typical CCD (dashed line). Credit: Vik Dhillon.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell small-10">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-6">
+                            <div class="thumbnail"><img src="files/small_1219.jpg"></div>
+                        </div>
+                        <div class="cell small-12 medium-6">
+                            <p><strong>Figure 21: </strong> a photograph of the UBVRI filters. The U and I filters look black since they transmit light which is largely beyond the range of wavelengths detectable by the eye</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <p>As discussed in PHY104, it is common practice to refer to apparent magnitudes in a particular
+                        filter by the name of the filter. If the apparent magnitude of a star in the V-band is \(m_V =
+                        15.5\), this is often simply written as \(V=15.5\). The difference in magnitude between two
+                        filters is called a <strong>colour index</strong>. If a star's magnitudes in two filters are
+                        \(B=16.0\) and \(V=15.5\), the star has a colour index of \(B-V = 0.5\). </p>
+                    <p>Although the <em>UBVRI</em> system is very widely used, it is not the only photometric system.
+                        Another system you may well come across is that used by the Sloan Digital Sky Survey (SDSS).
+                        This uses five filters, named <em>u'g'r'i'z'</em>. The SDSS filter set has filters with higher
+                        transmissions than <em>UBVRI</em>, making them good for faint sources. The SDSS filters also
+                        have minimal overlap between filters. The SDSS filter set has become the most widely used
+                        photometric system in modern astronomical surveys. The SDSS filter set is shown in <a href="#figure22">figure 22</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- NEW SECTION: introduction -->
+    <section id="magsys" data-magellan-target="magsys">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Magnitude Systems</h5>
+                    <p>We saw in the first lecture on <a href="../l02/#mags">photometry</a>, that we can only find the
+                        magnitude of a star, if we <strong>already know</strong> the magnitude of the comparison star we
+                        used. This leads to a chicken-and-egg situation. If we need to know the magnitude of one star to
+                        find the magnitude of another, how do we get started, and measure the magnitude of the
+                        comparison star? Ultimately, astronomers will have to agree to <em>define</em> the magnitude of
+                        a star.</p>
+                    <p>The relation between magnitudes and physical flux is
+                        \[m= -2.5 \log_{10} F + c.\]
+                        Therefore we can see that deciding to define the magnitude of a reference star is akin to making
+                        a choice as to the value of the constant \(c\) in this equation. In practice, astronomers agree
+                        on a star that has a magnitude of 0. We can then measure the magnitudes of all other stars with
+                        respect to this one. This agreement on a convention about the magnitude of a given star is known
+                        as a <strong>magnitude system.</strong>
+                    <p>In this course, we will use "Vega magnitudes" as our magnitude system. In this system, the A0V
+                        star Vega is chosen as the star who's magnitude is 0; the so-called <strong>primary
+                            standard</strong>. It was chosen because it indeed does have a magnitude close to zero as
+                        determined by Hipparchos' <a
+                            href="http://en.wikipedia.org/wiki/Hipparchus#Stellar_magnitude">original magnitude
+                            scale</a>, it is easily observable in the northern hemisphere for more than 6 months of the
+                        year, it is non-variable, relatively nearby (and hence unreddened by interstellar dust), and it
+                        has a reasonably flat and smooth optical spectrum. However, because Vega is too bright to
+                        observe with modern telescopes and instruments without saturating their detectors, and because
+                        it is not always observable, an all-sky network of fainter secondary standards has also been
+                        defined, where the magnitude of each star relative to Vega has been carefully calibrated. Over
+                        the years, refinements in the definition, number and measurement accuracy of the primary and
+                        secondary standards has resulted in the apparent magnitude of Vega now being 0.03 in the V-band,
+                        and it is also thought that Vega may be slightly variable, but for the purposes of this course
+                        we can ignore this few per cent offset and assume it is 0 in all bands. </p>
+
+                    </p>
+                </div>
+
+                <!-- Vega mag table -->
+                <div class="cell small-10">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Filter</th>
+                                <th>\(\lambda_{\rm eff}\) (nm)</th>
+                                <th>\(\Delta \lambda\) (nm)</th>
+                                <th>\(m_{\rm vega}\)</th>
+                                <th>\(F_{\nu} {\rm (W\,m}^{-2}{\rm Hz}^{-1}{\rm )}\)</th>
+                                <th>\(F_{\lambda} {\rm (W\,m}^{-2}{\rm nm}^{-1}{\rm )}\)</th>
+                                <th>\(N_{\lambda} {\rm (photons\,s}^{-1}{\rm cm}^{-2}{\rm \unicode{xC5}}^{-1}{\rm )}\)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>U</td>
+                                <td>360</td>
+                                <td>50</td>
+                                <td>0</td>
+                                <td>\(1.81 \times 10^{-23}\)</td>
+                                <td>\(4.19 \times 10^{-11}\)</td>
+                                <td>759</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>430</td>
+                                <td>72</td>
+                                <td>0</td>
+                                <td>\(4.26 \times 10^{-23}\)</td>
+                                <td>\(6.91 \times 10^{-11}\)</td>
+                                <td>1496</td>
+                            </tr>
+                            <tr>
+                                <td>V</td>
+                                <td>550</td>
+                                <td>86</td>
+                                <td>0</td>
+                                <td>\(3.64 \times 10^{-23}\)</td>
+                                <td>\(3.61 \times 10^{-11}\)</td>
+                                <td>1000</td>
+                            </tr>
+                            <tr>
+                                <td>R</td>
+                                <td>650</td>
+                                <td>133</td>
+                                <td>0</td>
+                                <td>\(3.08 \times 10^{-23}\)</td>
+                                <td>\(2.19 \times 10^{-11}\)</td>
+                                <td>717</td>
+                            </tr>
+                            <tr>
+                                <td>I</td>
+                                <td>820</td>
+                                <td>140</td>
+                                <td>0</td>
+                                <td>\(2.55 \times 10^{-23}\)</td>
+                                <td>\(1.14 \times 10^{-11}\)</td>
+                                <td>471</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a name="table1"></a>
+                    <p><strong>Table 1: </strong> characteristics of the <em>UBVRI</em> photometric system.
+                        \(m_{\rm vega}\) refers to the magnitude of the star Vega in the filter. By definition, the
+                        magnitude of Vega is actually \(V=0.03\) and all the colours (e.g B-V) are zero. Magnitudes
+                        defined this way are referred to as the <strong>Vega magnitude system</strong>. The final three
+                        columns give the flux expected at the top of the Earth's atmosphere from a zero magnitude
+                        source, in various units.</p>
+                </div>
+                <div class="cell">
+                    <p>Once we know that the magnitude of Vega is defined as zero, this allows us to calculate the value
+                        of \(c\), and also some physical characteristics of the photometric system. <a
+                            href="#table1">Table 1</a> uses the definition of Vega as having \(m=0\) to list the
+                        characteristics of the UBVRI system. All values are taken from Chris Benn's ING Signal program.
+                        From left-to-right are tabulated the filter name, the effective wavelength (\(\lambda_{\rm
+                        eff}\)), the bandpass (\(\Delta \lambda\); FWHM), the approximate apparent magnitude of Vega
+                        (\(m_{\rm vega}\)), the band-averaged monochromatic fluxes in both frequency (\(F_{\nu}\)) and
+                        wavelength (\(F_{\lambda}\)) units of a V=0 A0V star, and the photon flux (\(N_{\lambda}\)) in
+                        units of photons s-1 cm-2 Å-1 (the latter units are used for convenience as they result in more
+                        easily remembered values).</p>
+                </div>
+
+                <div class="cell small-10">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-9">
+                            <div class="thumbnail"><img src="files/small_1234.gif"></div>
+                        </div>
+                        <div class="cell small-12 medium-3">
+                            <p><strong>Figure 22: </strong> filter profiles of the SDSS filter set. Also plotted is the transmission of the atmosphere (dotted line) and the quantum efficiency of a typical CCD (dashed line). Credit: Vik Dhillon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: introduction -->
+    <section id="calibration" data-magellan-target="calibration">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Calibrating Photometry</h5>
+                    <p>Previously, we saw how to <a href="../l02/#extraction">extract</a> the sky-subtracted signal from
+                        an object, measured in counts, from an image. Once this has been done, it is useful to convert
+                        to a magnitude in a photometric system. To see why this is important imagine two astronomers
+                        observing the same star, through the same filter, but with very different telescopes. Clearly an
+                        astronomer with a large telescope is going to measure more counts than the unfortunate
+                        astronomer who has a small telescope. It is therefore not very meaningful to share our results
+                        with others in units of counts.</p>
+
+                    <p>Converting a measurement in counts into a calibrated magnitude involves five steps:
+                    <ol>
+                        <li>divide the number of counts by the exposure time, to get a measure of flux in counts per
+                            second;</li>
+                        <li>calculate the <a href="#instmags">instrumental magnitude</a>, from the counts per second;
+                        </li>
+                        <li>determine the <a href="#extcoeff">extinction coefficient</a>, and correct the instrumental
+                            magnitude to the above-atmosphere value;</li>
+                        <li>repeat the above steps for a standard star and use the resulting above-atmosphere
+                            instrumental magnitude of the standard star to calculate the zero point;</li>
+                        <li>use the zero point to transform the above-atmosphere instrumental magnitude of the target
+                            star to the required photometric system.</li>
+                    </ol>
+                    The above steps are described in more detail below.</p>
+
+                    <h6><strong>Instrumental Magnitudes</strong></h6>
+                    <a name="instmags"></a>
+                    <p>Let us call the sky-subtracted signal from our target object, in counts, \(N_t\). We convert this
+                        to an instrumental magnitude, using the formula
+                        \[ m_{\rm inst} = -2.5 \log_{10} \left( N_t / t_{\exp} \right), \]
+                        where \(t_{\rm exp}\) is the exposure time of the image in seconds. The instrumental magnitude
+                        depends on the characteristics of the telescope, instrument, filter and detector used to obtain
+                        the data. It is therefore meaningless to compare two instrumental magnitudes taken under
+                        different situations, without first putting them on a calibrated scale.</p>
+                    <p>The relationship between instrumental magnitudes and calibrated magnitudes can be understood as
+                        follows. The counts per second \(N_t / t_{\exp}\) is proportional to the flux, \(F_\lambda\).
+                        Hence
+                        \[ m_{\rm inst} = -2.5 \log_{10} \left( \kappa F_\lambda \right) = -2.5 \log_{10} F_\lambda +
+                        c',\]
+                        therefore, instrumental magnitudes are offset from calibrated magnitudes by a constant:
+                        \[ m_{\rm calib}= m_{\rm inst} + m_{\rm zp},\]
+                        where the constant, \(m_{\rm zp}\), is known as the <strong>zero point</strong>. The zero point
+                        depends upon the telescope and filter used. We can understand this because if we used a larger
+                        telescope to observe a star, the instrumental magnitude would change, but the calibrated
+                        magnitude must not!
+                    </p>
+                    <p>A handy tip to remember about zero-points is this; an object with a calibrated magnitude equal to
+                        the zero point gives one count-per-second at the telescope. For example, suppose the zeropoint
+                        of a telescope/filter combination is \(m_{\rm zp} = 19.0\). If we observe a star with \(m_{\rm
+                        calib}= 19.0\), then it follows that, for this star \(m_{\rm inst}=0\). By definition then, this
+                        star gives one count-per-second.
+                    </p>
+                    <h6><strong>Extinction</strong></h6>
+                    <a name="extcoeff"></a>
+                    <p>The next step is to convert the instrumental magnitude, which is measured on the surface of the
+                        Earth, to the instrumental magnitude that would be observed above the atmosphere. This is
+                        necessary because the Earth's atmosphere absorbs light from the star, and the amount of light
+                        absorbed depends on the angle of the star above the horizon. If we didn't correct this effect,
+                        observations of objects at different times of night would give different magnitudes! We'll see
+                        how to correct for extinction <a href="#correct">below</a>, but first we need to work out how
+                        extinction depends on the angle of the star above the horizon.</p>
+                    <p>We can derive a simple equation for the extinction correction by assuming the atmosphere is a
+                        series of thin plane-parallel layers. <a href="#figure23">Figure 23</a> shows such a layer, of
+                        thickness \(dx\) at an altitude \(x\). The path length through the layer for light from a star
+                        at a zenith distance \(z\) is equal to \(dx \,/ \cos z = dx \sec z\). The term \(\sec z\) is
+                        known as the airmass, and is sometimes given the symbol \(X\). At the zenith, \(X= \sec z = 1\),
+                        and this increases to a value of 2 at a zenith distance of 60&deg;. Note that the approximation
+                        of the atmosphere as being plane-parallel breaks down at larger zenith distances. Due to the
+                        amount of extinction, it's a bad idea to observe astronomical objects this low, so we shall not
+                        worry about the curvature of the atmosphere here.</p>
+                </div>
+
+                <div class="cell small-11">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-9">
+                            <div class="thumbnail"><img src="files/small_1257.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-3">
+                            <p><strong>Figure 23: </strong> a thin, plane-parallel layer in the Earth's atmosphere. As the zenith distance of the star increases, the path length through the atmosphere increases, and hence the absorption increases. Credit: Vik Dhillon</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <p>If the monochromatic flux from an object incident on the layer is \(F_\lambda\) then the flux
+                        absorbed by the layer \(dF_\lambda\) will be proportional to both \(F_\lambda\) and the path
+                        length through the layer. Therefore:
+                        \[ dF_\lambda = - \alpha_\lambda F_\lambda \sec z \, dx,\]
+                        where the constant of proportionality, \(\alpha_\lambda\) is known as the absorption
+                        coefficient, with units of m-1. The absorption coefficient is a function of the composition and
+                        density of the atmosphere, and hence the altitude of the layer, \(x\). We can re-arrange this
+                        equation (and drop the \(\lambda\) subscripts for clarity) to give
+                        \[ \frac{dF}{F} = - \sec z \, \alpha \, dx.\]
+                        Integrating the equation above for \(x\) values from the top of the atmosphere, \(t\), to the
+                        bottom \(b\), we obtain
+                        \[ \int_t^b \frac{dF}{F} = - \sec z \int_t^b \alpha dx.\]
+                        Hence
+                        \[ \frac{F_b}{F_t} = \frac{F}{F_0} = \exp \left( -\sec z \int_t^b \alpha dx \right),\]
+                        where for clarity we have renamed the above-atmosphere flux \(F_t = F_0\) and the flux measured
+                        at the ground by the observer \(F_b = F\). Remembering that the difference between two
+                        magnitudes is \(m_1 - m_2 = -2.5 \log_{10} (F_1/F_2) \), we can write (via some magic with the
+                        <a href="http://en.wikipedia.org/wiki/Logarithm#Change_of_bas">change of base formula</a>),
+                        \[m-m_0 = -2.5\log_{10} (F/F_0) = 2.5 \sec z \log_{10}(e) \int_t^b \alpha dx .\]
+                        We <strong>define</strong> the extinction coefficient, \(k\), as:
+                        \[k = 2.5 \log_{10}(e) \int_t^b \alpha dx,\]
+                        to finally obtain:
+                        \[ m = m_0 + k \sec z = m_0 + kX,\]
+                        where \(m_0\) is the magnitude of a star observed with no extinction (i.e above the atmosphere)
+                        and \(m\) is the magnitude of a star observed at the Earth's surface at zenith distance \(z\).
+                        As an example, if the extinction coefficient from a site in the V-band is \(k=0.15\)
+                        magnitudes/airmass then a star would appear 0.15 magnitudes fainter at the zenith than it would
+                        appear above the atmosphere, and 0.3 magnitudes fainter than above the atmosphere when at a
+                        zenith distance of 60&deg;.
+                    </p>
+                    <p>The dominant source of extinction in the atmosphere is Rayleigh scattering by air molecules. This
+                        mechanism is proportional to \(\lambda^{-4}\), which means that extinction is much higher in the
+                        blue than in the red. The extinction can also vary from night to night depending on the
+                        conditions in the atmosphere, e.g. dust blown over from the Sahara can increase the extinction
+                        on La Palma during the summer by up to 1 magnitude. <a href="#table2">Table 2</a> lists the
+                        extinction coefficients on a typical (undusty) night on La Palma in <em>UBVRI</em>. For
+                        reference, the night sky brightness on La Palma when the Moon illumination is 0% (Dark), 50%
+                        (Grey) and 100% (Bright) illuminated is also listed. All values in <a href="#table2">table 2</a>
+                        have been taken from Chris Benn's ING signal program.
+                    </p>
+                </div>
+
+                <div class="cell small-10">
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-9">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Filter</th>
+                                        <th>\(\lambda_{\rm eff}\) (nm)</th>
+                                        <th>\(k\) (mags/airmass)</th>
+                                        <th colspan="3">\(m_{\rm sky}\) (mags/arcsec<sup>2</sup>)</th>
+                                    </tr>
+                                </thead>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th>Dark</th>
+                                        <th>Grey</th>
+                                        <th>Bright</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>U</td>
+                                        <td>360</td>
+                                        <td>0.55</td>
+                                        <td>22.0</td>
+                                        <td>20.0</td>
+                                        <td>17.7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>B</td>
+                                        <td>430</td>
+                                        <td>0.25</td>
+                                        <td>22.7</td>
+                                        <td>20.7</td>
+                                        <td>18.4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>550</td>
+                                        <td>0.15</td>
+                                        <td>21.9</td>
+                                        <td>19.9</td>
+                                        <td>17.6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>R</td>
+                                        <td>650</td>
+                                        <td>0.09</td>
+                                        <td>21.0</td>
+                                        <td>19.7</td>
+                                        <td>17.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I</td>
+                                        <td>820</td>
+                                        <td>0.06</td>
+                                        <td>20.0</td>
+                                        <td>18.9</td>
+                                        <td>16.7</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="cell small-12 medium-3">
+                            <p><strong>Table 2: </strong>typical extinction and sky brightness values in the
+                                <em>UBVRI</em> photometric system at a high-quality astronomical site.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <h6><strong>Correcting for extinction</strong></h6>
+                    <a name="correct"></a>
+                    <p>To measure the extinction on a particular night, it is necessary to measure the signal from a
+                        non-variable star at a number of different zenith distances. Inspecting the equation \(m = m_0 +
+                        k \sec z\), it can be seen that the extinction would be given by the gradient of a plot of the
+                        instrumental magnitude of the star versus \(\sec z\) and the \(y\)-intercept would give the
+                        above-atmosphere instrumental magnitude. Although such a plot would give the most accurate
+                        answer, it is also possible to obtain an estimate of \(k\) from just two measurements of the
+                        instrumental magnitude of a star at two different zenith distances: subtracting \(m_{z_1} = m_0
+                        + k \sec z_1\) from \(m_{z_2} = m_0 + k \sec z_2\) eliminates \(m_0\), allowing \(k\) to be
+                        derived.</p>
+                    <p>Note that no explicit extinction correction is required when performing <a
+                            href="../l05/#relphot">relative photometry</a>. This is because the target and comparison
+                        stars are always observed at the <strong>same airmass</strong> and hence suffer the same
+                        extinction. Hence, when the target signal is divided by the comparison star signal to correct
+                        for transparency variations, the variation due to extinction present in the comparison star is
+                        removed from the target star.
+                    </p>
+                    <h6><strong>Aside: Secondary Extinction</strong></h6>
+                    <p>For very accurate photometry, the wide bandpass of broad-band filters has to be taken into
+                        account when correcting for extinction. Because extinction is so strongly colour dependent, a
+                        blue object actually loses more light to the atmosphere than a red one. This is true even within
+                        the relatively narrow wavelength range of the <em>UBVRI</em> filters. The solution is to
+                        introduce a colour-dependent secondary extinction coefficient, \(k_2\), which modifies the above
+                        extinction correction equation to:
+                        \[ m = m_0 + k \sec z + k_2 C \sec z,\]
+                        where \(C\) is the colour index, e.g. when correcting a V-band magnitude for extinction, \(C = B
+                        - V\). The secondary extinction coefficient is usually of order a hundredth of a magnitude, so
+                        it will be ignored for the remainder of this course.</p>
+                    <h6><strong>Calibrated Magnitude</strong></h6>
+                    <p>Now we can find the above-atmosphere instrumental magnitude of any object. The final step is to
+                        observe a primary or secondary photometric standard star to convert to calibrated magnitudes.
+                        Suppose we have measured our instrumental magnitude of the standard star, \(m_{ {\rm std},i }\).
+                        We have also measured the extinction coefficient for the night, \(k\). The above-atmosphere
+                        instrumental magnitude of our standard star is therefore
+                        \[ m_{ {\rm std},0,i} = m_{ {\rm std},i } - kX_{\rm std} \]
+                        Since the zeropoint is defined via \( m = m_i + m_{\rm zp} \) then:
+                        \[m_{\rm zp} = m_{\rm std} - m_{ {\rm std},0,i} = m_{\rm std} - m_{ {\rm std},i } + kX_{\rm
+                        std},\]
+                        where \(m_{\rm std}\) is the calibrated magnitude of our standard star, which can be looked up
+                        in a catalog.
+                        The calibrated magnitude of our target star, \(m\), can then be found using:
+                        \[m = m_{\rm zp} + m_{0,i} = m_{\rm zp} + m_i - kX ,\]
+                        where \(m_{0,i}\) is the above-atmosphere instrumental magnitude of our target star.</p>
+                    <p>Each filter in a photometric system will have a different zero point. Once the zero point has
+                        been measured for a particular telescope, instrument, filter and detector combination, it should
+                        remain unchanged, although dirt and the degradation of the coatings on the optics will cause
+                        minor changes to the zero point on long timescales. To determine the zero points for the
+                        <em>UBVRI</em> system, the photometric standards measured by <a
+                            href="http://vizier.u-strasbg.fr/viz-bin/VizieR?-source=II/183A">Landolt</a> can be used.
+                    </p>
+                    <h6><strong>Precise Photometry: Colour Terms</strong></h6>
+                    <p>For very accurate photometry, the wide bandpass of broad-band filters also has to be taken intoV
+                        account when converting instrumental magnitudes to standard values. This is because the
+                        telescope, instrument, filter and detector used by an observer will always have a slightly
+                        different response to light as a function of wavelength than those used by the astronomers who
+                        originally defined the magnitudes of the photometric standard stars. The biggest discrepancy is
+                        often in the profile of the filter. <a href="#figure24">Figure 24</a> shows two <em>V</em>
+                        filters used at the Kitt Peak National Observatory in Arizona. The WIYN <em>V</em> filter has a
+                        sharper increase in transmission on the blue side of the profile than the Bessell <em>V</em>
+                        filter, allowing more light to enter from hot, blue stars than from cool, red stars. This
+                        creates a systematic error that makes blue stars seem a bit brighter than red stars when
+                        observed through the WIYN <em>V</em> filter.</p>
+                </div>
+
+                <div class="cell small-10">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-8">
+                            <div class="thumbnail"><img src="files/small_1278.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-4">
+                            <p><strong>Figure 24: </strong> plot by <a href="http://spiff.rit.edu/classes/phys445/lectures/color_terms/color_terms.html">Michael Richmond</a> showing two different V filters and the spectra of hot and cold stars, demonstrating why correcting for colour terms is necessary when performing high-accuracy photometry (see text for details).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <p>Fortunately, it is straightforward to correct for this systematic error by observing a field with
+                        many standard stars possessing a range of colours. The advantage of observing a single field is
+                        that all of the stars will then be at the same airmass and hence extinction effects are
+                        cancelled out. If this is not possible, you can use many observations of standard stars in
+                        different fields. We have already seen that:
+                        \[m_{\rm zp} = m_{\rm std} - m_{ {\rm std},0,i}.\]
+                        Hence, if the telescope, instrument, filter and detector combination being used matches that of
+                        the photometric system perfectly, we can write:
+                        \[m_{\rm std} - m_{ {\rm std},0,i} - m_{\rm zp} = 0.\]
+                        In practice, however, the observer's equipment is never identical to that used to define the
+                        photometric system, resulting in the above equation being modified to:
+                        \[m_{\rm std} - m_{ {\rm std},0,i} - m_{\rm zp} = c C,\]
+                        where \(c\) is the colour term, and \(C\) is the colour index (e.g \(B-V\)). Hence, the colour
+                        term is equal to the gradient in a plot of \(m_{\rm std} - m_{ {\rm std},0,i} - m_{\rm zp}\)
+                        against \(C\), i.e a plot of the difference between the catalogue magnitudes of the standard
+                        stars and their calibrated magnitudes as a function of colour; the \(y\) intercept is set to
+                        zero by using a zero point calculated from a star of \(B - V = 0\). An example of such a plot is
+                        shown in <a href="#figure25">figure 25</a>, which has a gradient of 0.072. You can see from this
+                        plot that use of colour terms are necessary to obtain accuracies of order 0.01 magnitudes (i.e
+                        1% in flux). If your requirements are less accurate, you can ignore colour terms, as we will do
+                        for the remainder of this course.</p>
+                </div>
+
+                <div class="cell small-10">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-8">
+                            <div class="thumbnail"><img src="files/small_1288.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-4">
+                            <p><strong>Figure 25: </strong> a <a href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2000PASA...17..244S&db_key=AST&high=3c321cbf8323876">plot</a> of the difference between the catalogue magnitudes of a set of standard stars and their calibrated magnitudes (y axis) as a function of colour (x axis). The gradient of the line is equal to the colour term.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+    </div>
+    <footer>
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell small-5">
+                <h5>Contact Info</h5>
+                <hr />
+                <a href="#"><span>Email:</span> s.littlefair@sheffield.ac.uk</a>
+                <a href="#"><span>Address:</span> University of Sheffield, UK</a>
+            </div>
+            <div class="cell small-5">
+                <h5>Re-Use</h5>
+                <hr />
+                <p>These notes are made available under a creative commons license.</p>
+                <a href="https://github.com/StuartLittlefair/phy217_website/blob/main/./src/lectures/principles/l04/index.html"><i
+                        class="fi-social-github"></i> Edit
+                    this Page on GitHub</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

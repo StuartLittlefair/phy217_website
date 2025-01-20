@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>L04: Imaging and Cameras | PHY217</title>
+
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/app.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/mystyles.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation-icons/foundation-icons.css" />
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"
+        integrity='RUrdBUoFnEhDTvqEMp5N8+JJOmAVDA5iIZ82nsaGBjm5991b9gGoBZdR46uF0NFs' crossorigin="anonymous"></script>
+
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/jquery.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/what-input.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/foundation.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/app.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">PHY217 <small>Observational Astronomy</small></li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/index.html"><i class="fi-home"></i></a></li>
+            <li>
+                <a href="#">Lectures</a>
+                <ul class="menu vertical">
+                    <li>
+                        <a href="#">Principles</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l01">The Photon&#39;s Path</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l02">Photometry I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p03">Relative Photometry</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l04">Photometry II</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p05">Absolute Photometry</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Telescopes</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l06">Refractors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l07">Reflectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l08">Amateur Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l09">Professional Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l10">Adaptive Optics</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Instruments</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l11">Detectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l12">Working with CCD data</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/p13">CCD processing in AstroImageJ</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l14">Cameras</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l15">Spectrographs I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l16">Spectrographs II</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Statistics</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l17">Basic Stats</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l18">Signal/Noise</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l19">The Bayesian Astronomer</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href=" https://stuartlittlefair.github.io/phy217_website/course_info/">Course Info</a></li>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/observing/">Observing Project</a></li>
+        </ul>
+    </div>
+</div>
+    <div class="main">
+        
+<!-- HERO SECTION -->
+<section class="hero">
+    <h4>L04: Imaging and Cameras <small>simple imagers and re-imagers</small></h4>
+</section>
+
+<!-- MAGELLAN -->
+<div data-sticky-container>
+    <div class="magellan" data-sticky data-margin-top="0" id="magellan-menu">
+        <ul class="menu" data-magellan>
+            
+            <li><a href="#intro">Introduction</a></li>
+            
+            <li><a href="#reducers">Focal Reducers</a></li>
+            
+            <li><a href="#reimagers">Re-imagers</a></li>
+            
+        </ul>
+    </div>
+</div>
+<br />
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: introduction -->
+    <section id="intro" data-magellan-target="intro">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <h5>Simple Imaging</h5>
+                    <p>Imagers are instruments capable of forming images of sources. The simplest imager is when we
+                        simply place a multi-pixel detector, such as a CCD, at the focal plane of the telescope.
+                        Usually, a filter wheel is placed in front of the detector, as shown in <a href="#figure83">figure 83</a>.</p>
+                    <p>Focusing a simple imager is accomplished either by moving the detector itself backward and
+                        forward until it is in the focal plane, or by moving the secondary mirror towards or away from
+                        the primary mirror. </p>
+                </div>
+
+                <div class="cell small-10">
+                    <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_4140.png"></div></div><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_4141.jpg"></div></div><div class="cell"><figure id="figure83"><figcaption><strong>Figure 83:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong>a simple imager, where a detector is placed at the focal place. Filters are placed in the converging beam and thus affect the focus position<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>the QSI 523 CCD camera with a 5-position filter wheel. This camera is used in the 10" remote-controlled telescope ROSA, and the robotic 50cm pt5m</figcaption></figure></div></div>
+                </div>
+
+                <div class="cell">
+                    <p>Since the filter in a simple imager is in the converging beam from the telescope, it causes the
+                        focal plane to move away from the primary, as shown in <a href="#figure83">figure 83</a>. Every time
+                        the filter is changed, the focus must be adjusted. The only way round this is by ensuring that
+                        the filters all have the same optical thickness, i.e. the product of the physical thickness and
+                        refractive index of each filter in the wheel is the same. In this case all the filters affect
+                        the focus position equally. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: focal reducers -->
+    <section id="reducers" data-magellan-target="reducers">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Focal Reducers/Enlargers</h5>
+                    <p>The issue with simple imagers is that they rely on the native <a
+                            href="../l02/index.html#platescale">plate scale</a>. This may be wholly unsuitable. For
+                        example a telescope with a focal length of 40m (say a 4m \(f/10\) Cassegrain) will have a plate
+                        scale of 5 arcseconds/mm. Typical CCDs are 2000 pixels across, and each pixel is 13 \(\mu\)m, so
+                        the total size of a CCD is around 25mm. The FoV of a simple imager would be around 2 arcminutes,
+                        which is no use for wide-field use. In addition, each pixel would only be 0.06". If the seeing
+                        was 1", we would have roughly 17 pixels across the seeing disc. Such a setup is non-optimal.
+                    </p>
+                    <h6><strong>Optimal CCD Sampling</strong></h6>
+                    <p>How many pixels should there be in the seeing disc? In the example above, we were spreading the
+                        light out over a disc of diameter 17 pixels. Each pixel has <a
+                            href="../l06/index.html#readout">read noise</a>, so this means lots of read noise for
+                        every star! On the other hand, if the pixels were larger than the seeing disc, the size of our
+                        stars would be set by our pixel size, and not the seeing - we are throwing away spatial
+                        resolution. As a compromise, it is common for instruments to be built so that the typical seeing
+                        disc is sampled by two pixels. But how do we achieve that? Replacing the telescope for one of a
+                        shorterfocal length, or the detector for one with more and/or larger pixels, is usually neither
+                        apractical nor economical solution, so what can be done?</p>
+                </div>
+
+            </div>
+            <!-- begin two column for figure -->
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-6">
+                    <figure id="figure84"><div class="thumbnail"><img src="files/small_4321.png"></div><figcaption><strong>Figure 84:</strong> a focal reducer. A positive optical element acts to shorten the focal length of the telescope. This reduces the magnification, enlarges the field of view and increases the \(f\)-ratio. Note the shift in the position of the focal plane when using a focal reducer/extender, which can be compensated for by refocusing the telecope. This shift should <strong>not be confused</strong> with the change in the focal length induced by the focal reducer/extender.</figcaption></figure>
+                </div>
+                <div class="cell small-12 medium-6">
+                    <p>One possibility is to use a focal reducer. This is a positive lens (or combination of lenses)
+                        which is usually placed in front of the focal plane, in the converging beam from the telescope,
+                        as shown in <a class="show-for-medium" href="#figure84">figure 84 (left)</a><a class="hide-for-medium" href="#figure84">figure 84 (above)</a>. The lens acts to shorten the focal length
+                        of the telescope, resulting in a larger plate scale and hence a larger field of view. We might
+                        also wish to use the opposite of a focal reducer - the focal extender or Barlow lens - which has
+                        negative optical power and acts to lengthen the focal length of the telescope, and hence
+                        decrease the plate scale and field of view.</p>
+                    <p>Note that although the focal plane is shifted by a focal reducer or extender, this shift is not
+                        the same as the change in the focal length. This seems odd, but remember the example of a filter
+                        in a simple imager (<a href="#figure83">figure 83</a>). A filter has no optical power, and cannot
+                        change the overall focal length. Yet, a filter in a converging beam affects the location of the
+                        focal plane. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: re-imagers -->
+    <section id="reimagers" data-magellan-target="reimagers">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Re-imagers</h5>
+                    <p>Focal reducers and extenders are common on amateur telescopes. On professional telescopes, a more
+                        complex method of changing the plate scale, known as a re-imager is employed. Re-imagers have
+                        several advantages over other methods, which we'll describe below. First though, it helps to
+                        look at how they work. A re-imager is shown in <a href="#figure85">figure 85</a>. A collimator is used to
+                        make the telescope's diverging beam parallel. The parallel beam then passes through the filter
+                        before being re-focussed onto the detector using a camera lens.</p>
+                    <p>The advantages of the re-imager arise from the fact that the filter and any additional optics are
+                        placed in a parallel beam. Thus, there change of focus if filters of different optical thickness
+                        are used, and no optical aberrations are introduced. The collimated beam is also easier to
+                        control than a diverging/converging beam. This makes it easy to add additional optics - for
+                        example to make a spectrograph, or a multi-coloured imager like ULTRACAM (<a href="#figure86">figure 86</a>).</p>
+                </div>
+
+                <div class="cell small-10">
+                    <figure id="figure85"><div class="thumbnail"><img src="files/small_4374.png"></div><figcaption><strong>Figure 85:</strong> a schematic of a re-imager. The plate scale at the camera focal plane is different to the plate scale at the telescope focal plane due to the action of the collimator and camera lens. Note the position of the filter, which allows for the smallest filter to be used, whilst still allowing all rays that pass through the telescope aperture to pass through the filter.</figcaption></figure>
+                </div>
+
+                <div class="cell">
+                    <p>The optical design of a re-imager is shown above in <a href="#figure85">figure 85</a>. We can see that our
+                        two stars are separated by a distance \(s_{\rm tel}\) in the telescope focal plane, where
+                        \(s_{\rm tel} = F_{\rm tel} \theta_1 = F_{\rm coll} \theta_2\). In the camera focal plane, where
+                        we place the detector, the same two stars are separated by a distance \(s_{\rm cam} = F_{\rm
+                        cam} \theta_2\). We can define a magnification for our re-imager by
+                        \[ M_r = s_{\rm cam}/s_{\rm tel}.\]
+                        With this definition, if \(M_r < 1\) we have a focal reducer (a de-magnifier), and if \(M_r> 1\)
+                            we have a focal extender. We can derive a different expression for \(M_r\) as follows:
+                            \[M_r = s_{\rm cam}/s_{\rm tel} = F_{\rm cam} \theta_2 / F_{\rm coll} \theta_2 = F_{\rm cam}
+                            / F_{\rm coll}.\]</p>
+                    <p>The magnification of a re-imager can thus be tuned by carefully selecting the focal lengths of
+                        the camera and collimator lenses. For \(M \lt 1\) we have a focal reducer (a de-magnifier).
+                        For most large telescopes, this is what we require. This is because, as shown above, the
+                        platescales of large telescopes are such that they will have very small fields-of-view without
+                        some de-magnification.
+                    </p>
+                </div>
+
+                <div class="cell small-10">
+                    <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_4382.jpg"></div></div><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_4383.jpg"></div></div><div class="cell"><figure id="figure86"><figcaption><strong>Figure 86:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong>a schematic ray-trace through ULTRACAM, the Sheffield/Warwick/UKATC-built three-colour imager. Light from the telescope focal plane at the top is collimated and then passes through two dichroic beamsplitters. The first reflects just the blue light, which then passes through a filter before being re-imaged by a camera onto a CCD (the yellow cylinder). The second dichroic reflects just the green light, leaving the red light to fall onto the CCD at the bottom.<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>ULTRACAM and it's creator, Prof Vik Dhillon. Here ULTRACAM is mounted at the Cassegrain focus of the 4.2m William Herschel Telescope on La Palma.</figcaption></figure></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+    </div>
+    <footer>
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell small-5">
+                <h5>Contact Info</h5>
+                <hr />
+                <a href="#"><span>Email:</span> s.littlefair@sheffield.ac.uk</a>
+                <a href="#"><span>Address:</span> University of Sheffield, UK</a>
+            </div>
+            <div class="cell small-5">
+                <h5>Re-Use</h5>
+                <hr />
+                <p>These notes are made available under a creative commons license.</p>
+                <a href="https://github.com/StuartLittlefair/phy217_website/blob/main/./src/lectures/instruments/l14/index.html"><i
+                        class="fi-social-github"></i> Edit
+                    this Page on GitHub</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

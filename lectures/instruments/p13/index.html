@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>P13: CCD image reduction | PHY217</title>
+
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/app.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/mystyles.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation-icons/foundation-icons.css" />
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"
+        integrity='RUrdBUoFnEhDTvqEMp5N8+JJOmAVDA5iIZ82nsaGBjm5991b9gGoBZdR46uF0NFs' crossorigin="anonymous"></script>
+
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/jquery.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/what-input.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/foundation.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/app.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">PHY217 <small>Observational Astronomy</small></li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/index.html"><i class="fi-home"></i></a></li>
+            <li>
+                <a href="#">Lectures</a>
+                <ul class="menu vertical">
+                    <li>
+                        <a href="#">Principles</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l01">The Photon&#39;s Path</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l02">Photometry I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p03">Relative Photometry</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l04">Photometry II</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p05">Absolute Photometry</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Telescopes</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l06">Refractors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l07">Reflectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l08">Amateur Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l09">Professional Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l10">Adaptive Optics</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Instruments</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l11">Detectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l12">Working with CCD data</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/p13">CCD processing in AstroImageJ</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l14">Cameras</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l15">Spectrographs I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l16">Spectrographs II</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Statistics</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l17">Basic Stats</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l18">Signal/Noise</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l19">The Bayesian Astronomer</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href=" https://stuartlittlefair.github.io/phy217_website/course_info/">Course Info</a></li>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/observing/">Observing Project</a></li>
+        </ul>
+    </div>
+</div>
+    <div class="main">
+        
+<!-- HERO SECTION -->
+<section class="hero">
+    <h4>P13: CCD image reduction <small>using AstroImageJ</small></h4>
+</section>
+
+<!-- MAGELLAN -->
+<div data-sticky-container>
+    <div class="magellan" data-sticky data-margin-top="0" id="magellan-menu">
+        <ul class="menu" data-magellan>
+            
+            <li><a href="#top">Introduction</a></li>
+            
+            <li><a href="#bias">Bias Frames</a></li>
+            
+            <li><a href="#dark">Dark Frames</a></li>
+            
+            <li><a href="#flat">Flat Fields</a></li>
+            
+            <li><a href="#calib">Calibration</a></li>
+            
+            <li><a href="#stack">Stacking</a></li>
+            
+            <li><a href="#colour">RGB Images</a></li>
+            
+        </ul>
+    </div>
+</div>
+<br />
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: Introduction -->
+    <section id="top" data-magellan-target="top">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <p>In the <a href="../l12/">previous lecture</a> we saw how to use bias frames, dark frames and flat
+                        fields to correct our raw CCD images and prepare them for accurate scientific work, like
+                        photometry. In this short practical we will use <a
+                            href="http://www.astro.louisville.edu/software/astroimagej/">astroImageJ</a> to process a
+                        series of images of M51 taken using the department's 10-inch robotic telescope, <a
+                            href="https://sites.google.com/sheffield.ac.uk/astronomy/rosa-observatory">ROSA</a>.
+                    </p>
+                    <p>AstroImageJ is already installed on the lab PCs. Should you want a copy for your own machine, it
+                        is available for <a href="http://www.astro.louisville.edu/software/astroimagej/">download</a>. A
+                        detailed and helpful <a
+                            href="http://www.astro.louisville.edu/software/astroimagej/guide/AstroImageJ_User_Guide_2.1.4.pdf">manual</a>
+                        is available. If you encounter difficulty, or do not understand a setting, check the manual.</p>
+                    <p>To open AstroImageJ, double-click the file
+                        <kbd>C:\SharedFolder\astrolab\AstroImageJ\ImageJ\AstroImageJ</kbd>.
+                    </p>
+                    <h5>The Data</h5>
+                    <p>You will need a copy of the data. The data files are located at
+                        <kbd>C:\SharedFolder\astrolab\M51</kbd>. There are 18 images of M51 in each filter. Also in this
+                        directory are three bias frames, three dark frames and three flat fields in each filter.
+                    </p>
+                    <p>You can work on the data in the <kbd>SharedFolder</kbd>. However, this folder is local to the PC
+                        you are working on now. If you want to keep files from this practical to use later, you will
+                        need to copy those files to your U: or M: drives. There is just over 100MB of raw data, so make
+                        sure you have enough free space before doing this!</p>
+                    <h5>Data Processing with astroImageJ</h5>
+                    <p>Before you start any data processing job, you should make sure you have the calibration files you
+                        need. </p>
+
+                    <div class="callout warning">
+                        <p><strong>Task 0:</strong> Open astroImageJ and open the file named "<kbd>M51_B_001.fit</kbd>".
+                            Look at the FITS header metadata by choosing <kbd>Edit > FITS Header</kbd>. Note the filter
+                            used and the exposure time. What calibration files will you need for this image? If you're
+                            unsure, try and ask.</p>
+                        <p>Close this image and the FITS header window.</p>
+                    </div>
+
+                    <p>Data processing in astroImageJ is performed the data processing window, shown in <a href="#figure79">figure 79</a>. Your next task is to familiarise yourself with this window.</p>
+                </div>
+
+                <div class="cell small-11">
+                    <figure id="figure79"><div class="thumbnail"><img src="files/small_3784.png"></div><figcaption><strong>Figure 79:</strong> The astroImageJ data processing (DP) window, which is used to process CCD images, and to create the master bias, dark and flat frames.</figcaption></figure>
+                </div>
+
+                <div class="cell">
+                    <div class="callout warning">
+                        <p><strong>Task 1:</strong> Open the data processing window by choosing <kbd>Plugins > Astronomy
+                                > Data Processor</kbd>, or by clicking the <span style="color:red;">D</span><span
+                                style="color:blue;">P</span> icon in the main astroImageJ window. Two
+                            windows will open. Close the one titled "<kbd>DP Coordinate Converter</kbd>" - we won't need
+                            it.</p>
+                        <p>The data processing (DP) window is shown in <a href="#figure79">figure 79</a>. DP operates like a
+                            script; it processes selected calibration and science images in a pre-defined way. The DP
+                            window is described in full in the astroImageJ <a
+                                href="http://www.astro.louisville.edu/software/astroimagej/guide/AstroImageJ_User_Guide_2.1.4.pdf">manual</a>.
+                            We shall only describe the sections of interest here.</p>
+                        <p>The DP window is organized into five sections horizontally and nine sections vertically.
+                            Starting from the left, the horizontal sections are:
+                        </p>
+                        <dl>
+                            <dt>Control</dt>
+                            <dd>The control checkboxes determine if master calibration frames are to be built (the
+                                <kbd>Build</kbd> checkboxes) and which master frames are to be used (the
+                                <kbd>Enable</kbd> checkboxes). For example, if the Bias Subtraction <kbd>Build</kbd> box
+                                is checked, as master bias frame will be made. If the bias subtraction <kbd>Enable</kbd>
+                                box is checked, the master bias will be subtracted from the science frames.
+                            </dd>
+                            <dt>Options</dt>
+                            <dd>The options checkboxes change the details of how calibration frames are built and used.
+                                For example, the <kbd>ave</kbd> and <kbd>med</kbd> radio buttons control if the master
+                                calibration frame is created using a mean or a median.</dd>
+                            <dt>Directory</dt>
+                            <dd>The directory boxes define the directory/folder location of each category of image
+                                files. The folder icon to the right of the directory boxes can be used to navigate to
+                                the appropriate folders, or the folder name can be typed manually.</dd>
+                            <dt>Filename/Pattern</dt>
+                            <dd>The filename/pattern boxes specify which files in the directory are to be processed.
+                                Wildcard notation can be used to choose all files which match a certain pattern. For
+                                example, the pattern "<kbd>bias*.fit</kbd>" will match all filenames which start with
+                                "<kbd>bias</kbd>", have any number of other characters, and end in "<kbd>.fit</kbd>".
+                                This is very useful for selecting only the bias frames in a certain directory, for
+                                example.</dd>
+                            <dt>Totals</dt>
+                            <dd>The totals column indicates the number of files found that match the pattern specified
+                                in the chosen directory. You can use this to check that you are finding the number of
+                                files you expect.</dd>
+                        </dl>
+                        <p>The DP window is also broken into a number of vertical sections:
+                        <ul>
+                            <li>The <kbd>science image processing</kbd> section determines which frames are
+                                considered as science frames - these are the frames we wish to de-bias etc. You can
+                                select frames by folder, by pattern and also filter based on frame number.</li>
+                            <li>The <kbd>Bias Subtraction</kbd>, <kbd>Dark Subtraction</kbd> and <kbd>Flat
+                                    Division</kbd> sections determines whether to <kbd>build</kbd> or use
+                                (<kbd>enable</kbd>) the master calibration frames. The frames which make up the
+                                master calibration frame, and the name and location of the master frame are set
+                                using the <kbd>Directory</kbd> and <kbd>Filename/Pattern</kbd> boxes.</li>
+                            <li>The <kbd>Non-linearity</kbd>, <kbd>FITS Header Update</kbd> and
+                                <kbd>Post-Processing</kbd> sections are not of interest to us in this practical.
+                                Make sure they are made inactive by de-selecting the radio boxes in the
+                                <kbd>Control</kbd> area of these sections.
+                            </li>
+                            <li>The <kbd>Save Calibrated Images</kbd> determines where our processed images are
+                                saved. We can save to a sub-directory of the main science folder and/or add a suffix
+                                to our filenames. Delete any text in the <kbd>suffix</kbd> box, and type
+                                "<kbd>calib</kbd>" in the Sub-dir box to save calibrated images to a sub-directory
+                                named calib. </li>
+                        </ul>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: bias frames -->
+    <section id="bias" data-magellan-target="bias">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Making a master bias</h5>
+                    <p>It is possible to create all the calibration frames, and calibrate all our images in one step.
+                        <strong>Do not do this the first time round</strong>. It's easy to get it wrong and end up with
+                        a load of useless files. Instead, let's take things step-by-step.
+                    </p>
+
+                    <div class="callout warning">
+                        <p><strong>Task 2:</strong> In the <kbd>Control</kbd> section, make sure everything is
+                            <strong>un-checked</strong>, apart from <kbd>Build</kbd> in the <kbd>Bias Subtraction</kbd>
+                            area. Make sure the <kbd>Options</kbd> are set to use a median to build the master bias.
+                        </p>
+                        <p>Set both directory sections to the folder containing the raw data.</p>
+                        <p>Enter "<kbd>bias*.fit</kbd>" in the top filename/pattern section. This will choose all files
+                            which match this pattern, e.g <em>bias1.fit, bias2.fit</em> etc. In the bottom
+                            filename/pattern section, type "<kbd>masterbias.fit</kbd>" to save a master bias frame with
+                            this name.</p>
+                        <p>Check the totals column to ensure you've got your settings right (you should be combining
+                            three bias frames) and hit <kbd>START</kbd>. A log window will appear describing the steps
+                            taken. Open your masterbias.fit frame to check everything looks OK. It should look like
+                            <a href="#figure80">figure 80</a>.</p>
+                        <p>What's your mean bias level?</p>
+                    </div>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-7">
+                            <div class="thumbnail"><img src="files/small_3802.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-5">
+                            <p><strong>Figure 80: </strong> A master bias frame, displayed in astroImageJ. The mean bias level is displayed at the bottom of the window.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: dark frames -->
+    <section id="dark" data-magellan-target="dark">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Dark Frame</h5>
+                    <p>With our master bias built, let's make a dark frame. As a reminder, we must subtract the bias
+                        from the individual dark frames, and combine them using the median.</p>
+                    <div class="callout warning">
+                        <p><strong>Task 3:</strong> We want to adjust our settings so that we do not re-build our master
+                            bias, but we do build a master dark from a set of bias-subtracted dark frames. Ensure you
+                            check <strong>only</strong> the following:
+                        <ul>
+                            <li><kbd>Bias Subtraction -> Enable</kbd></li>
+                            <li><kbd>Dark Subtraction -> Build</kbd></li>
+                            <li><kbd>Dark Subtraction -> Med</kbd></li>
+                            <li><kbd></kbd>Dark Subtraction -> deBias</li>
+                        </ul>
+                        The last item makes astroImageJ produce a master dark which is bias subtracted. If you un-check
+                        it, astroImageJ produces a master dark which is not bias subtracted, even if Bias Subtraction
+                        Subtraction</kbd> is enabled
+                        </p>
+                        <p>Set both directory sections in the <kbd>Dark Subtraction</kbd> area to the folder containing
+                            the raw data.</p>
+                        <p>Enter "<kbd>dark*.fit</kbd>" in the top filename/pattern section. This will choose all files
+                            which match this pattern, e.g <em>dark1.fit, dark2.fit</em> etc. In the bottom
+                            filename/pattern section, type "<kbd>masterdark.fit</kbd>" to save a master bias frame with
+                            this name.</p>
+                        <p>Check the totals column to ensure you've got your settings right (you should be combining
+                            three dark frames) and hit <kbd>START</kbd>. A log window will appear describing the steps
+                            taken. Open your masterdark.fit frame to check everything looks OK. It should look like
+                            <a href="#figure81">figure 81</a>, and the average dark current level should be around 50 counts.
+                            If it is nearer 370 counts, you have messed up the bias subtraction settings.</p>
+                        <p>Find the exposure time in the FITS Header, and work out the dark current in counts/pixel/sec.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-7">
+                            <div class="thumbnail"><img src="files/small_3944.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-5">
+                            <p><strong>Figure 81: </strong> A master dark frame displayed in astroImageJ. The mean dark current is around 50 counts/pixel, but several 'hot pixels' have much higher levels of dark current.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: flat frames -->
+    <section id="flat" data-magellan-target="flat">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Flat Field</h5>
+                    <p>Now we need to prepare master flat fields. Since the flat field depends upon the filter used, we
+                        need to create a master flat field for each of the B, V and I filters. To start with we will
+                        create a flat for the I-band.</p>
+                    <p>The flat field images are only very short exposures (less than a couple of seconds), so the dark
+                        current in the images will be tiny (You can check this with the measured dark current from
+                        earlier). Hence we will not need to subtract a dark from the flat fields. Instead, we create a
+                        master flat field by subtracting a bias from each image, normalising each frame, and combining
+                        the normalised frames using a median.</p>
+                    <div class="callout warning">
+                        <p><strong>Task 4:</strong> Ensure you check <strong>only</strong> the following:
+                        <ul>
+                            <li><kbd>Bias Subtraction -> Enable</kbd></li>
+                            <li><kbd>Flat Division -> Build</kbd></li>
+                            <li><kbd>Flat Division -> Med</kbd></li>
+                        </ul>
+                        For clarity, do not check <kbd>Build</kbd> or <kbd>Enable</kbd> in the <kbd>Dark
+                            Subtraction</kbd> area. We do not wish to re-build our master dark, or subtract darks from
+                        the flat fields.
+                        </p>
+                        <p>Set both directory sections in the <kbd>Flat Division</kbd> area to the folder containing the
+                            raw data.</p>
+                        <p>Enter "<kbd>twiflat_I*.fit</kbd>" in the top filename/pattern section. This will choose all
+                            files which match this pattern, e.g <em>twiflat_I1.fit, twiflat_I2.fit</em> etc. In the
+                            bottom filename/pattern section, type "<kbd>masterflat_I.fit</kbd>" to save a master flat
+                            frame with this name.</p>
+                        <p>Check the totals column to ensure you've got your settings right (you should be combining
+                            three flat field frames) and hit <kbd>START</kbd>. A log window will appear describing the
+                            steps taken. Open your masterflat_I.fit frame to check everything looks OK. It should look
+                            like <a href="#figure82">figure 82</a>, and the average level should be 1 count. </p>
+                        <p>Once you're happy with the I-band flat field, make flat fields for the B and V-band filters
+                            as well.</p>
+                    </div>
+                </div>
+
+                <!-- two column fig/caption -->
+                <div class="cell small-11">
+                    
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-7">
+                            <div class="thumbnail"><img src="files/small_3963.png"></div>
+                        </div>
+                        <div class="cell small-12 medium-5">
+                            <p><strong>Figure 82: </strong> The master flat field in the I-band filter, displayed in astroImageJ. The mean level is 1 count. The vignetting pattern, <a href="../l12/#flats">flat field grain</a> and dust donuts are clearly visible. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: calib -->
+    <section id="calib" data-magellan-target="calib">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Calibrating science frames</h5>
+                    <p>With our master calibration frames in hand, we can proceed to calibrate our science images. We
+                        will start with the I-band data. As a reminder, we will need to subtract a bias and a dark from
+                        our science image, and then divide by the master flat field for the appropriate filter. Because
+                        the dark frames were taken with a 300 second exposure time, and our science frames were taken
+                        with a 200 second exposure time, we will need to scale the master dark frame under the
+                        assumption that dark current builds up linearly with time. </p>
+                    <div class="callout warning">
+                        <p><strong>Task 5:</strong> Ensure you check <strong>only</strong> the following:
+                        <ul>
+                            <li><kbd>Science Image Processing -> Filename Pattern Matching -> Enable</kbd></li>
+                            <li><kbd>Bias Subtraction -> Enable</kbd></li>
+                            <li><kbd>Dark Subtraction -> Enable</kbd></li>
+                            <li><kbd>Dark Subtraction -> Scale</kbd></li>
+                            <li><kbd>Flat Division -> Enable</kbd></li>
+                            <li><kbd>Save Calibrated Images -> Enable</kbd></li>
+                            <li><kbd>Save Calibrated Images -> 16</kbd></li>
+                        </ul>
+                        The last option will save the pixel values in our calibrated files as 16-bit digital numbers.
+                        There is no need to use 32-bit numbers, since the CCD has a 16-bit ADC.
+                        </p>
+                        <p>In the <kbd>Sub-dir</kbd> box in the <kbd>Save Calibrated Images</kbd> area, enter
+                            "<kbd>calib</kbd>", to save our calibrated files to a sub-directory called "calib". Make
+                            sure the <kbd>suffix</kbd> box is empty.</p>
+                        <p>In the <kbd>Filename Pattern Matching</kbd> area, set the directory to the folder containing
+                            the raw images. In the Filename/Pattern box, type "<kbd>M51_I_*.fit</kbd>". This will match
+                            files with names like "<em>M51_I_001.fit", "M51_I_002.fit</em>" etc. </p>
+                        <p>Check the totals column to make sure you have got everything right. You should have 18
+                            science images, and one of each calibration frame. When you're happy that everything is OK,
+                            hit <kbd>START</kbd> and check the log for errors. Depending on the settings you have,
+                            astroImageJ may display the calibrated images as it goes along. </p>
+                        <p>Open the calibrated and un-calibrated versions of <kbd>M51_I_018.fit</kbd>, and compare them.
+                            Make sure your calibration has worked as you would expect. Your calibrated version should
+                            show roughly the same count levels, but have no visible vignetting, and a marked reduction
+                            in hot pixels.</p>
+                        <p>When you are done, close the DP window.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: stacking -->
+    <section id="stack" data-magellan-target="stack">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Stacking Images</h5>
+                    <p>There will be many occasions when you will want to average several calibrated images of the same
+                        target. In this case we want to make a pretty colour image, but more usually you will want to
+                        perform photometry on a single image with an improved <a
+                            href="../../stats/l18/">signal-to-noise</a> ratio. </p>
+                    <p>We can stack our images in astroImageJ by loading them into a virtual stack and using the
+                        alignment tools, as we did when we used astroImageJ for <a href="../../principles/p03/">relative
+                            photometry</a>. </p>
+                    <div class="callout warning">
+                        <p><strong>Task 6:</strong> Load the calibrated I-band images into astroImageJ by choosing
+                            <kbd>File > Import > Image Sequence</kbd>. Select the calib folder containing the calibrated
+                            B, V and I images. When the <kbd>Sequence Options</kbd> window appears, we will need to
+                            enter "<kbd>M51_I</kbd>" into the <kbd>File name contains</kbd> box, so that we only load
+                            the I-band images into a sequence. Make sure you tick the <kbd>Use Virtual Stack</kbd>
+                            checkbox
+                        </p>
+                        <p>Scroll through the images in your sequence. You will notice they are not perfectly aligned,
+                            due to imperfections in telescope tracking and autoguiding. </p>
+                        <p>Align the images by choosing <kbd>Process > Align stack using WCS or apertures...</kbd> This
+                            brings up the stack aligner window. Make sure the <kbd>Use previous N apertures</kbd> box
+                            and the <kbd>Align only to whole pixels</kbd> boxes are unchecked. Make sure the <kbd>Show
+                                help panel</kbd> box is checked.</p>
+                        <p>The radii of the object aperture and sky annuli are not too important, but you might want to
+                            make sure the object radius is set to a reasonable value, since if the star lies outside
+                            this radius, AstroImageJ will not be able to calculate the image shift. Set this value to
+                            somewhere in the range 15-20. </p>
+                        <p>Click <kbd>OK</kbd> to begin selecting stars to use for alignment. Left click on a star to
+                            add an aperture around it. Add two or three bright stars to use for alignment and press
+                            Enter or right-click to begin the alignment procedure.</p>
+                        <p>AstroImageJ will now look for a star within each aperture, and measure the centroid of those
+                            stars. For each image, it uses the centroid of the stars to estimate the image shift, and
+                            saves an aligned version of the image into a subdirectory called <kbd>aligned</kbd>.</p>
+                        <p>When AstroImageJ has finished, close the photometry window, and load the aligned images in as
+                            an Image Sequence. Once you've loaded the aligned images into the stack, hit the button and
+                            check the alignment. <strong>Make sure all 18 images have been successfully
+                                aligned!</strong></p>
+                        <p>Finally, if you are happy with your alignment, select the main astroImageJ window and choose
+                            <kbd>Image > Stacks > Z Project...</kbd> to combine all the images in a stack to a single
+                            image. Choose <kbd>Median</kbd> as the <kbd>Projection type</kbd> and click <kbd>OK</kbd>.
+                        </p>
+                        <p>Save the aligned I-band image as a fits image (<kbd>File > Save Image/Slice as FITS</kbd>)
+                            using the name "<kbd>median_I.fit</kbd>", and repeat the whole process for the B and I-band
+                            images. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: colour -->
+    <section id="colour" data-magellan-target="colour">
+        <div class="grid-container">
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <hr />
+                    <h5>Making a colour image</h5>
+                    <p>At this point you should have a single image for each filter, which is the result of median
+                        combining each of the calibrated images in that filter. For something like an open cluster
+                        project, these images would be a great starting point for your <a
+                            href="../../principles/p05/">absolute photometry</a>. We're going to reward ourselves for
+                        all our hard work by making a colour image of M51. </p>
+                    <div class="callout warning">
+                        <p><strong>Task 7:</strong> Follow the instructions for task 6 to align the three images in each
+                            filter.</p>
+                        <p>Open the three aligned images in a virtual stack. Combine them into a colour image by
+                            choosing <kbd>Color > Make Composite color image</kbd>. A box will appear; use the drop-down
+                            menu to select <kbd>Display Mode: Color</kbd>. A second box will appear, with the title
+                            <kbd>Channels</kbd> and the check box for Channel 1 selected. </p>
+                        <p>We have to assign the correct colour to each channel. astroImageJ doesn't know in advance
+                            which file corresponds to which colour. When you check the box for a given channel the image
+                            will be displayed, and you can tell from the filename in the main window which file has been
+                            put in which channel. If you need to change them, use the button labelled <kbd>More>></kbd>
+                            in the <kbd>Channels</kbd> window to choose the appropriate color for each file. You want to
+                            place the I-band image in the red channel, the V-band in the green and the B-band in the
+                            blue.</p>
+                        <p>Once you’ve assigned the correct colour to each channel, you can see the combined results of
+                            your work by changing the display mode from <kbd>Color</kbd> to <kbd>Composite</kbd>.
+                            Ideally the resulting composite image should show relatively white stars and relatively
+                            black sky. You can go back to <kbd>Color</kbd> mode, and adjust the grayscale sliders (or
+                            even choose a different display colour for a given master frame) and remake your composite
+                            image.</p>
+                        <p>To get a nice looking image will take some effort here!</p>
+                        <p>To save the combined channels as a single image use the <kbd>More>></kbd> button and the
+                            <kbd>Convert to RGB</kbd> option. This will open a new window with a single, combined colour
+                            image. Then you can save the combined image in any number of formats using the file menu.
+                        </p>
+                        <p>With a bit of work, you can re-produce the image shown at the end of the <a
+                                href="../l12/">previous lecture</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+    </div>
+    <footer>
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell small-5">
+                <h5>Contact Info</h5>
+                <hr />
+                <a href="#"><span>Email:</span> s.littlefair@sheffield.ac.uk</a>
+                <a href="#"><span>Address:</span> University of Sheffield, UK</a>
+            </div>
+            <div class="cell small-5">
+                <h5>Re-Use</h5>
+                <hr />
+                <p>These notes are made available under a creative commons license.</p>
+                <a href="https://github.com/StuartLittlefair/phy217_website/blob/main/./src/lectures/instruments/p13/index.html"><i
+                        class="fi-social-github"></i> Edit
+                    this Page on GitHub</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>L03: Reflector Design &amp; Practical Use | PHY217</title>
+
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/app.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/mystyles.css">
+    <link rel="stylesheet" href="https://stuartlittlefair.github.io/phy217_website/css/foundation-icons/foundation-icons.css" />
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"
+        integrity='RUrdBUoFnEhDTvqEMp5N8+JJOmAVDA5iIZ82nsaGBjm5991b9gGoBZdR46uF0NFs' crossorigin="anonymous"></script>
+
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/jquery.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/what-input.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/vendor/foundation.js"></script>
+    <script src="https://stuartlittlefair.github.io/phy217_website/js/app.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">PHY217 <small>Observational Astronomy</small></li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/index.html"><i class="fi-home"></i></a></li>
+            <li>
+                <a href="#">Lectures</a>
+                <ul class="menu vertical">
+                    <li>
+                        <a href="#">Principles</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l01">The Photon&#39;s Path</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l02">Photometry I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p03">Relative Photometry</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/l04">Photometry II</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/principles/p05">Absolute Photometry</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Telescopes</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l06">Refractors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l07">Reflectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l08">Amateur Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l09">Professional Use</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/telescopes/l10">Adaptive Optics</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Instruments</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l11">Detectors</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l12">Working with CCD data</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/p13">CCD processing in AstroImageJ</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l14">Cameras</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l15">Spectrographs I</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/instruments/l16">Spectrographs II</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=" #">Statistics</a>
+                        <ul class="menu vertical">
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l17">Basic Stats</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l18">Signal/Noise</a></li>
+                            
+                            <li><a href="https://stuartlittlefair.github.io/phy217_website/lectures/stats/l19">The Bayesian Astronomer</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href=" https://stuartlittlefair.github.io/phy217_website/course_info/">Course Info</a></li>
+            <li><a href="https://stuartlittlefair.github.io/phy217_website/observing/">Observing Project</a></li>
+        </ul>
+    </div>
+</div>
+    <div class="main">
+        
+<!-- HERO SECTION -->
+<section class="hero">
+    <h4>L03: Reflector Design &amp; Practical Use <small>mounts and sites</small></h4>
+</section>
+
+<!-- MAGELLAN -->
+<div data-sticky-container>
+    <div class="magellan" data-sticky data-margin-top="0" id="magellan-menu">
+        <ul class="menu" data-magellan>
+            
+            <li><a href="#designs">Telescope Designs</a></li>
+            
+            <li><a href="#mounts">Mounts</a></li>
+            
+            <li><a href="#locations">Locations</a></li>
+            
+            <li><a href="#guiding">Guiding</a></li>
+            
+        </ul>
+    </div>
+</div>
+<br />
+<!-- magellan content -->
+<div class="sections">
+
+    <!-- NEW SECTION: telescope designs -->
+    <section id="designs" data-magellan-target="designs">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <h5>Reflecting Telescope Designs</h5>
+                    <h6><strong>Newtonian Reflectors</strong></h6>
+                    <p>James Gregory was never able to bring his telescope design, known as the Gregorian, into
+                        practical use,
+                        and it is Isaac Newton who is credited with making the first working reflecting telescope in
+                        1668. His
+                        design, known as the Newtonian, is shown in <a href="#figure46">figure 46</a>. The Newtonian is a
+                        two-mirror
+                        telescope in which the first mirror in the light path, known as the primary, is a concave
+                        parabola. The
+                        secondary mirror has no curvature at all and is hence referred to as a flat. It simply folds the
+                        light
+                        through 90&deg;, placing the focal plane just outside the incoming beam. The focal ratio at the
+                        Newtonian focus is typically about 5. The secondary mirror is inclined at an angle of 45&deg;
+                        with
+                        respect to the primary. The base of the flat is actually elliptical in shape so as to minimise
+                        the size
+                        of the circular shadow it casts on the primary.</p>
+                    <p>Although small amateur telescopes still adopt a Newtonian configuration, visual access to the
+                        focus becomes inconvenient as the telescope becomes larger, and mounting instrumentation there
+                        would unbalance the telescope, as demonstrated in <a href="#figure46">figure 46</a>. Hence Newtonians are
+                        rarely found in professional observatories.</p>
+                </div>
+            </div>
+
+            <div class="grid-x align-center">
+                <div class="cell small-11">
+                    <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_2414.gif"></div></div><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_2415.jpg"></div></div><div class="cell"><figure id="figure46"><figcaption><strong>Figure 46:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong>a schematic of a Newtonian reflector. Credit: Vik Dhillon.<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>a photograph of a modern Newtonian reflector</figcaption></figure></div></div>
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="cell">
+                    <h6><strong>Cassegrain Reflectors</strong></h6>
+                    <p>In 1672, the French priest Laurent Cassegrain developed another reflecting telescope design which
+                        is now named after him - the Cassegrain. This design, shown in <a href="#figure47">figure 47</a>, has
+                        been adopted by the majority of the world's largest telescopes due to the convenience of
+                        mounting instrumentation at the focus.</p>
+                    <p>The Cassegrain telescope has a concave parabolic primary mirror like the Newtonian, but it
+                        employs a convex hyperbolic secondary. This increases the focal length of the telescope and
+                        reflects the beam back towards the primary, where it passes through a hole bored in the centre
+                        of the mirror and comes to a focus just below it. This is a much more easily accessible focus
+                        than the Newtonian, and an ideal place to mount large and heavy instrumentation. Compared to a
+                        Newtonian, nothing is lost by having a hole in the primary, as this region of the mirror lies
+                        under the shadow of the secondary. Moreover, because the beam is folded back on itself, it is
+                        possible to have a much longer focal length telescope without a correspondingly long tube: the
+                        focal ratio of a typical Cassegrain focus is 15.</p>
+                    <p>Another advantage of the Cassegrain design for professional observatories is that removing the
+                        secondary mirror gives access to <strong>prime focus</strong>. This is equivalent to the
+                        Newtonian, and provides a much smaller focal ratio and hence larger field of view than the
+                        Cassegrain focus. The wider field makes prime-focus imaging more susceptible to off-axis
+                        aberrations than Cassegrain-focus imaging, hence lens-based correctors are usually required at
+                        prime focus.</p>
+                </div>
+            </div>
+
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    <figure id="figure47"><div class="thumbnail"><img src="files/small_2436.gif"></div><figcaption><strong>Figure 47:</strong> a schematic of a Cassegrain reflector. The hyperbolic secondary increases the focal length, placing it below the primary mirror. Credit: Vik Dhillon</figcaption></figure>
+                </div>
+                <div class="cell small-10">
+                    <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_2455.jpg"></div></div><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_2457.jpg"></div></div><div class="cell"><figure id="figure48"><figcaption><strong>Figure 48:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong>photograph of the 5m Hale Telescope on Mount Palomar, California. This telescope is a Cassegrain reflector and was the largest telescope in the world between 1948 and 1993. Note the instruments at Cassegrain focus.<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>photograph of an observer in the prime focus cage of the Hale telescope. Nowadays, remote operation of prime-focus instrumention means that it is no longer necessary for astronomers to spend the night in the cage!</figcaption></figure></div></div>
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="cell">
+                    <h6><strong>Ritchey-Chretien reflectors</strong></h6>
+                    <p>Both the Newtonian and Cassegrain telescopes suffer from significant off-axis aberrations,
+                        primarily coma. To remedy this, the American and French optical designers George Ritchey and
+                        Henri Chretien jointly developed the Ritchey-Chretien telescope around 1910. The
+                        Ritchey-Chretien is a modified form of the Cassegrain design, with a concave hyperbolic primary
+                        and a convex hyperbolic secondary. The advantage of this design is that both spherical
+                        aberration and coma are removed. Astigmatism and field curvature are also reduced, all at the
+                        expense of a larger secondary mirror. The shadow of the larger secondary covers some of the
+                        primary mirror. Hence the Ritchey-Chretien delivers significantly better imaging performance
+                        over a wider field of view than a Cassegrain, but with a slightly lower light grasp. Due to the
+                        expense of making hyperbolic mirrors, Ritchey-Chretien designs are usually only found in
+                        research telescopes. The best known example of a Ritchey-Chretien telescope is the 2.4m Hubble
+                        Space Telescope.</p>
+                    <h6><strong>Catadioptric designs</strong></h6>
+                    <p>So far, we have been considering telescopes composed of only mirrors, or only lenses. Of course,
+                        it is possible to combine the two. Telescopes that use both mirrors and lenses are known as
+                        catadioptric. They include the <a
+                            href='http://www.vikdhillon.staff.shef.ac.uk/teaching/phy217/telescopes/phy217_tel_catadioptric.html#schmidt'>Schmidt</a>
+                        telescope, built to image very large fields. The field of view of a reflecting telescopes is
+                        limited by <a href='../l02/index.html#offaxis'>coma</a>
+                        to tens of arcseconds. A Schmidt telescope uses lenses and spherical mirrors to image fields up
+                        to tens of degrees. </p>
+                    <p>Schmidt-Cassegrain telescopes are a hybrid of the Schmidt and Cassegrain designs. It is not a
+                        telescope you will find in major research observatories, but it is arguably the most widespread
+                        design used in the amateur telescope market. A schematic of the Schmidt-Cassegrain design is
+                        shown in <a href="#figure49">figure 49</a>. The 16-inch telescope on the roof of the Hicks building,
+                        and the 10-inch robotic telescope, are both Schmidt-Cassegrain designs.</p>
+
+                </div>
+            </div>
+
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    <figure id="figure49"><div class="thumbnail"><img src="files/small_2510.gif"></div><figcaption><strong>Figure 49:</strong> A schematic of a Schmidt-Cassegrain telescope. The lens corrects for spherical aberrations. Credit: Vik Dhillon</figcaption></figure>
+                </div>
+            </div>
+
+            <div class="grid-x">
+                <div class="cell">
+                    <p>The great advantage of the Schmidt-Cassegrain design is that it is cheap to mass produce, thanks
+                        to the use of spherical mirrors. The resulting spherical aberration is dealt with by the
+                        corrector lens, a feature it borrows from the Schmidt telescope. Unlike the Schmidt telescope,
+                        however, the Schmidt-Cassegrain suffers from off-axis aberrations like coma and astigmatism
+                        because the corrector lens is not placed at the centre of curvature. The Schmidt-Cassegrain
+                        retains one of the main advantages of the Cassegrain - a long focal length in a short tube,
+                        giving a telescope which is compact and portable yet able to provide small enough plate scales
+                        for detailed planetary viewing. This versatility makes them ideal for the amateur astronomy
+                        market. The typical focal ratio of a Schmidt-Cassegrain telescope is f/10 and they are available
+                        in apertures ranging from approximately 4-16 inches. Larger apertures become impractical due to
+                        the cost of manufacturing the corrector and mounting it without flexure (especially if the
+                        secondary mirror is attached to it).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: mount types -->
+    <section id="mounts" data-magellan-target="mounts">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <hr />
+                    <h5>Telescope Mounts</h5>
+                    <p>A telescope mount must hold the telescope stably, and be able to track an object as it moves in
+                        the night sky. The only type of mount available before the 1980s, and still a common mount for
+                        smaller telescopes is the <strong>equatorial mount</strong>, shown in <a href="#figure51">figure 51</a>
+                        below.</p>
+                </div>
+            </div>
+
+            <!-- begin two column for figure -->
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-6">
+                    <figure id="figure51"><div class="thumbnail"><img src="files/small_2732.png"></div><figcaption><strong>Figure 51:</strong> Schematic of an equatorial mounting. The mount rotates about two axes, one of which (the polar axis) is aligned with the Earth's rotation axis, and hence the celestial pole.</figcaption></figure>
+                </div>
+                <div class="cell small-12 medium-6">
+                    <p>The beauty of an equatorial mount is the one-to-one relationship between RA and Dec and the axes
+                        of the mount. Not only does this make it easy to point at an object, this also makes it simple
+                        to track the motion of an object due to the Earth's rotation by driving just the polar axis at
+                        an equal angular velocity, but in the opposite direction, to the angular velocity of the Earth
+                        on its rotation axis.</p>
+                    <p>There are many different types of equatorial mount, described in detail for the curious in <a
+                            href='http://www.vikdhillon.staff.shef.ac.uk/teaching/phy217/telescopes/phy217_tel_equatorial.html'>Vik
+                            Dhillon's notes</a>. However, all share the same flaw - the polar axis must be aligned with
+                        the Earth's rotation axis. This means that unless the telescope is situated at the Earth's
+                        poles, the polar axis will be inclined relative to the ground, thereby creating stresses on the
+                        axes which vary as the telescope moves. For large research telescopes, such as the <a
+                            href='http://www.vikdhillon.staff.shef.ac.uk/teaching/phy217/telescopes/phy217_tel_equatorial.html#figure33'>3.9m
+                            Anglo-Australian Telescope</a>, this makes equatorial mounts incredibly hard to build, since
+                        the amount of material needed to make them rigid becomes prohibitive.</p>
+                </div>
+            </div>
+
+            <!-- back to 1 column layout -->
+            <div class="grid-x">
+                <div class="cell">
+                    <p>The solution to this is use an Alt-Az Mount, short for Altitude-Azimuth. As the name implies, the
+                        two axes of this mount are aligned with the altitude and azimuth axes of the horizontal
+                        coordinate system. The telescope is mounted on a short fork, as shown in <a href="#figure52">figure 52</a>. The great advantage of the Alt-Az mount is the telescope's center of mass is fixed above the
+                        mounting point, meaning that very stable mounts can be built, even for the largest telescopes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- begin two column for figure -->
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-6">
+                    <figure id="figure52"><div class="thumbnail"><img src="files/small_2744.jpg"></div><figcaption><strong>Figure 52:</strong> An Alt-Az mount, built by <a href='http://planewave.com/products-page/cdk700/0-7m-cdk-telescope-system'>PlaneWave.</a></figcaption></figure>
+                </div>
+                <div class="cell small-12 medium-6">
+                    <p>Alt-Az mounts are the only choice for the largest telescopes in the world, but they are not
+                        without disadvantages. For a start, tracking an object requires moving both axes of the mount,
+                        unlike an equatorial mount. Moreover, the speed at which each axis must move depends on the
+                        location of the object. The calculations required to move the two axes are quite complex (a
+                        coordinate conversion between the equatorial and horizontal systems) and need to be performed
+                        many times a second. This requires the use of a computer, but computers only became readily
+                        available in the 1970's. It is for this reason that every major research telescope made since
+                        the 1980's uses an alt-azimuth mount, but every telescope made before this time was mounted
+                        equatorially.</p>
+                </div>
+            </div>
+
+            <!-- back to 1 column layout -->
+            <div class="grid-x">
+                <div class="cell">
+                    <p>Another big disadvantage of Alt-Az mounts is that the orientation of the telescope remains fixed
+                        with respect to the horizon. Since the night sky rotates around an axis which is inclined to the
+                        horizon, this means the orientation of the night sky, with respect to the telescope, changes
+                        over time. This effect, known as <strong>field rotation</strong>, is shown in <a href="#figure53">figure 53</a> below. Field rotation of Alt-Az mounts means that they are unsuitable
+                        for amateur astro-photograpy. Professional observatories get round this problem by having a
+                        <strong>field rotator</strong>, which mimics the rotation of the sky, keeping the camera
+                        orientation fixed with respect to the stars.
+                    </p>
+                </div>
+            </div>
+            <div class="grid-x align-center">
+                <div class="cell small-10">
+                    
+                    <div class="responsive-embed">
+                        <iframe src="https://www.youtube.com/embed/0uGgnAlTqto"></iframe>
+                    </div>
+                    <figure id="figure53">
+                        <figcaption><strong>Figure 53:</strong> A video showing the effects of field rotation. Note that the equatorial mount does not suffer from this effect, making it suitable for amateur astrophotography.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <!-- NEW SECTION: observatory locations -->
+    <section id="locations" data-magellan-target="locations">
+        <div class="grid-container">
+            <div class="grid-x">
+                <hr />
+                <h5>Observatory Locations</h5>
+                <p>There no world-class optical telescopes in the UK. The reason for this is cost. The world's largest
+                    telescopes cost hundreds of millions of pounds. Construction has started on the 32-m diameter E-ELT,
+                    with an estimated cost of €1 billion. It makes sense to build these telescopes in the best locations
+                    on Earth. None of these are in continental Europe. So what makes a site suitable for a billion Euro
+                    telescope?</p>
+                <h6><strong>Cloud Cover</strong></h6>
+            </div>
+
+            <!-- begin two column for figure -->
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-6">
+                    
+                    <div class="responsive-embed">
+                        <video controls loop>
+                            <source src="files/MODAL2_M_CLD_FR.mov" type="video/mp4">
+                            <p>Your browser does not support the video tag</p>
+                        </video>
+
+                    </div>
+                    <figure id="figure54">
+                        <figcaption><strong>Figure 54:</strong> Monthly average cloud cover, as revealed by NASA&#39;s Terra satellite. Colours range from blue (no clouds) to white (totally cloudy).</figcaption>
+                    </figure>
+                </div>
+                <div class="cell small-12 medium-6">
+                    <p>Radio telescopes can see through cloud. Optical telescopes can't! This is one of the primary
+                        reasons there are no major research telescopes in the UK.
+                        <a class="show-for-medium" href="#figure54">Figure 54 (left)</a><a class="hide-for-medium" href="#figure54">Figure 54 (above)</a> shows monthly average cloud cover. Desert regions
+                        including Antarctica, Australia, parts of Africa and the west coast of the Americas provide some
+                        of the best cloud-free skies.</p>
+                </div>
+            </div>
+
+            <div class="grid-x align-center">
+                <div class="cell">
+                    <h6><strong>Light Pollution</strong></h6>
+                    <p>Light from street lights and industry can greatly increase the <a
+                            href="../l01/index.html#transparency">sky
+                            background</a>. The increased background light causes increased noise in astronomical
+                        images, making it harder to detect faint sources. Therefore, the largest telescopes are placed
+                        in regions of low light pollution. <a href="#figure55">Figure 55</a> shows the artificial
+                        night
+                        sky brightness around the world. It can be seen that some of the regions which show low cloud
+                        cover in <a href="#figure54">figure 54</a>, such as the sparsely populated western coasts of South
+                        America and Africa, are also largely free of light pollution. <a href="#figure55">Figure 55</a>
+                        also clearly shows why no major telescopes are now built in mainland Europe.</p>
+                </div>
+
+                <div class="cell small-10">
+                    
+                    <div class="responsive-embed">
+                        <iframe src="http://djlorenz.github.io/astronomy/lp2006/overlay/dark.html"></iframe>
+                    </div>
+                    <figure id="figure55">
+                        <figcaption><strong>Figure 55: </strong>Image showing global light pollution, as recorded in the <a href='http://djlorenz.github.io/astronomy/lp2020/'>World Atlas of Artificial Night Sky Brightness (2020)</a></figcaption>
+                    </figure>
+                </div>
+
+                <div class="cell">
+                    <h6><strong>Seeing</strong></h6>
+                    <p>Selecting a site with good <a href="../l01/index.html#seeing">seeing</a>
+                        is one of the most important criteria. Lower seeing improves the spatial resolution of images.
+                        Since the light from the stars is also spread out over fewer pixels, good seeing also improves
+                        the signal-to-noise ratio. Seeing is caused by turbulence in the atmosphere and this has two
+                        causes: heat from the ground rising through the atmosphere and strong winds higher in the
+                        atmosphere (e.g the jet stream).</p>
+                    <p>The atmosphere over the sea tends to be much less turbulent than the atmosphere over land, as the
+                        sea exhibits an essentially smooth, constant-temperature surface compared to the land. Some of
+                        the best astronomical sites are therefore located on small islands in the middle of oceans, such
+                        as Hawaii and the Canaries, as these small land masses cause little additional turbulence. For
+                        the same reason, coastal regions that receive winds predominantly from the direction of the
+                        ocean, such as the western coasts of the Americas and Africa, also exhibit excellent seeing.</p>
+                    <h6><strong>Altitude</strong></h6>
+                    <p>The higher the site of an astronomical observatory, the thinner the atmosphere above the
+                        telescope. This reduces <a href="../l01/index.html#extinction">atmospheric extinction</a>, and
+                        can also help reduce the seeing if the observatory lies above a turbulent layer in the
+                        atmosphere. High-altitude telescopes are also often above the local inversion layer in the
+                        atmosphere, meaning that local cloud formation occurs below the telescope, significantly
+                        increasing the number of usable nights at the observatory compared to a telescope sited below
+                        the inversion level.</p>
+                    <h6><strong>Other Factors</strong></h6>
+                    <p>Additional factors, such as the difficulty of supplying utilities like water and power,
+                        accessibility, humidity and wind speed all play a lesser role in locating professional
+                        observatories. For a detailed discussion of many of these factors, see Vik Dhillon's <a
+                            href="http://www.vikdhillon.staff.shef.ac.uk/teaching/phy217/telescopes/phy217_tel_sites.html">old
+                            notes</a>. </p>
+                    <p>Political stability is also a factor in the location of large telescopes. This has been a
+                        particular issue in recent years, with protests from Native Hawaiians causing <a
+                            href="https://en.wikipedia.org/wiki/Thirty_Meter_Telescope">severe issues</a> for the Thirty
+                        Meter Telescope project's plans to build their telescope on Mauna Kea.</p>
+                    <h5>The world's largest telescopes</h5>
+                    <p><a href="#figure56">Figure 56</a> shows the sites of the worlds largest telescopes. For the reasons
+                        discussed above these are clustered around a few major sites, namely Chile, Hawaii and the
+                        Canary Islands. The gallery below shows photos of these observatories. These sites have low
+                        cloud cover, low light pollution, good seeing and low humidity. They are all at high altitude
+                        and are politically stable.</p>
+                </div>
+                <div class="cell small-10">
+                    <figure id="figure56"><div class="thumbnail"><img src="files/small_5730.png"></div><figcaption><strong>Figure 56:</strong> A google map showing the location of the world's largest optical telescopes. The overlying heat map shows the density of big telescopes around the world. The worlds largest optical telescopes are concentrated on Mauna Kea, Hawaii and the Atacama desert in Chile.</figcaption></figure>
+                </div>
+            </div>
+
+            <div class="grid-x grid-margin-x align-center">
+                
+                <div class="cell small-12 medium-3">
+                    <div class="thumbnail" data-toggle="hawaii">
+                        <img src="files/thumb_5735.gif">
+                    </div>
+                </div>
+                <div class="cell small-12 medium-3">
+                    <div class="thumbnail" data-toggle="lapalma">
+                        <img src="files/thumb_5736.jpg">
+                    </div>
+                </div>
+                <div class="cell small-12 medium-3">
+                    <div class="thumbnail" data-toggle="paranal">
+                        <img src="files/thumb_5737.gif">
+                    </div>
+                </div>
+                <div class="cell small-10">
+                    <figure id="figure57">
+                        <figcaption><strong>Figure 57:</strong> Photographs of arguably the world&#39;s best astronomical observatories.</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="full reveal" id="hawaii" data-reveal>
+                <img src="files/fullres_5735.gif">
+                <p>The Keck and Subaru telescopes at the summit of Mauna Kea, Hawaii. </p>
+                <button class="close-button" data-close aria-label="Close reveal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="full reveal" id="lapalma" data-reveal>
+                <img src="files/fullres_5736.jpg">
+                <p>The Roque de los Muchachos Observatory (ORM) on La Palma in the Canary Islands. </p>
+                <button class="close-button" data-close aria-label="Close reveal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="full reveal" id="paranal" data-reveal>
+                <img src="files/fullres_5737.gif">
+                <p>The Very Large Telescopes (VLT) at the Paranal Observatory in the Atacama Desert, Chile. </p>
+                <button class="close-button" data-close aria-label="Close reveal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <h5>Space Based Observatories</h5>
+            <p>The factors which degrade astronomical images, such as seeing, sky background, transparency variations
+                and extinction are all atmospheric-induced phenomena. These effects can all be removed at a stroke by
+                siting optical telescopes in space. The best known example of this is the 2.4 m Hubble Space Telescope
+                (HST), which has helped to revolutionise astronomy since 1990 with its diffraction-limited imaging
+                capability. Because space-based telescopes don't suffer from atmospheric extinction, HST also allows
+                astronomical observations in the UV - impossible from the ground! The main drawback with siting
+                telescopes in space is the cost: the HST cost many billions of dollars to build and operate,
+                approximately ten times the sum required for the largest ground-based telescopes. </p>
+            <p>Another drawback with space is the risk involved in the launch, and the great difficulty of fixing
+                problems, servicing the telescope and upgrading the instrumentation once the telescope has been
+                deployed. For the HST, servicing missions, which cost nearly $1 billion each, were of limited number and
+                were very risky for the astronauts involved. More recent telescopes, such as the JWST, have been located
+                much further from Earth and the Sun to keep them cool for as long as possible; servicing missions for
+                these telescopes are impossible, so they had better work!</p>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: autoguiding -->
+    <section id="guiding" data-magellan-target="guiding">
+        <div class="grid-container">
+            <div class="grid-x">
+                <hr />
+                <h5>Autoguiding</h5>
+                <p>We have already seen that telescopes use mounts to track the motion of stars in the sky. In practice,
+                    it isn't possible to do this accurately enough for professional work, or even for amateur
+                    astrophotography. This is due to mechanical imperfections in the drive systems of the mount, flexure
+                    of the mount, and misalignment of equatorial mounts with regard to the celestial pole. </p>
+                <p>The result is that stars drift slowly across the field of view, which would cause smearing in long
+                    exposures. To get round this, it is necessary to guide telescopes. This is done using an autoguider,
+                    a system which monitors the position of a star somewhere in the field of view, and nudges the
+                    telescope to keep the guide star locked onto the same pixel on the autoguider's detector.</p>
+                <p>There are two main types of autoguiders in use. <strong>Guidescopes</strong> use a separate, smaller
+                    telescope to image a wider field of view. The wide field of view means that guide scopes are likely
+                    to find a bright star to guide on, but because they are mechanically separate from the main
+                    telescope, they can flex relative to the main scope. This means that, even though the guide star is
+                    held fixed, the main telescope's view of the sky can drift slowly. <strong>Off-axis guiders</strong>
+                    use a mirror on a moveable stage to pick off some light from the main telescope, and focus it on a
+                    separate autoguiding camera. This exhibits less flexure than the guidescope method, and is the one
+                    most often used for large telescopes. Both designs are shown below in <a href="#figure58">figure 58</a>.</p>
+            </div>
+        </div>
+        <div class="grid-x align-center">
+            <div class="cell small-10">
+                <div class="grid-x grid-margin-x align-center"><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_5753.png"></div></div><div class="cell small-12 medium-6"><div class="thumbnail"><img src="files/small_5755.jpg"></div></div><div class="cell"><figure id="figure58"><figcaption><strong>Figure 58:</strong> <strong class='show-for-medium'>Left: </strong><strong class='hide-for-medium'>Top: </strong>an off-axis guider using pick-off optics. The pick off optics can be moved in order to send the light from a guide star to the guide camera.<strong class='show-for-medium'> Right: </strong><strong class='hide-for-medium'> Bottom: </strong>a photograph of ROSA, the 10" robotic telescope on the roof of the Department of Physics and Astronomy at Sheffield, with the dome removed. The piggy-back mounted guide scope, a 3-inch refractor, can be seen on top of the main telescope. A CCD autoguider has been inserted in place of the eyepiece.</figcaption></figure></div></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+    </div>
+    <footer>
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell small-5">
+                <h5>Contact Info</h5>
+                <hr />
+                <a href="#"><span>Email:</span> s.littlefair@sheffield.ac.uk</a>
+                <a href="#"><span>Address:</span> University of Sheffield, UK</a>
+            </div>
+            <div class="cell small-5">
+                <h5>Re-Use</h5>
+                <hr />
+                <p>These notes are made available under a creative commons license.</p>
+                <a href="https://github.com/StuartLittlefair/phy217_website/blob/main/./src/lectures/l03/index.html"><i
+                        class="fi-social-github"></i> Edit
+                    this Page on GitHub</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>
